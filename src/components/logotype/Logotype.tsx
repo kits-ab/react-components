@@ -31,14 +31,18 @@ export interface LogotypeProps extends types.BaseProps {
  */
 export class Logotype extends React.PureComponent<LogotypeProps> {
   render() {
-    let { color = "black", height, showTagline, width, ...restProps } = this.props
-    if (!height && !width) {
-      height = 100
-      width = 125
-    } else if (height && !width) {
-      width = height * 1.25
-    } else if (!height && width) {
-      height = width / 1.25
+    const { color = "black", height, showTagline, width, ...restProps } = this.props
+
+    let adjustedHeight = height
+    let adjustedWidth = width
+
+    if (!adjustedHeight && !adjustedWidth) {
+      adjustedHeight = 100
+      adjustedWidth = 125
+    } else if (adjustedHeight && !adjustedWidth) {
+      adjustedWidth = adjustedHeight * 1.25
+    } else if (!adjustedHeight && adjustedWidth) {
+      adjustedHeight = adjustedWidth / 1.25
     }
 
     return (
@@ -46,9 +50,9 @@ export class Logotype extends React.PureComponent<LogotypeProps> {
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         fill={color}
-        height={height}
+        height={adjustedHeight}
         viewBox="0 0 125 100"
-        width={width}
+        width={adjustedWidth}
         {...restProps}
       >
         <polyline points="13.4311927 11.2534483 13.4311927 42.7281609 27.831422 27.6804598 45.8767202 27.6804598 27.643922 45.4867816 47.9340596 76.1333333 31.8514908 76.1333333 18.5739679 54.483908 13.4311927 59.4511494 13.4311927 76.1333333 0.223050459 76.1333333 0.223050459 11.2534483 13.4311927 11.2534483" />
