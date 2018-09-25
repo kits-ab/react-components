@@ -38,28 +38,30 @@ const StyledHorizontal = styled(Horizontal)`
 `
 
 export interface BylineProps extends types.BaseProps {
-  /** The authors of the article. */
-  authors: types.Person[]
-  /** The time when the article was published. */
-  publishTime: Date
+  /** The authors or presenters of the article or presentation. */
+  persons: types.Person[]
+  /** The time when the article or presentation was published. */
+  publishTime?: Date
 }
 
 /**
- * Byline is used to how the publish time and authors of an article.
+ * Byline is used to how the publish time and authors of an article or presentation.
  */
 export class Byline extends React.PureComponent<BylineProps> {
   render() {
-    const { authors, publishTime, ...restProps } = this.props
+    const { persons, publishTime, ...restProps } = this.props
     return (
       <StyledHorizontal separator={true} spacing={spacing.small} {...restProps}>
-        <time dateTime={publishTime.toISOString()}>
-          {format(publishTime, "D MMMM YYYY", { locale: svLocale })}
-        </time>
+        {publishTime && (
+          <time dateTime={publishTime.toISOString()}>
+            {format(publishTime, "D MMMM YYYY", { locale: svLocale })}
+          </time>
+        )}
         <span>
-          {authors.map((author, index) => (
-            <React.Fragment key={`author-${author.id}`}>
+          {persons.map((person, index) => (
+            <React.Fragment key={`person-${person.id}`}>
               {index !== 0 ? ", " : ""}
-              {author.href ? <Link to={author.href}>{author.name}</Link> : author.name}
+              {person.href ? <Link to={person.href}>{person.name}</Link> : person.name}
             </React.Fragment>
           ))}
         </span>

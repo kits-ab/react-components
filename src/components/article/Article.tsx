@@ -87,7 +87,7 @@ export class Article extends React.PureComponent<ArticleProps> {
             {href ? <Link to={href}>{heading}</Link> : { heading }}
           </StyledContentHeading>
           <div>
-            <StyledByline authors={authors} publishTime={publishTime} />
+            <StyledByline persons={authors} publishTime={publishTime} />
           </div>
         </header>
         <Text>{children}</Text>
