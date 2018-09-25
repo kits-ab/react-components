@@ -5,28 +5,30 @@ import styled from "styled-components"
 import { colors } from "../../styles/constants"
 import * as types from "../../types"
 
+type P = Partial<AvatarProps>
+
 const StyledImg = styled.img`
   border-radius: 50%;
-  height: 120px;
-  width: 120px;
+  height: ${(props: P) => props.width}px;
+  width: ${(props: P) => props.width}px;
 `
 
 const StyledFigure = styled.figure`
   background-color: ${colors.background2};
   border-radius: 50%;
   display: inline-block;
-  height: 120px;
+  height: ${(props: P) => props.width}px;
   margin: 0;
   overflow: hidden;
   text-align: center;
-  width: 120px;
+  width: ${(props: P) => props.width}px;
 
   > svg {
     fill: ${transparentize(0.8, "#000")};
-    height: 120px;
+    height: ${(props: P) => props.width}px;
     position: relative;
     top: 10px;
-    width: 120px;
+    width: ${(props: P) => props.width}px;
   }
 `
 
@@ -38,6 +40,11 @@ export interface AvatarProps extends types.BaseProps {
    * @default false
    */
   showFallback?: boolean
+  /**
+   * The width of the avatar.
+   * @default 120
+   */
+  width?: number
 }
 
 /**
@@ -46,16 +53,17 @@ export interface AvatarProps extends types.BaseProps {
  */
 export class Avatar extends React.PureComponent<AvatarProps> {
   render() {
-    const { person, showFallback = false, ...restProps } = this.props
+    const { person, showFallback = false, width = 120, ...restProps } = this.props
     return person.avatarSrc ? (
       <StyledImg
         alt={person.name}
         src={person.avatarSrc}
         srcSet={person.avatarSrcSet}
+        width={width}
         {...restProps}
       />
     ) : showFallback ? (
-      <StyledFigure {...restProps}>
+      <StyledFigure width={width} {...restProps}>
         <svg
           aria-label={person.name}
           role="img"
