@@ -39,6 +39,8 @@ export interface VerticalProps extends types.BaseProps {
    * @default false
    */
   distribute?: boolean
+  /** The click handler to call when clicked. */
+  onClick?: () => void
   /**
    * Set to `true` to show a separator between the child components.
    * @default false

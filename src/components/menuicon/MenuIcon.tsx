@@ -124,7 +124,7 @@ export interface MenuIconProps extends types.BaseProps {
    */
   isOpen: boolean
   /** The click handler to call when the icon is pressed. */
-  onClick: () => void
+  onClick?: () => void
 }
 
 /**

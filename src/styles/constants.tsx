@@ -62,7 +62,7 @@ export const spacing = {
 
 export const width = {
   mobile: 400,
-  mobileMenu: 550,
+  mobileMenu: 600,
   tablet: 700,
   desktop: 840,
   max: 1200
