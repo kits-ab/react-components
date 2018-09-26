@@ -63,15 +63,21 @@ export class Vertical extends React.PureComponent<VerticalProps> {
   render() {
     const { children, separator, tagName, ...restProps } = this.props
     const Wrapper = tagName ? StyledDiv.withComponent(tagName as any) : StyledDiv
+    let childIndex = -1
     return (
       <Wrapper {...restProps}>
         {separator
-          ? React.Children.map(children, (child, index) => (
-              <>
-                {index !== 0 && <StyledSeparator />}
-                {child}
-              </>
-            ))
+          ? React.Children.map(children, child => {
+              if (child !== null) {
+                childIndex++
+              }
+              return (
+                <>
+                  {childIndex > 0 && <StyledSeparator />}
+                  {child}
+                </>
+              )
+            })
           : children}
       </Wrapper>
     )
