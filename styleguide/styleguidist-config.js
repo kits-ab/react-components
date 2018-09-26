@@ -91,6 +91,11 @@ module.exports = {
           loader: "babel-loader"
         },
         {
+          test: /\.(jpg|png|svg)$/,
+          exclude: /node_modules/,
+          loader: "file-loader"
+        },
+        {
           test: /\.tsx?$/,
           exclude: /node_modules/,
           loader: "awesome-typescript-loader"

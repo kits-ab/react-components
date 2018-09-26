@@ -1,14 +1,12 @@
 {
   "name": "@kokitotsos/react-components",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "Apache-2.0",
   "files": [
     "dist",
     "src"
   ],
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.es.js",
-  "browser": "dist/index.umd.js",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
@@ -16,7 +14,7 @@
   },
   "scripts": {
     "build": "yarn build:lib && yarn build:styleguide",
-    "build:lib": "rollup -c rollup-config.cjs.js && rollup -c rollup-config.es.js && rollup -c rollup-config.umd.js",
+    "build:lib": "rollup -c rollup-config.js",
     "build:styleguide": "styleguidist build --config styleguide/styleguidist-config.js",
     "clean": "rimraf .cache dist dist-styleguide",
     "format": "prettier \"src/**/*.{js,json,jsx,md,ts,tsx}\" --write",
@@ -24,9 +22,11 @@
     "lint:css": "stylelint \"./src/**/*.tsx\"",
     "lint:ts": "tslint -p tsconfig.json -c tslint.prod.json",
     "precommit": "lint-staged",
+    "prepublishOnly": "yarn build:lib",
     "prepush": "yarn lint",
+    "publish:next": "npm publish --tag=next",
     "start": "styleguidist server --config styleguide/styleguidist-config.js",
-    "watch": "rollup -c rollup-config.cjs.js -w"
+    "watch": "rollup -c rollup-config.js -w"
   },
   "devDependencies": {
     "@types/node": "^10.9.4",
@@ -37,6 +37,7 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-react": "^6.24.1",
+    "file-loader": "^2.0.0",
     "husky": "^0.14.3",
     "lint-staged": "^7.2.2",
     "prettier": "^1.14.2",
@@ -44,10 +45,9 @@
     "react-styleguidist": "^7.3.7",
     "rimraf": "^2.6.2",
     "rollup": "^0.65.2",
-    "rollup-plugin-commonjs": "^9.1.6",
-    "rollup-plugin-css-only": "^0.4.0",
     "rollup-plugin-filesize": "^4.0.1",
-    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-image": "^1.0.2",
+    "rollup-plugin-img": "^1.1.0",
     "rollup-plugin-typescript2": "^0.17.0",
     "stylelint": "^9.5.0",
     "stylelint-config-standard": "^18.2.0",
