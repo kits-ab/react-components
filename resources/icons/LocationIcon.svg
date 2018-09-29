@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>icons/LocationIcon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="icons/LocationIcon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M12,24 C12,24 21,15.627 21,9 C21,2.373 16.971,0 12,0 C7.029,0 3,2.373 3,9 C3,15.627 12,24 12,24 Z M7.5,7.5 C7.5,5.0145 9.5145,3 12,3 C14.4855,3 16.5,5.0145 16.5,7.5 C16.5,9.9855 14.4855,12 12,12 C9.5145,12 7.5,9.9855 7.5,7.5 Z" id="Shape" fill="#000000" fill-rule="nonzero"></path>
+    </g>
+</svg>

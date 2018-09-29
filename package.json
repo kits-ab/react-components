@@ -18,6 +18,7 @@
     "build:styleguide": "styleguidist build --config styleguide/styleguidist-config.js",
     "clean": "rimraf .cache dist dist-styleguide",
     "format": "prettier \"src/**/*.{js,json,jsx,md,ts,tsx}\" --write",
+    "icons": "svgr -d src/icons resources/icons --template resources/SvgrTemplate.js --ext tsx --icon",
     "lint": "yarn lint:css && yarn lint:ts",
     "lint:css": "stylelint \"./src/**/*.tsx\"",
     "lint:ts": "tslint -p tsconfig.json -c tslint.prod.json",
@@ -29,6 +30,7 @@
     "watch": "rollup -c rollup-config.js -w"
   },
   "devDependencies": {
+    "@svgr/cli": "^2.4.1",
     "@types/node": "^10.9.4",
     "@types/react": "^16.4.14",
     "@types/react-dom": "^16.0.7",
@@ -107,5 +109,12 @@
       "value-list-max-empty-lines": null
     },
     "syntax": "scss"
+  },
+  "svgr": {
+    "replaceAttrValues": {
+      "1em": "24",
+      "#000": "inherit",
+      "none": "inherit"
+    }
   }
 }
