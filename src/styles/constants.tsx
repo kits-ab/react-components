@@ -25,6 +25,30 @@ injectGlobal`
 `
 // tslint:enable
 
+// Dark
+// export const colors = {
+//   primary: darken(0.2, "#f37f4a"),
+//
+//   accent1: darken(0.2, "#c9c6a6"),
+//   accent2: darken(0.2, "#c1ae48"),
+//   accent3: darken(0.2, "#7ac4bb"),
+//
+//   background1: lighten(0.03, "#1e1e1e"),
+//   background2: "#3a3a39",
+//   background3: transparentize(0.8, "#000"),
+//
+//   border: "#4c4c4c",
+//
+//   line: "rgba(255,255,255,0.25)",
+//
+//   link: darken(0.1, "#f37f4a"),
+//
+//   text1: "hsl(0, 0%, 90%)",
+//   text2: "#999999",
+//   text3: "#666666"
+// }
+
+// Light
 export const colors = {
   primary: "#f37f4a",
 
@@ -35,6 +59,8 @@ export const colors = {
   background1: "#ffffff",
   background2: lighten(0.3, "#b0ad97"),
   background3: transparentize(0.8, "#000"),
+
+  border: "white",
 
   line: "#c6c4b4",
 

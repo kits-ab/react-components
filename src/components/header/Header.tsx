@@ -1,3 +1,4 @@
+import { transparentize } from "polished"
 import * as React from "react"
 import styled from "styled-components"
 
@@ -10,7 +11,7 @@ import { Logotype } from "../logotype/Logotype"
 import { Menu } from "../menu/Menu"
 
 const StyledHeader = styled.header`
-  background-color: rgba(255, 255, 255, 0.97);
+  background-color: ${transparentize(0.03, colors.background1)};
   border-bottom: 1px solid ${colors.line};
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
   left: 0;
@@ -48,7 +49,7 @@ const StyledLogotypeWrapper = styled.div`
     }
 
     &::before {
-      background-color: white;
+      background-color: ${colors.background1};
       bottom: 22px;
       content: "";
       height: 4px;

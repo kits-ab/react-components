@@ -1,3 +1,4 @@
+import { transparentize } from "polished"
 import * as React from "react"
 import styled, { css, StyledFunction } from "styled-components"
 
@@ -6,7 +7,7 @@ import * as types from "../../types"
 import { Link, LinkProps } from "../link/Link"
 
 const sharedStyle = css`
-  border: 5px solid white;
+  border: 5px solid ${colors.border};
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
   display: block;
   height: inherit;
@@ -31,7 +32,7 @@ const sharedStyle = css`
   }
 
   .image-info {
-    background-color: rgba(255, 255, 255, 0.93);
+    background-color: ${transparentize(0.03, colors.border)};
     bottom: 0;
     font-family: ${fonts.light};
     font-style: normal;

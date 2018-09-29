@@ -36,7 +36,7 @@ export interface AvatarProps extends types.BaseProps {
   /** The person to show the avatar for. */
   person: types.Person
   /**
-   * Set to true to show a fallback image if no image has been specified for the person.
+   * Set to `true` to show a fallback image if no image has been specified for the person.
    * @default false
    */
   showFallback?: boolean

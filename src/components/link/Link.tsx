@@ -13,7 +13,7 @@ export interface LinkProps extends types.BaseProps {
   /** The content of the link. */
   children: React.ReactNode
   /**
-   * ** * ** Set to true to only apply the active class/style if the location is matched exactly.
+   * ** * ** Set to `true` to only apply the active class/style if the location is matched exactly.
    * @default false
    */
   exact?: boolean
@@ -28,13 +28,13 @@ export interface LinkProps extends types.BaseProps {
    */
   location?: types.Location
   /**
-   * ** * ** Set to true to replace the current entry in the history stack instead of adding a new
+   * ** * ** Set to `true` to replace the current entry in the history stack instead of adding a new
    * one when clicking the link.
    * @default false
    */
   replace?: boolean
   /**
-   * ** * ** Set to true to take the trailing slash of a location's pathname into consideration when
+   * ** * ** Set to `true` to take the trailing slash of a location's pathname into consideration when
    * determining if the location matches the current url.
    * @default false
    */

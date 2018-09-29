@@ -1,7 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 
-import { spacing, width } from "../../styles/constants"
+import { colors, spacing, width } from "../../styles/constants"
 import * as types from "../../types"
 import { SubHeading } from "../headings/sub/SubHeading"
 import { Horizontal } from "../layouts/horizontal/Horizontal"
@@ -35,7 +35,7 @@ const StyledImageWrapper = styled.div`
 
   > img {
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
-    border: 5px solid white;
+    border: 5px solid ${colors.border};
     max-width: 100%;
 
     @media (max-width: ${width.mobileMenu}px) {
