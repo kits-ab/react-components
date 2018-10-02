@@ -12,7 +12,7 @@
     social: {
       facebook: new types.Username("kokitotsos", types.SocialType.Facebook),
       github: new types.Username("kits-ab", types.SocialType.GitHub),
-      linkedin: new types.Username("kits-ab", types.SocialType.LinkedIn),
+      linkedin: new types.Username("kits-ab", types.SocialType.Linkedin),
       twitter: new types.Username("kokitotsos", types.SocialType.Twitter)
     }
   }}
@@ -45,8 +45,9 @@
     social: {
       facebook: new types.Username("kokitotsos", types.SocialType.Facebook),
       github: new types.Username("kits-ab", types.SocialType.GitHub),
-      linkedin: new types.Username("kits-ab", types.SocialType.LinkedIn),
+      linkedin: new types.Username("kits-ab", types.SocialType.Linkedin),
       keybase: new types.Username("kokitotsos", types.SocialType.Keybase),
+      microblog: new types.Username("kokitotsos", types.SocialType.MicroBlog),
       twitter: new types.Username("kokitotsos", types.SocialType.Twitter)
     }
   }}

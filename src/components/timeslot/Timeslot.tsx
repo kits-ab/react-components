@@ -21,6 +21,7 @@ import {
 } from "../../icons"
 import { colors, fonts, spacing, width } from "../../styles/constants"
 import * as types from "../../types"
+import { cssVar } from "../../utils/cssUtils"
 import { Avatar } from "../avatar/Avatar"
 import { Byline } from "../byline/Byline"
 import { ContentHeading } from "../headings/content/ContentHeading"
@@ -33,9 +34,9 @@ type P = Partial<TimeslotProps>
 
 const StyledVertical = styled(Vertical)`
   background-color: ${props =>
-    props.type === types.TimeslotType.Presentation
-      ? colors.background2
-      : lighten(0.03, colors.background2)};
+    props.type === types.TimeslotType.Presentation ? colors.background2 : colors.background5};
+  background-color: ${props =>
+    props.type === types.TimeslotType.Presentation ? "var(--background2)" : "var(--background5)"};
   border-radius: 5px;
   margin-top: ${props =>
     props.type === types.TimeslotType.Presentation ? spacing.large : spacing.medium}px !important;
@@ -56,8 +57,9 @@ const StyledVertical = styled(Vertical)`
       background-image: linear-gradient(
         to top,
         ${colors.background2} 0%,
-        ${lighten(0.03, colors.background2)} 100%
+        ${colors.background5} 100%
       );
+      background-image: linear-gradient(to top, var(--background2) 0%, var(--background5) 100%);
       bottom: calc(100% + ${spacing.medium + 3}px);
       content: "";
       height: ${props =>
@@ -71,7 +73,9 @@ const StyledVertical = styled(Vertical)`
     &::after {
       display: ${(props: P) => (props.connectToPrevious ? "block" : "none")};
       background-color: ${colors.background2};
+      background-color: var(--background2);
       border: 3px solid ${colors.background1};
+      border: 3px solid var(--background1);
       height: 14px;
       border-radius: 50%;
       content: "";
@@ -85,6 +89,7 @@ const StyledVertical = styled(Vertical)`
 
   .Timeslot-start {
     color: ${colors.text1};
+    color: var(--text1);
     font-size: 20px;
     font-style: normal;
     font-weight: 200;
@@ -92,6 +97,7 @@ const StyledVertical = styled(Vertical)`
 
   .Timeslot-end {
     color: ${colors.text2};
+    color: var(--text2);
     font-size: 14px;
     font-style: normal;
     font-weight: 200;
@@ -100,6 +106,12 @@ const StyledVertical = styled(Vertical)`
 
   .Timeslot-heading {
     color: ${colors.text1};
+    color: var(--text1);
+
+    .Timeslot-link {
+      color: ${colors.link};
+      color: var(--link);
+    }
   }
 
   .Timeslot-presenter {
@@ -127,6 +139,7 @@ const StyledVertical = styled(Vertical)`
 
 const StyledText = styled(Text)`
   border-top: 1px solid ${colors.background1};
+  border-top: 1px solid var(--background1);
   margin: -15px -${spacing.huge}px 0;
   padding: 15px ${spacing.huge}px 0;
 
@@ -173,7 +186,7 @@ export interface TimeslotProps extends types.BaseProps {
   /** The time when the timeslot starts. */
   startTime: Date
   /** The location of the timeslot. */
-  location?: string
+  location?: { coordinates: number[]; title?: string; subtitle?: string }
   /** The url to the presentation file of the timeslot. */
   presentation?: string
   /**
@@ -223,14 +236,14 @@ export class Timeslot extends React.PureComponent<TimeslotProps> {
         {presentation && (
           <Text>
             <Horizontal alignVertical={types.Alignment.Center} spacing={spacing.small}>
-              <AttachmentIcon fill={colors.link} height={16} width={16} />
+              <AttachmentIcon fill={cssVar("--link")} height={16} width={16} />
               <p>
                 <a href={presentation}>Ladda ner presentation</a>
               </p>
             </Horizontal>
           </Text>
         )}
-        {location && <StyledLocation />}
+        {location && <StyledLocation coordinates={location.coordinates} title={location.title} />}
       </StyledVertical>
     )
   }
@@ -267,11 +280,19 @@ export class Timeslot extends React.PureComponent<TimeslotProps> {
   }
 
   private renderInfoHeader = (type?: types.TimeslotType) => {
-    const { heading } = this.props
+    const { heading, href } = this.props
     return (
       <Horizontal className="Timeslot-info" spacing={spacing.medium}>
         <div>{this.getIcon(type)}</div>
-        <ContentHeading className="Timeslot-heading">{heading}</ContentHeading>
+        <ContentHeading className="Timeslot-heading">
+          {href ? (
+            <a className="Timeslot-link" href={href}>
+              {heading}
+            </a>
+          ) : (
+            heading
+          )}
+        </ContentHeading>
       </Horizontal>
     )
   }
@@ -281,10 +302,9 @@ export class Timeslot extends React.PureComponent<TimeslotProps> {
     return (
       <Horizontal breakpoint={width.mobileMenu} className="Timeslot-presenter">
         {/* TODO: Handle avatars for multiple presenters */}
-        {presenters &&
-          presenters.length > 0 && (
-            <StyledAvatar person={presenters[0]} showFallback={true} width={80} />
-          )}
+        {presenters && presenters.length > 0 && (
+          <StyledAvatar person={presenters[0]} showFallback={true} width={80} />
+        )}
         <Vertical>
           {presenters && <Byline persons={presenters} />}
           <ContentHeading className="Timeslot-heading">{heading}</ContentHeading>

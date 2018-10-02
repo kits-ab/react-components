@@ -47,7 +47,7 @@
     heading="Food"
     startTime={new Date("2018-01-01T11:30:00")}
     endTime={new Date("2018-01-01T12:00:00")}
-    type={types.TimeslotType.Drink}
+    type={types.TimeslotType.Food}
     connectToPrevious={true}
   />
   <Timeslot
@@ -70,7 +70,7 @@
     startTime={new Date("2018-01-01T12:30:00")}
     endTime={new Date("2018-01-01T13:00:00")}
     type={types.TimeslotType.Location}
-    location="Location"
+    location={{ coordinates: [57.7001813, 11.9567863], title: "Location" }}
     connectToPrevious={true}
   />
   <Timeslot

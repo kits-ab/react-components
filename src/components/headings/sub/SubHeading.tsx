@@ -6,6 +6,7 @@ import * as types from "../../../types"
 
 const StyledH4 = styled.h4`
   color: ${colors.text2};
+  color: var(--text2);
   font-family: ${fonts.thin};
   font-size: 18px;
   font-style: normal;

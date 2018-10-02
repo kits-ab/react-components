@@ -42,6 +42,7 @@ const StyledDiv = styled.div`
 
   > span {
     background: ${colors.text2};
+    background: var(--text2);
     border-radius: 1px;
     display: block;
     height: 2px;
@@ -68,6 +69,7 @@ const StyledDiv = styled.div`
   &.is-open {
     > span {
       background-color: ${colors.text2};
+      background-color: var(--text2);
 
       &:nth-child(1) {
         top: 19px;
@@ -146,8 +148,8 @@ export class MenuIcon extends React.PureComponent<MenuIconProps> {
         ? "is-floating is-open"
         : "is-open"
       : isFloating
-        ? "is-floating"
-        : ""
+      ? "is-floating"
+      : ""
     return (
       <StyledDiv
         className={className}

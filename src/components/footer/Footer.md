@@ -12,7 +12,7 @@
     social: {
       facebook: new types.Username("kokitotsos", types.SocialType.Facebook),
       github: new types.Username("kits-ab", types.SocialType.GitHub),
-      linkedIn: new types.Username("kits-ab", types.SocialType.LinkedIn),
+      linkedin: new types.Username("kits-ab", types.SocialType.LinkedIn),
       twitter: new types.Username("kokitotsos", types.SocialType.Twitter)
     }
   }}

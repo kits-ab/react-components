@@ -34,11 +34,15 @@ const StyledImageWrapper = styled.div`
   }
 
   > img {
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px 0 ${colors.lineShadow};
+    box-shadow: 0 1px 3px 0 var(--lineShadow);
     border: 5px solid ${colors.border};
+    border: 5px solid var(--border);
     max-width: 100%;
 
     @media (max-width: ${width.mobileMenu}px) {
+      border-left: 0;
+      border-right: 0;
       left: 50%;
       margin-left: -50vw;
       margin-right: -50vw;

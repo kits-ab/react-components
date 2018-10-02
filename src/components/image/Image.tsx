@@ -1,14 +1,15 @@
-import { transparentize } from "polished"
 import * as React from "react"
-import styled, { css, StyledFunction } from "styled-components"
+import styled, { css } from "styled-components"
 
 import { colors, fonts, spacing } from "../../styles/constants"
 import * as types from "../../types"
-import { Link, LinkProps } from "../link/Link"
+import { Link } from "../link/Link"
 
 const sharedStyle = css`
   border: 5px solid ${colors.border};
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+  border: 5px solid var(--border);
+  box-shadow: 0 1px 3px 0 ${colors.lineShadow};
+  box-shadow: 0 1px 3px 0 var(--lineShadow);
   display: block;
   height: inherit;
   max-width: 450px;
@@ -32,7 +33,8 @@ const sharedStyle = css`
   }
 
   .image-info {
-    background-color: ${transparentize(0.03, colors.border)};
+    background-color: ${colors.border2};
+    background-color: var(--border2);
     bottom: 0;
     font-family: ${fonts.light};
     font-style: normal;
@@ -46,6 +48,7 @@ const sharedStyle = css`
 
   .image-info-text {
     color: ${colors.text1};
+    color: var(--text1);
     margin-bottom: 0;
     margin-top: 0;
     text-align: left;
@@ -53,6 +56,7 @@ const sharedStyle = css`
 
   .image-info-additional-text {
     color: ${colors.text2};
+    color: var(--text2);
     font-size: 14px;
     margin-bottom: 0;
     margin-top: 0;
@@ -60,7 +64,7 @@ const sharedStyle = css`
   }
 `
 
-const StyledLink = (styled(Link) as StyledFunction<LinkProps>)`
+const StyledLink = styled(Link)`
   ${sharedStyle}
 `
 

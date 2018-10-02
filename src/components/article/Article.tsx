@@ -81,8 +81,9 @@ export class Article extends React.PureComponent<ArticleProps> {
       <article {...restProps}>
         <header>
           {/* TODO: Handle avatars for multiple authors */}
-          {showAvatars &&
-            authors.length > 0 && <StyledAvatar person={authors[0]} showFallback={true} />}
+          {showAvatars && authors.length > 0 && (
+            <StyledAvatar person={authors[0]} showFallback={true} />
+          )}
           <StyledContentHeading>
             {href ? <Link to={href}>{heading}</Link> : { heading }}
           </StyledContentHeading>
@@ -91,14 +92,13 @@ export class Article extends React.PureComponent<ArticleProps> {
           </div>
         </header>
         <Text>{children}</Text>
-        {showExcerpt &&
-          href && (
-            <Text>
-              <p>
-                <Link to={href}>Läs mer →</Link>
-              </p>
-            </Text>
-          )}
+        {showExcerpt && href && (
+          <Text>
+            <p>
+              <Link to={href}>Läs mer →</Link>
+            </p>
+          </Text>
+        )}
       </article>
     )
   }

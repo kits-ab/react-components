@@ -3,10 +3,12 @@ import styled from "styled-components"
 
 import { colors, spacing } from "../../styles/constants"
 import * as types from "../../types"
+import { cssVar } from "../../utils/cssUtils"
 import { Contact } from "../contact/Contact"
 
 const StyledFooter = styled.footer`
   background-color: ${colors.background2};
+  background-color: var(--background2);
   overflow: hidden;
   padding: ${spacing.large}px;
   position: relative;
@@ -51,7 +53,7 @@ export class Footer extends React.PureComponent<FooterProps> {
               xmlns="http://www.w3.org/2000/svg"
               version="1.1"
               className="footer-image"
-              fill="white"
+              fill={cssVar("--background1") || colors.background1}
               viewBox="0 0 67 100"
               {...restProps}
             >

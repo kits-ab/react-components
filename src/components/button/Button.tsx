@@ -1,13 +1,13 @@
-import { darken } from "polished"
 import * as React from "react"
-import styled, { css, StyledFunction } from "styled-components"
+import styled, { css } from "styled-components"
 
 import { colors, fonts, spacing, width } from "../../styles/constants"
 import * as types from "../../types"
-import { Link, LinkProps } from "../link/Link"
+import { Link } from "../link/Link"
 
 const sharedStyle = css`
   background-color: ${colors.primary};
+  background-color: var(--primary);
   border-radius: 20px;
   display: inline-block;
   color: white;
@@ -27,9 +27,14 @@ const sharedStyle = css`
   }
 
   &:hover {
-    background-color: ${darken(0.1, colors.primary)};
+    background-color: ${colors.primaryDarker};
+    background-color: var(--primaryDarker);
     text-decoration: none;
   }
+`
+
+const StyledA = styled.a`
+  ${sharedStyle};
 `
 
 const StyledButton = styled.button`
@@ -38,7 +43,7 @@ const StyledButton = styled.button`
   outline: 0;
 `
 
-const StyledLink = (styled(Link) as StyledFunction<LinkProps>)`
+const StyledLink = styled(Link)`
   ${sharedStyle};
 `
 
@@ -55,9 +60,15 @@ export interface ButtonProps extends types.BaseProps {
  * Button is used to show a link or actual button that looks like a button.
  */
 export class Button extends React.PureComponent<ButtonProps> {
+  static isExternalLink = new RegExp(/^https?:\/\//)
+
   render() {
     const { children, href, ...restProps } = this.props
-    return href ? (
+    return href && Button.isExternalLink.test(href) ? (
+      <StyledA href={href} {...restProps}>
+        {children}
+      </StyledA>
+    ) : href ? (
       <StyledLink to={href} {...restProps}>
         {children}
       </StyledLink>

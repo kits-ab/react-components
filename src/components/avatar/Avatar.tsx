@@ -1,4 +1,3 @@
-import { transparentize } from "polished"
 import * as React from "react"
 import styled from "styled-components"
 
@@ -15,6 +14,7 @@ const StyledImg = styled.img`
 
 const StyledFigure = styled.figure`
   background-color: ${colors.background2};
+  background-color: var(--background2);
   border-radius: 50%;
   display: inline-block;
   height: ${(props: P) => props.width}px;
@@ -24,7 +24,8 @@ const StyledFigure = styled.figure`
   width: ${(props: P) => props.width}px;
 
   > svg {
-    fill: ${transparentize(0.8, "#000")};
+    fill: ${colors.background3};
+    fill: var(--background3);
     height: ${(props: P) => props.width}px;
     position: relative;
     top: 10px;

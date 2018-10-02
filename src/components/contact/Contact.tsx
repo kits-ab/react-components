@@ -22,6 +22,7 @@ const StyledP = styled.p`
 
   > span {
     color: ${colors.text1};
+    color: var(--text1);
     display: block;
     font-family: ${fonts.light};
     font-size: 16px;
@@ -31,6 +32,7 @@ const StyledP = styled.p`
 
     > a {
       color: ${colors.link};
+      color: var(--link);
       text-decoration: none;
 
       &:hover {
@@ -58,8 +60,9 @@ export class Contact extends React.PureComponent<ContactProps> {
         {type === types.ContactType.Company && this.renderCompanyContact()}
         {type === types.ContactType.Person && this.renderPersonContact()}
         {type === types.ContactType.Role && this.renderRoleContact()}
-        {type !== types.ContactType.Role &&
-          info.social && <Social className="contact-social" info={info.social} />}
+        {type !== types.ContactType.Role && info.social && (
+          <Social className="contact-social" info={info.social} />
+        )}
       </StyledVertical>
     )
   }

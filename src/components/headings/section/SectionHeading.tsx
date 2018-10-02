@@ -6,6 +6,7 @@ import * as types from "../../../types"
 
 const StyledH2 = styled.h2`
   color: ${colors.text2};
+  color: var(--text2);
   font-family: ${fonts.thin};
   font-size: 26px;
   font-style: normal;
@@ -17,6 +18,7 @@ const StyledH2 = styled.h2`
 
   &::before {
     border-top: 1px solid ${colors.line};
+    border-top: 1px solid var(--line);
     content: "";
     left: 0;
     position: absolute;
@@ -26,6 +28,7 @@ const StyledH2 = styled.h2`
 
   > span {
     background-color: ${colors.background1};
+    background-color: var(--background1);
     display: inline-block;
     padding: 0 ${spacing.small}px;
     position: relative;

@@ -2,7 +2,14 @@ import { transparentize } from "polished"
 import * as React from "react"
 import styled from "styled-components"
 
-import { FacebookIcon, GitHubIcon, KeybaseIcon, LinkedInIcon, TwitterIcon } from "../../icons"
+import {
+  FacebookIcon,
+  GitHubIcon,
+  KeybaseIcon,
+  LinkedInIcon,
+  MicroBlogIcon,
+  TwitterIcon
+} from "../../icons"
 import * as types from "../../types"
 
 export interface SocialProps extends types.BaseProps {
@@ -62,8 +69,13 @@ export class Social extends React.PureComponent<SocialProps> {
             <FacebookIcon />
           </StyledA>
         )}
-        {info.linkedIn && (
-          <StyledA href={info.linkedIn.toLink()}>
+        {info.microblog && (
+          <StyledA href={info.microblog.toLink()}>
+            <MicroBlogIcon />
+          </StyledA>
+        )}
+        {info.linkedin && (
+          <StyledA href={info.linkedin.toLink()}>
             <LinkedInIcon />
           </StyledA>
         )}

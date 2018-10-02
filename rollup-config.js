@@ -9,10 +9,12 @@ module.exports = {
   external: [
     "date-fns",
     "date-fns/locale/sv",
+    "mapbox-gl",
     "normalize.css",
     "polished",
     "react",
     "react-dom",
+    "react-mapbox-gl",
     "react-transition-group",
     "styled-components"
   ],

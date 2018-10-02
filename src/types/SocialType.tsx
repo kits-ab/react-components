@@ -1,7 +1,8 @@
 export enum SocialType {
-  Facebook = "FACEBOOK",
-  GitHub = "GITHUB",
-  Keybase = "KEYBASE",
-  LinkedIn = "LINKEDIN",
-  Twitter = "TWITTER"
+  Facebook = "facebook",
+  GitHub = "github",
+  Keybase = "keybase",
+  LinkedIn = "linkedin",
+  MicroBlog = "microblog",
+  Twitter = "twitter"
 }

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="26px" height="24px" viewBox="0 0 26 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52 (66869) - http://www.bohemiancoding.com/sketch -->
     <title>icons/AirplaneIcon</title>
     <desc>Created with Sketch.</desc>
-    <defs></defs>
     <g id="icons/AirplaneIcon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M25.2945483,11.7041388 L1.29454832,11.7041388 L1.29454832,7.70413885 L25.2945483,7.70413885 C26.3995483,7.70413885 27.2945483,8.59913885 27.2945483,9.70413885 C27.2945483,10.8091388 26.3995483,11.7041388 25.2945483,11.7041388 Z" id="Shape" fill="#000000" fill-rule="nonzero" transform="translate(14.294548, 9.704139) rotate(-30.000000) translate(-14.294548, -9.704139) "></path>
-        <polygon id="Shape" fill="#000000" fill-rule="nonzero" transform="translate(3.018269, 12.173050) rotate(-30.000000) translate(-3.018269, -12.173050) " points="5.01826887 14.6730499 1.01826887 14.6730499 1.01826887 9.67304993 2.01826887 9.67304993"></polygon>
-        <polygon id="Shape" fill="#000000" fill-rule="nonzero" transform="translate(10.178523, 4.574974) rotate(-30.000000) translate(-10.178523, -4.574974) " points="15.1785229 10.0749737 8.17852291 10.0749737 5.17852291 -0.925026279 7.17852291 -0.925026279"></polygon>
-        <polygon id="Shape" fill="#000000" fill-rule="nonzero" transform="translate(6.518269, 18.235228) rotate(-30.000000) translate(-6.518269, -18.235228) " points="8.51826887 15.7352278 4.51826887 15.7352278 4.51826887 20.7352278 5.51826887 20.7352278"></polygon>
-        <polygon id="Shape" fill="#000000" fill-rule="nonzero" transform="translate(16.678523, 15.833304) rotate(-30.000000) translate(-16.678523, -15.833304) " points="21.6785229 10.333304 14.6785229 10.333304 11.6785229 21.333304 13.6785229 21.333304"></polygon>
+        <path d="M23.4208781,12.6149434 L1.19865585,12.6149434 L1.19865585,8.91123967 L23.4208781,8.91123967 C24.4440262,8.91123967 25.2727299,9.73994338 25.2727299,10.7630915 C25.2727299,11.7862397 24.4440262,12.6149434 23.4208781,12.6149434 Z" id="Shape" fill="#000000" fill-rule="nonzero" transform="translate(13.235693, 10.763092) rotate(-30.000000) translate(-13.235693, -10.763092) "></path>
+        <polygon id="Shape" fill="#000000" fill-rule="nonzero" transform="translate(2.794693, 13.049120) rotate(-30.000000) translate(-2.794693, -13.049120) " points="4.64654525 15.3639351 0.942841551 15.3639351 0.942841551 10.7343055 1.86876748 10.7343055"></polygon>
+        <polygon id="Shape" fill="#000000" fill-rule="nonzero" transform="translate(9.424558, 6.013865) rotate(-30.000000) translate(-9.424558, -6.013865) " points="14.0541879 11.1064571 7.5727064 11.1064571 4.79492862 0.921271964 6.64678047 0.921271964"></polygon>
+        <polygon id="Shape" fill="#000000" fill-rule="nonzero" transform="translate(6.035434, 18.662248) rotate(-30.000000) translate(-6.035434, -18.662248) " points="7.887286 16.3474331 4.18358229 16.3474331 4.18358229 20.9770627 5.10950822 20.9770627"></polygon>
+        <polygon id="Shape" fill="#000000" fill-rule="nonzero" transform="translate(15.443077, 16.438244) rotate(-30.000000) translate(-15.443077, -16.438244) " points="20.0727064 11.3456518 13.5912249 11.3456518 10.8134471 21.530837 12.665299 21.530837"></polygon>
     </g>
 </svg>

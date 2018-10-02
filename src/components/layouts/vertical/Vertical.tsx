@@ -24,6 +24,7 @@ const StyledDiv = styled.div`
 const StyledSeparator = styled.div`
   align-self: stretch;
   background-color: ${colors.line};
+  background-color: var(--line);
   flex: 0 0 1px;
 `
 

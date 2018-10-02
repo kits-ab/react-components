@@ -18,13 +18,25 @@ export enum OfferType {
 const getBackgroundColor = (type: OfferType) => {
   switch (type) {
     case OfferType.Type1:
-      return colors.primary
+      return css`
+        background-color: ${colors.primary};
+        background-color: var(--primary);
+      `
     case OfferType.Type2:
-      return colors.accent1
+      return css`
+        background-color: ${colors.accent1};
+        background-color: var(--accent1);
+      `
     case OfferType.Type3:
-      return colors.accent2
+      return css`
+        background-color: ${colors.accent2};
+        background-color: var(--accent2);
+      `
     case OfferType.Type4:
-      return colors.accent3
+      return css`
+        background-color: ${colors.accent3};
+        background-color: var(--accent3);
+      `
   }
 }
 
@@ -64,9 +76,34 @@ const getClipPath = (type: OfferType) => {
   }
 }
 
+const getFillColor = (type: OfferType) => {
+  switch (type) {
+    case OfferType.Type1:
+      return css`
+        fill: ${colors.primary};
+        fill: var(--primary);
+      `
+    case OfferType.Type2:
+      return css`
+        fill: ${colors.accent1};
+        fill: var(--accent1);
+      `
+    case OfferType.Type3:
+      return css`
+        fill: ${colors.accent2};
+        fill: var(--accent2);
+      `
+    case OfferType.Type4:
+      return css`
+        fill: ${colors.accent3};
+        fill: var(--accent3);
+      `
+  }
+}
+
 type P = Partial<OfferProps>
 const StyledDiv = styled.div`
-  background-color: ${(props: P) => getBackgroundColor(props.type!)};
+  ${(props: P) => getBackgroundColor(props.type!)};
   color: white;
   display: block;
   height: calc(100% + 50px);
@@ -89,7 +126,7 @@ const StyledIcon = styled.div`
   min-width: 50px;
 
   > svg {
-    fill: ${(props: P) => getBackgroundColor(props.type!)};
+    ${(props: P) => getFillColor(props.type!)};
     height: 26px;
     width: 26px;
   }

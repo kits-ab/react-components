@@ -32,6 +32,7 @@ const StyledNav = styled.nav`
 
     > span {
       color: ${colors.text2};
+      color: var(--text2);
       display: ${(props: P) => (props.isFloating ? "none" : "inline-block")};
     }
   }
@@ -41,6 +42,7 @@ const StyledNav = styled.nav`
 
     > a {
       color: ${colors.text2};
+      color: var(--text2);
       display: inline-block;
       padding: 0 ${spacing.mini}px ${spacing.medium}px;
       position: relative;
@@ -50,6 +52,7 @@ const StyledNav = styled.nav`
 
       &::after {
         background-color: ${colors.primary};
+        background-color: var(--primary);
         border-radius: 1px;
         bottom: -2px;
         content: "";
@@ -65,6 +68,7 @@ const StyledNav = styled.nav`
       &:focus,
       &:hover {
         color: ${colors.text1};
+        color: var(--text1);
 
         &::after {
           height: 3px;
@@ -74,10 +78,13 @@ const StyledNav = styled.nav`
     }
 
     @media (max-width: ${(props: P) => props.breakpoint}px) {
-      background-color: white;
+      background-color: ${colors.background1};
+      background-color: var(--background1);
       border: 1px solid ${colors.line};
+      border: 1px solid var(--line);
       border-radius: 10px;
-      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+      box-shadow: 0 1px 3px 0 ${colors.lineShadow};
+      box-shadow: 0 1px 3px 0 var(--lineShadow);
       display: ${(props: P) => (props.isOpen ? "flex" : "none")};
       height: auto;
       min-width: 200px;

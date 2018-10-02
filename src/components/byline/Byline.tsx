@@ -11,6 +11,7 @@ import { Link } from "../link/Link"
 const StyledHorizontal = styled(Horizontal)`
   > time {
     color: ${colors.text2};
+    color: var(--text2);
     font-family: ${fonts.thin};
     font-size: 16px;
     font-style: normal;
@@ -20,6 +21,7 @@ const StyledHorizontal = styled(Horizontal)`
 
   > span {
     color: ${colors.text2};
+    color: var(--text2);
     display: inline-block;
     font-family: ${fonts.thin};
     font-size: 16px;
@@ -28,6 +30,7 @@ const StyledHorizontal = styled(Horizontal)`
 
     > a {
       color: ${colors.link};
+      color: var(--link);
       text-decoration: none;
 
       &:hover {

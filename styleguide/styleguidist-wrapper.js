@@ -1,5 +1,7 @@
 import React from "react"
 
+import { GlobalStyles } from "../src/styles/constants"
+
 export default class Wrapper extends React.Component {
   onClick(width) {
     if (width === 0) {
@@ -30,6 +32,7 @@ export default class Wrapper extends React.Component {
 
     return (
       <div ref={a => (this.wrapper = a)} style={{ margin: -16, padding: 16, position: "relative" }}>
+        <GlobalStyles />
         <div style={{ position: "absolute", left: 100, bottom: -27 }}>
           <span style={style} onClick={this.onClick.bind(this, 0)}>
             Auto

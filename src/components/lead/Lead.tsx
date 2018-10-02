@@ -6,6 +6,7 @@ import * as types from "../../types"
 
 const StyledP = styled.p`
   color: ${colors.text2};
+  color: var(--text2);
   font-family: ${fonts.thin};
   font-size: 26px;
   font-style: normal;

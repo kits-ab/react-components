@@ -6,6 +6,7 @@ import * as types from "../../../types"
 
 const StyledH3 = styled.h3`
   color: ${colors.link};
+  color: var(--link);
   font-family: ${fonts.thin};
   font-size: 26px;
   font-style: normal;

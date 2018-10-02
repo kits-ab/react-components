@@ -1,9 +1,9 @@
-import { transparentize } from "polished"
 import * as React from "react"
 import styled from "styled-components"
 
 import { colors, width } from "../../styles/constants"
 import * as types from "../../types"
+import { cssVar } from "../../utils/cssUtils"
 import { Horizontal } from "../layouts/horizontal/Horizontal"
 import { Wrapper } from "../layouts/wrapper/Wrapper"
 import { Link } from "../link/Link"
@@ -11,9 +11,10 @@ import { Logotype } from "../logotype/Logotype"
 import { Menu } from "../menu/Menu"
 
 const StyledHeader = styled.header`
-  background-color: ${transparentize(0.03, colors.background1)};
-  border-bottom: 1px solid ${colors.line};
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  background-color: ${colors.background4};
+  background-color: var(--background4);
+  box-shadow: 0 1px 3px 0 ${colors.lineShadow};
+  box-shadow: 0 1px 3px 0 var(--lineShadow);
   left: 0;
   position: fixed;
   right: 0;
@@ -50,6 +51,7 @@ const StyledLogotypeWrapper = styled.div`
 
     &::before {
       background-color: ${colors.background1};
+      background-color: var(--background1);
       bottom: 22px;
       content: "";
       height: 4px;
@@ -84,7 +86,7 @@ export class Header extends React.PureComponent<HeaderProps> {
           <StyledHorizontal alignVertical={types.Alignment.End}>
             <StyledLogotypeWrapper>
               <Link to="/">
-                <Logotype color={colors.text1} width={80} />
+                <Logotype color={cssVar("--text1") || colors.text1} width={80} />
               </Link>
             </StyledLogotypeWrapper>
             <Menu breakpoint={breakpoint} links={links} />
