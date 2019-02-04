@@ -1,6 +1,7 @@
 import * as React from "react"
 import styled, { css } from "styled-components"
 
+import { NewWindowIcon } from "../../icons/NewWindowIcon"
 import { colors, fonts, spacing, width } from "../../styles/constants"
 import * as types from "../../types"
 import { Link } from "../link/Link"
@@ -35,6 +36,11 @@ const sharedStyle = css`
 
 const StyledA = styled.a`
   ${sharedStyle};
+
+  > svg {
+    fill: white;
+    margin-left: ${spacing.small}px;
+  }
 `
 
 const StyledButton = styled.button`
@@ -52,6 +58,11 @@ export interface ButtonProps extends types.BaseProps {
   children: React.ReactNode
   /** The url to link to. */
   href?: string
+  /**
+   * Set to `true` to open the link in a new window.
+   * @default false
+   */
+  openInNewWindow?: boolean
   /** The click handler to call when the buttons is pressed. */
   onClick?: () => void
 }
@@ -63,10 +74,11 @@ export class Button extends React.PureComponent<ButtonProps> {
   static isExternalLink = new RegExp(/^https?:\/\//)
 
   render() {
-    const { children, href, ...restProps } = this.props
+    const { children, href, openInNewWindow, ...restProps } = this.props
     return href && Button.isExternalLink.test(href) ? (
-      <StyledA href={href} {...restProps}>
+      <StyledA href={href} {...restProps} target={openInNewWindow ? "_blank" : ""}>
         {children}
+        {openInNewWindow && <NewWindowIcon height={14} width={14} />}
       </StyledA>
     ) : href ? (
       <StyledLink to={href} {...restProps}>

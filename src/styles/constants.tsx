@@ -159,6 +159,10 @@ export const GlobalStyles = createGlobalStyle`
 `
 // tslint:enable
 
+export const easings = {
+  easeOut: "cubic-bezier(0, 0, 0.7, 1)"
+}
+
 export const fonts = {
   light:
     '"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", sans-serif',

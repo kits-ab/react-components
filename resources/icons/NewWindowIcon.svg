@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52 (66869) - http://www.bohemiancoding.com/sketch -->
+    <title>icons/NewWindowIcon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icons/NewWindowIcon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M9,3 L9,15 L21,15 L21,3 L9,3 Z M8,0 L22,0 C23.1045695,-2.02906125e-16 24,0.8954305 24,2 L24,16 C24,17.1045695 23.1045695,18 22,18 L8,18 C6.8954305,18 6,17.1045695 6,16 L6,2 C6,0.8954305 6.8954305,2.02906125e-16 8,0 Z" id="Rectangle" fill="#000000" fill-rule="nonzero"></path>
+        <path d="M13.5,21 C14.3284271,21 15,21.6715729 15,22.5 C15,23.3284271 14.3284271,24 13.5,24 L1.5,24 C0.671572875,24 -2.84217094e-14,23.3284271 -2.84217094e-14,22.5 L-2.84217094e-14,10.5 C-2.84217094e-14,9.67157288 0.671572875,9 1.5,9 C2.32842712,9 3,9.67157288 3,10.5 L3,21 L13.5,21 Z" id="Path-2" fill="#000000" fill-rule="nonzero"></path>
+    </g>
+</svg>

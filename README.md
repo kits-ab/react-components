@@ -4,7 +4,7 @@ This component library includes all of the components that are used to build <ht
 
 ### License
 
-Copyright 2018 KITS AB
+Copyright 2019 KITS AB
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this work except in compliance with the License. You may obtain a copy of the License in the LICENSE file, or at:
 
