@@ -102,6 +102,7 @@ const getFillColor = (type: OfferType) => {
 }
 
 type P = Partial<OfferProps>
+
 const StyledDiv = styled.div`
   ${(props: P) => getBackgroundColor(props.type!)};
   color: white;

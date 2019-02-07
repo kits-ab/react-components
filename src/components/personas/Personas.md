@@ -4,9 +4,9 @@
 initialState = { active: 1 }
 ;<Personas>
   <Persona
+    iconSrc="/persona1.png"
     isActive={state.active === 1}
     onClick={() => setState({ active: 1 })}
-    icon="https://kits.se/images/jobb/person1@2x.png"
     name="Lorem Ipsum 1"
   >
     <Text>
@@ -21,9 +21,9 @@ initialState = { active: 1 }
     </Text>
   </Persona>
   <Persona
+    iconSrc="/persona2.png"
     isActive={state.active === 2}
     onClick={() => setState({ active: 2 })}
-    icon="https://kits.se/images/jobb/person2@2x.png"
     name="Lorem Ipsum 2"
   >
     <Text>
@@ -38,9 +38,9 @@ initialState = { active: 1 }
     </Text>
   </Persona>
   <Persona
+    iconSrc="/persona3.png"
     isActive={state.active === 3}
     onClick={() => setState({ active: 3 })}
-    icon="https://kits.se/images/jobb/person3@2x.png"
     name="Lorem Ipsum 3"
   >
     <Text>

@@ -3,8 +3,6 @@ import styled, { css } from "styled-components"
 
 import { Breakout } from "../../components/breakout/Breakout"
 import { Horizontal } from "../../components/layouts/horizontal/Horizontal"
-import { SubHeading } from "../../components/headings/sub/SubHeading"
-import { Vertical } from "../../components/layouts/vertical/Vertical"
 import { Wrapper } from "../../components/layouts/wrapper/Wrapper"
 import { colors, easings, spacing, width } from "../../styles/constants"
 import * as types from "../../types"
@@ -49,7 +47,7 @@ const StyledWrapper = styled.div`
       position: relative;
       width: ${(props: P) => props.nrOfPersonas * 100}%;
 
-      &:after {
+      &::after {
         border: 30px solid transparent;
         border-bottom-color: ${colors.background2};
         border-bottom-color: var(--background2);
@@ -149,9 +147,6 @@ const StyledWrapper = styled.div`
       }
     }
 
-    .Persona-content {
-    }
-
     .Persona + .Persona {
       border-top: 1px solid ${colors.line};
       margin-top: ${spacing.large}px;
@@ -161,7 +156,7 @@ const StyledWrapper = styled.div`
 `
 
 export interface PersonasProps extends types.BaseProps {
-  /** The content of the persona (should be a list of `<Persona>`)*/
+  /** The content of the persona (should be a list of `<Persona>`). */
   children: React.ReactNode
 }
 
@@ -194,36 +189,8 @@ export class Personas extends React.PureComponent<PersonasProps> {
 
   private findSelectedIndex = () => {
     const index = React.Children.toArray(this.props.children).findIndex(
-      c => React.isValidElement(c) && c.props["isActive"]
+      c => React.isValidElement(c) && c.props["isActive"] // tslint:disable-line
     )
     return index < 0 ? 0 : index
-  }
-}
-
-export interface PersonaProps extends types.BaseProps {
-  /** The description of the persona. */
-  children: React.ReactNode
-  /** The icon that describes the persona. */
-  icon: string
-  /** Is the persona active. */
-  isActive?: boolean
-  /** The click handler to call when clicked. */
-  onClick?: () => void
-  /** The name of the persona. */
-  name: string
-}
-
-export class Persona extends React.PureComponent<PersonaProps> {
-  render() {
-    const { children, icon, isActive, name, ...restProps } = this.props
-    return (
-      <Vertical {...restProps} className={isActive ? "Persona is-active" : "Persona"}>
-        <Vertical alignHorizontal={types.Alignment.Center} className="Persona-title">
-          <img src={icon} />
-          <SubHeading>{name}</SubHeading>
-        </Vertical>
-        <div className="Persona-content">{children}</div>
-      </Vertical>
-    )
   }
 }

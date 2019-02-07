@@ -48,7 +48,7 @@ export interface BylineProps extends types.BaseProps {
 }
 
 /**
- * Byline is used to how the publish time and authors of an article or presentation.
+ * Byline is used to show the publish time and authors of an article or presentation.
  */
 export class Byline extends React.PureComponent<BylineProps> {
   render() {

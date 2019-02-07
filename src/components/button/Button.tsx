@@ -59,7 +59,7 @@ export interface ButtonProps extends types.BaseProps {
   /** The url to link to. */
   href?: string
   /**
-   * Set to `true` to open the link in a new window.
+   * Set to `true` to open the link in a new window. This only works for external links.
    * @default false
    */
   openInNewWindow?: boolean

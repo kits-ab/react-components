@@ -10,10 +10,10 @@ import {
 import * as React from "react"
 import styled from "styled-components"
 
-import { Link } from "../link/Link"
 import { LocationIcon } from "../../icons"
 import { colors, fonts } from "../../styles/constants"
 import * as types from "../../types"
+import { Link } from "../link/Link"
 
 const StyledDiv = styled.div`
   background-color: var(--line);

@@ -92,11 +92,10 @@ export interface HorizontalProps extends types.BaseProps {
  */
 export class Horizontal extends React.PureComponent<HorizontalProps> {
   render() {
-    const { children, separator, tagName, ...restProps } = this.props
-    const Wrapper = tagName ? StyledDiv.withComponent(tagName as any) : StyledDiv
+    const { children, separator, tagName = "div", ...restProps } = this.props
     let childIndex = -1
     return (
-      <Wrapper {...restProps}>
+      <StyledDiv {...restProps} as={tagName as any}>
         {separator
           ? React.Children.map(children, child => {
               if (child !== null) {
@@ -110,7 +109,7 @@ export class Horizontal extends React.PureComponent<HorizontalProps> {
               )
             })
           : children}
-      </Wrapper>
+      </StyledDiv>
     )
   }
 }

@@ -4,6 +4,13 @@ import styled from "styled-components"
 import { colors } from "../../styles/constants"
 import * as types from "../../types"
 
+interface ImageProps {
+  rotate: number
+  scale: number
+  translateY: number
+  zIndex: number
+}
+
 const StyledDiv = styled.div`
   display: block;
   overflow: hidden;
@@ -27,13 +34,6 @@ const StyledDiv = styled.div`
     vertical-align: middle;
   }
 `
-
-interface ImageProps {
-  rotate: number
-  scale: number
-  translateY: number
-  zIndex: number
-}
 
 const StyledImage = styled.div`
   border: 5px solid ${colors.border};

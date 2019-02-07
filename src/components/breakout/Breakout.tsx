@@ -3,11 +3,6 @@ import styled from "styled-components"
 
 import * as types from "../../types"
 
-export interface BreakoutProps extends types.BaseProps {
-  /** The content to break out. */
-  children: React.ReactNode
-}
-
 const StyledDiv = styled.div`
   left: 50%;
   margin-left: -50vw;
@@ -16,6 +11,11 @@ const StyledDiv = styled.div`
   right: 50%;
   width: 100vw;
 `
+
+export interface BreakoutProps extends types.BaseProps {
+  /** The content to break out. */
+  children: React.ReactNode
+}
 
 /**
  * Breakout is a simple utility component that let content break out of a wrapper component such as

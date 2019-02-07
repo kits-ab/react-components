@@ -4,14 +4,22 @@
 <Button>Lorem ipsum</Button>
 ```
 
+### Example with click handler
+
+```js
+<Button onClick={() => alert("Clicked")}>Lorem ipsum</Button>
+```
+
 ### Example with link
 
 ```js
 <Button href="#button">Lorem ipsum</Button>
 ```
 
-### Example with click handler
+### Example with link to new window
 
 ```js
-<Button onClick={() => alert("Clicked")}>Lorem ipsum</Button>
+<Button href="https://kits.se" openInNewWindow={true}>
+  Lorem ipsum
+</Button>
 ```
