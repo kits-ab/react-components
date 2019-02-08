@@ -14,7 +14,7 @@
   },
   "scripts": {
     "build": "yarn build:lib && yarn build:styleguide",
-    "build:lib": "rollup -c rollup-config.js",
+    "build:lib": "node_modules/rollup/bin/rollup -c rollup-config.js",
     "build:styleguide": "styleguidist build --config styleguide/styleguidist-config.js",
     "clean": "rimraf .cache dist dist-styleguide",
     "format": "prettier \"src/**/*.{js,json,jsx,md,ts,tsx}\" --write",
@@ -27,7 +27,7 @@
     "prepush": "yarn lint",
     "start": "styleguidist server --config styleguide/styleguidist-config.js",
     "test": "yarn lint",
-    "watch": "rollup -c rollup-config.js -w"
+    "watch": "node_modules/rollup/bin/rollup -c rollup-config.js -w"
   },
   "devDependencies": {
     "@svgr/cli": "4.1.0",
