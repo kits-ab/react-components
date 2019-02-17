@@ -18,6 +18,16 @@ export interface LinkProps extends types.BaseProps {
    */
   exact?: boolean
   /**
+   * ** * ** Calls up to you to get props for the underlying anchor element. Useful for styling
+   * the anchor as active.
+   */
+  getProps?: (obj: {
+    isCurrent: boolean
+    isPartiallyCurrent: boolean
+    href: string
+    location: types.Location
+  }) => object | null
+  /**
    * A function to add extra logic for determining whether the link is active. This should also be
    * used when no `LinkContext.Provider` is present to determine if the link should be active or not.
    */
@@ -57,18 +67,20 @@ export const LinkContext = React.createContext<LinkContextProps>({})
 
 /**
  * Link is used to create links. Out of the box it will render a normal `<a>` tag but when the
- * component of this project is used inside a React Router or Gatsby context you probably want to
- * use `Link`, `NavLink` or `GatsbyLink` instead and `LinkContext` gives you the ability to do so.
- * See example for details.
+ * component of this project is used inside a Reach Router, React Router or Gatsby context you
+ * probably want to use `Link`, `NavLink` or `GatsbyLink` instead and `LinkContext` gives you the
+ * ability to do so. See example for details.
  *
- * Props marked with ** * ** is only available in a LinkContext with React Router or Gatsby Link,
- * see https://reacttraining.com/react-router/web/api/Link.
+ * Props marked with ** * ** is only available in a LinkContext with React Router, React Router or
+ * Gatsby Link (not every prop is available in all libraries). See the documentation for each
+ * library to understand how it works.
  */
 export class Link extends React.PureComponent<LinkProps> {
   private static navLinkProps = [
     "activeClassName",
     "activeStyle",
     "exact",
+    "getProps",
     "isActive",
     "location",
     "strict"

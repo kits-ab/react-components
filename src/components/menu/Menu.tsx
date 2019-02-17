@@ -171,8 +171,8 @@ export class Menu extends React.PureComponent<MenuProps, MenuState> {
       >
         <Horizontal breakpoint={breakpoint} className="Menu-expanded" spacing={spacing.small}>
           {links.map((link, index) => (
-            <Link activeClassName="is-active" to={link.href} key={index}>
-              {link.text}
+            <Link activeClassName="is-active" getProps={this.getProps} to={link.href} key={index}>
+              C{link.text}
             </Link>
           ))}
         </Horizontal>
@@ -186,6 +186,10 @@ export class Menu extends React.PureComponent<MenuProps, MenuState> {
         </Horizontal>
       </StyledNav>
     )
+  }
+
+  private getProps = ({ isPartiallyCurrent }: { isPartiallyCurrent: boolean }) => {
+    return isPartiallyCurrent ? { className: "is-active" } : null
   }
 
   private handleClick = () => {
