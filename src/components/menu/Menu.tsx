@@ -172,7 +172,7 @@ export class Menu extends React.PureComponent<MenuProps, MenuState> {
         <Horizontal breakpoint={breakpoint} className="Menu-expanded" spacing={spacing.small}>
           {links.map((link, index) => (
             <Link activeClassName="is-active" getProps={this.getProps} to={link.href} key={index}>
-              C{link.text}
+              {link.text}
             </Link>
           ))}
         </Horizontal>
