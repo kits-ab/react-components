@@ -1,3 +1,7 @@
 export const cssVar = (varName: string) => {
-  return getComputedStyle(document.body).getPropertyValue(varName)
+  if (typeof window === "undefined") {
+    return undefined
+  } else {
+    return getComputedStyle(document.body).getPropertyValue(varName)
+  }
 }
