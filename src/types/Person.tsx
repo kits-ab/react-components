@@ -9,4 +9,5 @@ export interface Person extends Contact {
   avatarSrc?: string
   avatarSrcSet?: string
   href?: string
+  tags?: string[]
 }
