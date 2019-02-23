@@ -18,7 +18,7 @@ export class Username {
       case SocialType.Keybase:
         return `https://keybase.io/${this.username}`
       case SocialType.LinkedIn:
-        return `https://se.linkedin.com/in/${this.username}`
+        return this.username
       case SocialType.MicroBlog:
         return `https://micro.blog/${this.username}`
       case SocialType.Twitter:
