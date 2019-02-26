@@ -34,6 +34,7 @@ if (typeof window !== "undefined") {
     accessToken:
       "pk.eyJ1Ijoia29raXRvdHNvcyIsImEiOiJjaXk0d3R5bjEwMDJsMnlscWhtOGlydDl3In0.Xfr-Sr_D4JJVK2kVNsm4vA",
     attributionControl: false,
+    dragPan: false,
     scrollZoom: false
   })
   Popup = ReactMapboxGl.Popup
