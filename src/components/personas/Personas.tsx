@@ -188,9 +188,14 @@ export class Personas extends React.PureComponent<PersonasProps> {
   }
 
   private findSelectedIndex = () => {
-    const index = React.Children.toArray(this.props.children).findIndex(
-      c => React.isValidElement(c) && c.props["isActive"] // tslint:disable-line
-    )
-    return index < 0 ? 0 : index
+    const children = React.Children.toArray(this.props.children)
+    for (let index = 0; index < children.length; index++) {
+      const c = children[index]
+      if (React.isValidElement(c) && c.props["isActive"]) {
+        // tslint:disable-line
+        return index
+      }
+    }
+    return 0
   }
 }
