@@ -22,6 +22,7 @@ export interface MediaProps extends types.BaseProps {
 }
 
 const StyledImageWrapper = styled.div`
+  flex: 0;
   min-width: 300px;
 
   @media (max-width: ${width.tablet}px) {
@@ -70,7 +71,7 @@ export class Media extends React.PureComponent<MediaProps> {
         <StyledImageWrapper>
           <img alt="" src={src} srcSet={srcSet} />
         </StyledImageWrapper>
-        <Vertical spacing={spacing.small}>
+        <Vertical spacing={spacing.small} style={{ flex: "1 0 0%" }}>
           {heading && <SubHeading>{heading}</SubHeading>}
           <Text>{children}</Text>
           {href && (

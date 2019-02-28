@@ -16,6 +16,7 @@ import * as types from "../../types"
 import { Link } from "../link/Link"
 
 const StyledDiv = styled.div`
+  background-color: ${colors.line};
   background-color: var(--line);
   height: 1px;
   margin: 30px 0;
