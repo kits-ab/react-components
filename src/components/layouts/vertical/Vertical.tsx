@@ -13,7 +13,7 @@ const StyledDiv = styled.div`
   justify-content: ${(props: P) => props.alignVertical || ""};
 
   & > * {
-    flex: ${(props: P) => (props.distribute ? "1" : "")};
+    flex: ${(props: P) => (props.distribute ? "1 1 auto" : "")};
 
     &:not(:first-child) {
       margin-top: ${(props: P) => (props.spacing ? `${props.spacing}px` : "0")};

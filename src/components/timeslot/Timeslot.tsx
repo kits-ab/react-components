@@ -115,7 +115,7 @@ const StyledVertical = styled(Vertical)`
   }
 
   .Timeslot-presenter {
-    flex: 1;
+    flex: 1 1 0%;
 
     @media (max-width: ${width.mobileMenu}px) {
       margin-right: -50px !important;
@@ -123,7 +123,7 @@ const StyledVertical = styled(Vertical)`
   }
 
   .Timeslot-info {
-    flex: 1;
+    flex: 1 1 0%;
 
     svg {
       fill: ${lighten(0.1, "#c2c2be")};

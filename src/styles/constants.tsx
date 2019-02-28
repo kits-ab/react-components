@@ -154,7 +154,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .is-flexed {
-    flex: 1;
+    flex: 1 1 auto;
   }
 `
 // tslint:enable

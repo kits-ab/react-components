@@ -14,7 +14,7 @@ const StyledDiv = styled.div`
   justify-content: ${(props: P) => props.alignHorizontal || ""};
 
   & > * {
-    flex: ${(props: P) => (props.distribute ? "1" : "")};
+    flex: ${(props: P) => (props.distribute ? "1 1 0%" : "")};
 
     &:not(:first-child) {
       margin-left: ${(props: P) => (props.spacing ? `${props.spacing / 2}px` : "")};
@@ -27,6 +27,7 @@ const StyledDiv = styled.div`
 
   @media (max-width: ${(props: P) => props.breakpoint || 0}px) {
     align-items: ${(props: P) => props.alignHorizontal || ""};
+    flex: ${(props: P) => (props.distribute ? "1 1 auto" : "")};
     flex-direction: column;
     justify-content: ${(props: P) => props.alignVertical || ""};
 
