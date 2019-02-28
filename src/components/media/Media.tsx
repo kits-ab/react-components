@@ -15,6 +15,8 @@ export interface MediaProps extends types.BaseProps {
   heading?: string
   /** A url to link to. The link will be shown below the content. */
   href?: string
+  /** A title for the url to link to. The title falls back on the href. */
+  hrefTitle?: string
   /** The source of the image to show. */
   src: string
   /** The source set of the image to show. */
@@ -60,7 +62,7 @@ const StyledImageWrapper = styled.div`
  */
 export class Media extends React.PureComponent<MediaProps> {
   render() {
-    const { children, heading, href, src, srcSet, ...restProps } = this.props
+    const { children, heading, href, hrefTitle, src, srcSet, ...restProps } = this.props
     return (
       <Horizontal
         alignVertical={types.Alignment.Start}
@@ -77,7 +79,9 @@ export class Media extends React.PureComponent<MediaProps> {
           {href && (
             <Text>
               <p>
-                <a href={href}>{href}</a>
+                <a target="tab" href={href}>
+                  {hrefTitle || href}
+                </a>
               </p>
             </Text>
           )}
