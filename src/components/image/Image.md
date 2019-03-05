@@ -16,6 +16,7 @@
   infoText="Lorem Ipsum"
   infoAdditionalText="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
   src="/image.jpg"
+  tooltipText="A simple tooltip for this image"
 />
 ```
 

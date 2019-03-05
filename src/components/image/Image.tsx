@@ -83,6 +83,8 @@ export interface ImageProps extends types.BaseProps {
   src: string
   /** The source set of the image to show. */
   srcSet?: string
+  /** Text to show in tooltip when hovering the image. Falls back to infoText or infoAdditionalText */
+  tooltipText?: string
 }
 
 /**
@@ -92,11 +94,25 @@ export interface ImageProps extends types.BaseProps {
  */
 export class Image extends React.PureComponent<ImageProps> {
   render() {
-    const { href, infoAdditionalText, infoText, src, srcSet, ...restProps } = this.props
+    const {
+      href,
+      infoAdditionalText,
+      tooltipText,
+      infoText,
+      src,
+      srcSet,
+      ...restProps
+    } = this.props
     const content = (
       <>
         <div className="image-wrapper">
-          <img alt="" className="image-image" src={src} srcSet={srcSet} />
+          <img
+            alt={tooltipText || infoText || infoAdditionalText}
+            className="image-image"
+            src={src}
+            srcSet={srcSet}
+            title={tooltipText || infoText || infoAdditionalText}
+          />
         </div>
         {(infoText || infoAdditionalText) && (
           <div className="image-info">
