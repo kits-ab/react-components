@@ -20,5 +20,6 @@ jobs:
           secure: CHOetYJ+KLe3ysMe7bjHa8jJehjo+F0L5tfDpsg2LLvbVIDsP0chMsYaLhWa0VhnpVb+MNedNuIGNwr7RDAQdKmGW19AELEsMSdH8KtaKcme0eN6PAJOsKjGha8DpnHTf6nARF3BFQ0VrHKe63+dVTd0jHmFNJDPRtrstHUm9nq9S/60erqUFYC2w4eTxzvS1jmYM7ej4vFN5F8ldjrN+KJKNA83gMFL/4742B8H9k0q3JTB3E/CeQCmWMeLU0RM9M6/RxYldjmxkBy5eaAYBS/2cHBnKgMPHjl7B6J19h+IWAYudm59ehzQt6iJwFYP4Bb4AfWqxdKMvOnS9QAkkpcqDp/JtFAu6xikS3PRr7AlfXBHlnjS4SrUEeSFvpKgTIUXVLfuGXI94ZnaR0apGth1CVvapl449HWwCBSqhv67p5ZrNBOe1zKojiLQsezTS1k9P/rzUxbikxb/wuUDassE44uA1p0X+LK6HnuUTA7NsAc3qQ1Kg3SWhqjX93VXunA2mH51n/w+iHPV+RONZ1+OyN0gWdNmqbgjrFb+Zv5f5oyGhY6ux4+5ONBp4ckFTmoMKfUGGHtXHiuhcSSRcI9udN94+SsDCNuVRMfUmya9ZAGfYcQHtjm7tdv4nJe0+rTpEvfNJDOB3vo7lqyZhcP5EyoRj85uMmscKE/Vzms=
         skip_cleanup: true
         on:
+          branch: master
           tags: true
           repo: kits-ab/react-components
