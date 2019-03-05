@@ -107,7 +107,7 @@ export class Image extends React.PureComponent<ImageProps> {
       <>
         <div className="image-wrapper">
           <img
-            alt=""
+            alt={tooltipText || infoText || infoAdditionalText}
             className="image-image"
             src={src}
             srcSet={srcSet}
