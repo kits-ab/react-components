@@ -72,6 +72,7 @@ export interface ButtonProps extends types.BaseProps {
  */
 export class Button extends React.PureComponent<ButtonProps> {
   static isExternalLink = new RegExp(/^https?:\/\//)
+  static isMailLink = new RegExp(/^mailto:/)
 
   render() {
     const { children, href, openInNewWindow, ...restProps } = this.props
@@ -79,6 +80,10 @@ export class Button extends React.PureComponent<ButtonProps> {
       <StyledA href={href} {...restProps} target={openInNewWindow ? "_blank" : ""}>
         {children}
         {openInNewWindow && <NewWindowIcon height={14} width={14} />}
+      </StyledA>
+    ) : href && Button.isMailLink.test(href) ? (
+      <StyledA href={href} {...restProps}>
+        {children}
       </StyledA>
     ) : href ? (
       <StyledLink to={href} {...restProps}>

@@ -23,3 +23,9 @@
   Lorem ipsum
 </Button>
 ```
+
+### Example with mailto link
+
+```js
+<Button href="mailto:info@kits.se">Lorem ipsum</Button>
+```
