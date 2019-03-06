@@ -71,6 +71,7 @@ export class Collage extends React.PureComponent<CollageProps> {
           <div className="collage-images">
             {images.map((image: { src: string; srcSet?: string }, index: number) => (
               <StyledImage
+                key={"image" + index}
                 rotate={this.getRotation()}
                 scale={this.getScale(index)}
                 translateY={this.getTranslateY(index)}

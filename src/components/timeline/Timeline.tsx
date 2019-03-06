@@ -112,18 +112,19 @@ export class Timeline extends React.PureComponent<TimelineProps> {
     const markers = this.getMarkers()
     return (
       <StyledDiv>
-        {markers.events.map(event => (
+        {markers.events.map((event, index) => (
           <Link
             activeClassName="is-active"
             className="Timeline-link"
+            key={"link" + index}
             style={{ left: `${event.position}%` }}
             to={event.href}
           >
             <LocationIcon />
           </Link>
         ))}
-        {markers.years.map(year => (
-          <div className="Timeline-year" style={{ left: `${year.position}%` }}>
+        {markers.years.map((year, index) => (
+          <div className="Timeline-year" key={"year" + index} style={{ left: `${year.position}%` }}>
             <div>{year.date.getFullYear()}</div>
           </div>
         ))}
