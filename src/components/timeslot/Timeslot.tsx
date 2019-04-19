@@ -196,6 +196,8 @@ export interface TimeslotProps extends types.BaseProps {
   showEndTime?: boolean
   /** The type of timeslot. */
   type: types.TimeslotType
+  /** Id of a YouTube video to show. */
+  youtubeId?: string
 }
 
 /**
@@ -209,6 +211,7 @@ export class Timeslot extends React.PureComponent<TimeslotProps> {
       endTime,
       location,
       presentation,
+      youtubeId,
       showEndTime,
       startTime,
       type,
@@ -233,6 +236,14 @@ export class Timeslot extends React.PureComponent<TimeslotProps> {
           </Vertical>
         </Horizontal>
         {children && <StyledText>{children}</StyledText>}
+        {youtubeId && (
+          <iframe
+            frameBorder="0"
+            height="210"
+            src={`https://www.youtube.com/embed/${youtubeId}`}
+            width="350"
+          />
+        )}
         {presentation && (
           <Text>
             <Horizontal alignVertical={types.Alignment.Center} spacing={spacing.small}>

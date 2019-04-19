@@ -82,6 +82,7 @@
     type={types.TimeslotType.Presentation}
     connectToPrevious={true}
     presentation="#"
+    youtubeId="0CcnAIuCfSU"
   >
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
