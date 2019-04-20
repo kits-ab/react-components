@@ -167,6 +167,24 @@ const StyledAvatar = styled(Avatar)`
   }
 `
 
+const StyledVideoContainer = styled.div`
+  @media (max-width: ${width.mobileMenu}px) {
+    background-color: green;
+    height: 0;
+    max-width: 350px;
+    padding-bottom: ${(9 / 16) * 100}%;
+    position: relative;
+
+    > iframe {
+      height: 100%;
+      left: 0;
+      position: Absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+`
+
 export interface TimeslotProps extends types.BaseProps {
   /** More details about the timeslot. */
   children?: React.ReactNode | string
@@ -237,12 +255,14 @@ export class Timeslot extends React.PureComponent<TimeslotProps> {
         </Horizontal>
         {children && <StyledText>{children}</StyledText>}
         {youtubeId && (
-          <iframe
-            frameBorder="0"
-            height="210"
-            src={`https://www.youtube.com/embed/${youtubeId}`}
-            width="350"
-          />
+          <StyledVideoContainer>
+            <iframe
+              frameBorder="0"
+              height="210"
+              src={`https://www.youtube.com/embed/${youtubeId}`}
+              width="350"
+            />
+          </StyledVideoContainer>
         )}
         {presentation && (
           <Text>
