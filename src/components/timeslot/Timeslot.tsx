@@ -1,5 +1,5 @@
 import { format } from "date-fns"
-import * as svLocale from "date-fns/locale/sv"
+import { sv } from "date-fns/locale"
 import { lighten } from "polished"
 import * as React from "react"
 import styled from "styled-components"
@@ -247,9 +247,9 @@ export class Timeslot extends React.PureComponent<TimeslotProps> {
             ? this.renderPresentationHeader()
             : this.renderInfoHeader(type)}
           <Vertical className="Timeslot-times">
-            <div className="Timeslot-start">{format(startTime, "HH:mm", { locale: svLocale })}</div>
+            <div className="Timeslot-start">{format(startTime, "HH:mm", { locale: sv })}</div>
             {showEndTime && (
-              <div className="Timeslot-end">– {format(endTime, "HH:mm", { locale: svLocale })}</div>
+              <div className="Timeslot-end">– {format(endTime, "HH:mm", { locale: sv })}</div>
             )}
           </Vertical>
         </Horizontal>

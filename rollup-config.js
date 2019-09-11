@@ -8,7 +8,7 @@ module.exports = {
   output: { file: pkg.main, format: "es" },
   external: [
     "date-fns",
-    "date-fns/locale/sv",
+    "date-fns/locale",
     "mapbox-gl",
     "normalize.css",
     "polished",

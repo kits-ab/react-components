@@ -3,7 +3,7 @@ import {
   addYears,
   differenceInDays,
   isBefore,
-  parse,
+  parseISO,
   startOfYear,
   subMonths
 } from "date-fns"
@@ -137,7 +137,7 @@ export class Timeline extends React.PureComponent<TimelineProps> {
       .sort((event1: TimelineEvent, event2: TimelineEvent) =>
         event1.date.localeCompare(event2.date)
       )
-      .map(event => ({ href: event.href, date: parse(event.date) }))
+      .map(event => ({ href: event.href, date: parseISO(event.date) }))
 
     if (sortedEvents.length > 0) {
       const minDate = subMonths(sortedEvents[0].date, 2)
