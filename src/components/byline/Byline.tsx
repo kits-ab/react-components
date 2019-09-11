@@ -1,5 +1,5 @@
 import { format } from "date-fns"
-import * as svLocale from "date-fns/locale/sv"
+import { sv } from "date-fns/locale"
 import * as React from "react"
 import styled from "styled-components"
 
@@ -57,7 +57,7 @@ export class Byline extends React.PureComponent<BylineProps> {
       <StyledHorizontal separator={true} spacing={spacing.small} {...restProps}>
         {publishTime && (
           <time dateTime={publishTime.toISOString()}>
-            {format(publishTime, "D MMMM YYYY", { locale: svLocale })}
+            {format(publishTime, "d MMMM yyyy", { locale: sv })}
           </time>
         )}
         <span>
