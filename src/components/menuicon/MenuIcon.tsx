@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import styled, { keyframes } from "styled-components"
 
 import { colors } from "../../styles/constants"
@@ -108,7 +108,7 @@ const StyledDiv = styled.div`
   }
 `
 
-export interface MenuIconProps extends types.BaseProps {
+export type MenuIconProps = types.BaseProps & {
   /**
    * The position of the icon when in floating mode.
    * @default { right: 15, top: 15 }
@@ -134,33 +134,30 @@ export interface MenuIconProps extends types.BaseProps {
  * and closed state with a nice animation between. The icon can also be set to be in floating mode
  * where the icon is floating in the top right corner.
  */
-export class MenuIcon extends React.PureComponent<MenuIconProps> {
-  render() {
-    const {
-      isFloating,
-      isOpen,
-      floatingPosition = { right: 15, top: 15 },
-      onClick,
-      ...restProps
-    } = this.props
-    const className = isOpen
-      ? isFloating
-        ? "is-floating is-open"
-        : "is-open"
-      : isFloating
-      ? "is-floating"
-      : ""
-    return (
-      <StyledDiv
-        className={className}
-        floatingPosition={floatingPosition}
-        onClick={onClick}
-        {...restProps}
-      >
-        <span />
-        <span />
-        <span />
-      </StyledDiv>
-    )
-  }
+export const MenuIcon = ({
+  isFloating,
+  isOpen,
+  floatingPosition = { right: 15, top: 15 },
+  onClick,
+  ...restProps
+}: MenuIconProps) => {
+  const className = isOpen
+    ? isFloating
+      ? "is-floating is-open"
+      : "is-open"
+    : isFloating
+    ? "is-floating"
+    : ""
+  return (
+    <StyledDiv
+      className={className}
+      floatingPosition={floatingPosition}
+      onClick={onClick}
+      {...restProps}
+    >
+      <span />
+      <span />
+      <span />
+    </StyledDiv>
+  )
 }

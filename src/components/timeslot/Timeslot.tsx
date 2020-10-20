@@ -1,7 +1,7 @@
 import { format } from "date-fns"
 import { sv } from "date-fns/locale"
 import { lighten } from "polished"
-import * as React from "react"
+import React from "react"
 import styled from "styled-components"
 
 import {
@@ -33,14 +33,15 @@ import { Text } from "../text/Text"
 type P = Partial<TimeslotProps>
 
 const StyledVertical = styled(Vertical)`
-  background-color: ${props =>
+  background-color: ${(props) =>
     props.type === types.TimeslotType.Presentation ? colors.background2 : colors.background5};
-  background-color: ${props =>
+  background-color: ${(props) =>
     props.type === types.TimeslotType.Presentation ? "var(--background2)" : "var(--background5)"};
   border-radius: 5px;
-  margin-top: ${props =>
+  margin-top: ${(props) =>
     props.type === types.TimeslotType.Presentation ? spacing.large : spacing.medium}px !important;
   padding: ${spacing.medium}px ${spacing.huge}px;
+  width: 100%;
 
   @media (max-width: ${width.mobileMenu}px) {
     padding: ${spacing.medium}px;
@@ -62,7 +63,7 @@ const StyledVertical = styled(Vertical)`
       background-image: linear-gradient(to top, var(--background2) 0%, var(--background5) 100%);
       bottom: calc(100% + ${spacing.medium + 3}px);
       content: "";
-      height: ${props =>
+      height: ${(props) =>
         props.type === types.TimeslotType.Presentation ? spacing.large - 3 : spacing.medium - 3}px;
       position: absolute;
       right: 23px;
@@ -178,14 +179,14 @@ const StyledVideoContainer = styled.div`
     > iframe {
       height: 100%;
       left: 0;
-      position: Absolute;
+      position: absolute;
       top: 0;
       width: 100%;
     }
   }
 `
 
-export interface TimeslotProps extends types.BaseProps {
+export type TimeslotProps = types.BaseProps & {
   /** More details about the timeslot. */
   children?: React.ReactNode | string
   /**
@@ -222,64 +223,21 @@ export interface TimeslotProps extends types.BaseProps {
  * Timeslot is used to show information about a specific timeslot. The information can be
  * information about a presentation, an activity or something else.
  */
-export class Timeslot extends React.PureComponent<TimeslotProps> {
-  render() {
-    const {
-      children,
-      endTime,
-      location,
-      presentation,
-      youtubeId,
-      showEndTime,
-      startTime,
-      type,
-      ...restProps
-    } = this.props
-    return (
-      <StyledVertical spacing={spacing.medium} tagName="section" type={type} {...restProps}>
-        <Horizontal
-          alignVertical={types.Alignment.Start}
-          className="Timeslot-header"
-          spacing={spacing.medium}
-          tagName="header"
-        >
-          {type === types.TimeslotType.Presentation
-            ? this.renderPresentationHeader()
-            : this.renderInfoHeader(type)}
-          <Vertical className="Timeslot-times">
-            <div className="Timeslot-start">{format(startTime, "HH:mm", { locale: sv })}</div>
-            {showEndTime && (
-              <div className="Timeslot-end">– {format(endTime, "HH:mm", { locale: sv })}</div>
-            )}
-          </Vertical>
-        </Horizontal>
-        {children && <StyledText>{children}</StyledText>}
-        {youtubeId && (
-          <StyledVideoContainer>
-            <iframe
-              frameBorder="0"
-              height="210"
-              src={`https://www.youtube.com/embed/${youtubeId}`}
-              width="350"
-            />
-          </StyledVideoContainer>
-        )}
-        {presentation && (
-          <Text>
-            <Horizontal alignVertical={types.Alignment.Center} spacing={spacing.small}>
-              <AttachmentIcon fill={cssVar("--link")} height={16} width={16} />
-              <p>
-                <a href={presentation}>Ladda ner presentation</a>
-              </p>
-            </Horizontal>
-          </Text>
-        )}
-        {location && <StyledLocation coordinates={location.coordinates} title={location.title} />}
-      </StyledVertical>
-    )
-  }
-
-  private getIcon = (type?: types.TimeslotType) => {
+export const Timeslot = ({
+  children,
+  endTime,
+  heading,
+  href,
+  presenters,
+  location,
+  presentation,
+  youtubeId,
+  showEndTime,
+  startTime,
+  type,
+  ...restProps
+}: TimeslotProps) => {
+  const getIcon = (type?: types.TimeslotType) => {
     switch (type) {
       case types.TimeslotType.Airplane:
         return <AirplaneIcon />
@@ -310,11 +268,10 @@ export class Timeslot extends React.PureComponent<TimeslotProps> {
     }
   }
 
-  private renderInfoHeader = (type?: types.TimeslotType) => {
-    const { heading, href } = this.props
+  const renderInfoHeader = (type?: types.TimeslotType) => {
     return (
       <Horizontal className="Timeslot-info" spacing={spacing.medium}>
-        <div>{this.getIcon(type)}</div>
+        <div>{getIcon(type)}</div>
         <ContentHeading className="Timeslot-heading">
           {href ? (
             <a className="Timeslot-link" href={href}>
@@ -328,8 +285,7 @@ export class Timeslot extends React.PureComponent<TimeslotProps> {
     )
   }
 
-  private renderPresentationHeader = () => {
-    const { presenters, heading } = this.props
+  const renderPresentationHeader = () => {
     return (
       <Horizontal breakpoint={width.mobileMenu} className="Timeslot-presenter">
         {/* TODO: Handle avatars for multiple presenters */}
@@ -343,4 +299,47 @@ export class Timeslot extends React.PureComponent<TimeslotProps> {
       </Horizontal>
     )
   }
+  return (
+    <StyledVertical spacing={spacing.medium} tagName="section" type={type} {...restProps}>
+      <Horizontal
+        alignVertical={types.Alignment.Start}
+        className="Timeslot-header"
+        spacing={spacing.medium}
+        tagName="header"
+      >
+        {type === types.TimeslotType.Presentation
+          ? renderPresentationHeader()
+          : renderInfoHeader(type)}
+        <Vertical className="Timeslot-times">
+          <div className="Timeslot-start">{format(startTime, "HH:mm", { locale: sv })}</div>
+          {showEndTime && (
+            <div className="Timeslot-end">– {format(endTime, "HH:mm", { locale: sv })}</div>
+          )}
+        </Vertical>
+      </Horizontal>
+      {children && <StyledText>{children}</StyledText>}
+      {youtubeId && (
+        <StyledVideoContainer>
+          <iframe
+            frameBorder="0"
+            height="210"
+            src={`https://www.youtube.com/embed/${youtubeId}`}
+            title="YouTube Video"
+            width="350"
+          />
+        </StyledVideoContainer>
+      )}
+      {presentation && (
+        <Text>
+          <Horizontal alignVertical={types.Alignment.Center} spacing={spacing.small}>
+            <AttachmentIcon fill={cssVar("--link")} height={16} width={16} />
+            <p>
+              <a href={presentation}>Ladda ner presentation</a>
+            </p>
+          </Horizontal>
+        </Text>
+      )}
+      {location && <StyledLocation coordinates={location.coordinates} title={location.title} />}
+    </StyledVertical>
+  )
 }

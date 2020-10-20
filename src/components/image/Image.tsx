@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import styled, { css } from "styled-components"
 
 import { colors, fonts, spacing } from "../../styles/constants"
@@ -72,7 +72,7 @@ const StyledDiv = styled.div`
   ${sharedStyle};
 `
 
-export interface ImageProps extends types.BaseProps {
+export type ImageProps = types.BaseProps & {
   /** Thr url to link to if you want the image to act as a link. */
   href?: string
   /** The additional info text to show in the banner of the image. */
@@ -92,45 +92,40 @@ export interface ImageProps extends types.BaseProps {
  * a banner with info. The image is meant to be used for linking to other content so you can also
  * pass it a url to create a link.
  */
-export class Image extends React.PureComponent<ImageProps> {
-  render() {
-    const {
-      href,
-      infoAdditionalText,
-      tooltipText,
-      infoText,
-      src,
-      srcSet,
-      ...restProps
-    } = this.props
-    const content = (
-      <>
-        <div className="image-wrapper">
-          <img
-            alt={tooltipText || infoText || infoAdditionalText}
-            className="image-image"
-            src={src}
-            srcSet={srcSet}
-            title={tooltipText || infoText || infoAdditionalText}
-          />
+export const Image = ({
+  href,
+  infoAdditionalText,
+  tooltipText,
+  infoText,
+  src,
+  srcSet,
+  ...restProps
+}: ImageProps) => {
+  const content = (
+    <>
+      <div className="image-wrapper">
+        <img
+          alt={tooltipText || infoText || infoAdditionalText}
+          className="image-image"
+          src={src}
+          srcSet={srcSet}
+          title={tooltipText || infoText || infoAdditionalText}
+        />
+      </div>
+      {(infoText || infoAdditionalText) && (
+        <div className="image-info">
+          {infoText && <p className="image-info-text">{infoText}</p>}
+          {infoAdditionalText && <p className="image-info-additional-text">{infoAdditionalText}</p>}
         </div>
-        {(infoText || infoAdditionalText) && (
-          <div className="image-info">
-            {infoText && <p className="image-info-text">{infoText}</p>}
-            {infoAdditionalText && (
-              <p className="image-info-additional-text">{infoAdditionalText}</p>
-            )}
-          </div>
-        )}
-      </>
-    )
+      )}
+    </>
+  )
 
-    return href ? (
-      <StyledLink to={href} {...restProps}>
-        {content}
-      </StyledLink>
-    ) : (
-      <StyledDiv {...restProps}>{content}</StyledDiv>
-    )
-  }
+  return href ? (
+    <StyledLink to={href} {...restProps}>
+      {content}
+    </StyledLink>
+  ) : (
+    <StyledDiv {...restProps}>{content}</StyledDiv>
+  )
 }

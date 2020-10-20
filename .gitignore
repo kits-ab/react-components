@@ -12,7 +12,9 @@ coverage/
 build/
 dist/
 dist-styleguide/
+package/
 public/
+*.tgz
 
 # misc
 .cache

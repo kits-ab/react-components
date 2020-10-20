@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import styled from "styled-components"
 
 import { colors, fonts, spacing, width } from "../../styles/constants"
@@ -90,8 +90,7 @@ const StyledDiv = styled.div`
     font-style: normal;
     font-weight: 200;
     line-height: 1.2;
-    margin: 0;
-    margin-bottom: 13px;
+    margin: 0 0 13px 0;
   }
 
   h3 {

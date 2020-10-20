@@ -1,5 +1,5 @@
 import { transparentize } from "polished"
-import * as React from "react"
+import React from "react"
 import styled from "styled-components"
 
 import {
@@ -12,7 +12,7 @@ import {
 } from "../../icons"
 import * as types from "../../types"
 
-export interface SocialProps extends types.BaseProps {
+export type SocialProps = types.BaseProps & {
   /** The social information to show. */
   info: types.Social
 }
@@ -54,42 +54,39 @@ const StyledKeybaseIcon = styled(KeybaseIcon)`
 /**
  * Social is used to create a social media button with a matching icon.
  */
-export class Social extends React.PureComponent<SocialProps> {
-  render() {
-    const { info, ...restProps } = this.props
-    return (
-      <StyledDiv {...restProps}>
-        {info.twitter && (
-          <StyledA href={info.twitter.toLink()}>
-            <TwitterIcon />
-          </StyledA>
-        )}
-        {info.facebook && (
-          <StyledA href={info.facebook.toLink()}>
-            <FacebookIcon />
-          </StyledA>
-        )}
-        {info.microblog && (
-          <StyledA href={info.microblog.toLink()}>
-            <MicroBlogIcon />
-          </StyledA>
-        )}
-        {info.linkedin && (
-          <StyledA href={info.linkedin.toLink()}>
-            <LinkedInIcon />
-          </StyledA>
-        )}
-        {info.github && (
-          <StyledA href={info.github.toLink()}>
-            <GitHubIcon />
-          </StyledA>
-        )}
-        {info.keybase && (
-          <StyledA href={info.keybase.toLink()}>
-            <StyledKeybaseIcon />
-          </StyledA>
-        )}
-      </StyledDiv>
-    )
-  }
+export const Social = ({ info, ...restProps }: SocialProps) => {
+  return (
+    <StyledDiv {...restProps}>
+      {info.twitter && (
+        <StyledA href={info.twitter.toLink()}>
+          <TwitterIcon />
+        </StyledA>
+      )}
+      {info.facebook && (
+        <StyledA href={info.facebook.toLink()}>
+          <FacebookIcon />
+        </StyledA>
+      )}
+      {info.microblog && (
+        <StyledA href={info.microblog.toLink()}>
+          <MicroBlogIcon />
+        </StyledA>
+      )}
+      {info.linkedin && (
+        <StyledA href={info.linkedin.toLink()}>
+          <LinkedInIcon />
+        </StyledA>
+      )}
+      {info.github && (
+        <StyledA href={info.github.toLink()}>
+          <GitHubIcon />
+        </StyledA>
+      )}
+      {info.keybase && (
+        <StyledA href={info.keybase.toLink()}>
+          <StyledKeybaseIcon />
+        </StyledA>
+      )}
+    </StyledDiv>
+  )
 }

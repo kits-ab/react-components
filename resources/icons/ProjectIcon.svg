@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 52 (66869) - http://www.bohemiancoding.com/sketch -->
     <title>icons/ProjectIcon</title>
-    <desc>Created with Sketch.</desc>
     <g id="icons/ProjectIcon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <path d="M21.6,5.8 L16.8,5.8 L16.8,3.4 C16.8,2.068 15.732,1 14.4,1 L9.6,1 C8.268,1 7.2,2.068 7.2,3.4 L7.2,5.8 L2.4,5.8 C1.068,5.8 0.012,6.868 0.012,8.2 L0,21.4 C0,22.732 1.068,23.8 2.4,23.8 L21.6,23.8 C22.932,23.8 24,22.732 24,21.4 L24,8.2 C24,6.868 22.932,5.8 21.6,5.8 Z M14.4,5.8 L9.6,5.8 L9.6,3.4 L14.4,3.4 L14.4,5.8 Z" id="Shape" fill="#000000" fill-rule="nonzero"></path>
     </g>

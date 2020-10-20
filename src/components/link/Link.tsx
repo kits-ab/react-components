@@ -1,8 +1,8 @@
-import * as React from "react"
+import React from "react"
 
 import * as types from "../../types"
 
-export interface LinkProps extends types.BaseProps {
+export type LinkProps = types.BaseProps & {
   /**
    * The class to give the link when it's active.
    * @default is-active
@@ -56,7 +56,7 @@ export interface LinkProps extends types.BaseProps {
   to: string | types.Location
 }
 
-export interface LinkContextProps {
+export type LinkContextProps = {
   /** The component to use to create links. */
   linkComponent?: React.ComponentType<LinkProps>
   /** The component to use to create nav links (links with special styling for active link). */
@@ -75,8 +75,8 @@ export const LinkContext = React.createContext<LinkContextProps>({})
  * Gatsby Link (not every prop is available in all libraries). See the documentation for each
  * library to understand how it works.
  */
-export class Link extends React.PureComponent<LinkProps> {
-  private static navLinkProps = [
+export const Link = (props: LinkProps) => {
+  const navLinkProps = [
     "activeClassName",
     "activeStyle",
     "exact",
@@ -86,53 +86,7 @@ export class Link extends React.PureComponent<LinkProps> {
     "strict"
   ]
 
-  render() {
-    const {
-      activeClassName = "is-active",
-      children,
-      className,
-      style,
-      to,
-      ...restProps
-    } = this.props
-    return (
-      <LinkContext.Consumer>
-        {({ linkComponent: LinkComponent, navLinkComponent: NavLinkComponent }) => {
-          if (
-            NavLinkComponent &&
-            Link.navLinkProps.some(propName => (this.props as any)[propName] !== undefined)
-          ) {
-            return (
-              <NavLinkComponent
-                activeClassName={activeClassName}
-                className={className}
-                style={style}
-                to={to}
-                {...restProps}
-              >
-                {children}
-              </NavLinkComponent>
-            )
-          } else if (LinkComponent) {
-            return (
-              <LinkComponent className={className} to={to} style={style} {...restProps}>
-                {children}
-              </LinkComponent>
-            )
-          } else {
-            const href = typeof to === "string" ? to : this.createHref(to)
-            return (
-              <a className={this.getClassName()} href={href} style={this.getStyle()} {...restProps}>
-                {children}
-              </a>
-            )
-          }
-        }}
-      </LinkContext.Consumer>
-    )
-  }
-
-  private createHref = (location: types.Location) => {
+  const createHref = (location: types.Location) => {
     const { pathname, search, hash } = location
     let path = pathname || "/"
     if (search && search !== "?") {
@@ -144,8 +98,8 @@ export class Link extends React.PureComponent<LinkProps> {
     return path
   }
 
-  private getClassName = () => {
-    const { activeClassName = "is-active", isActive, className } = this.props
+  const getClassName = () => {
+    const { activeClassName = "is-active", isActive, className } = props
     if (isActive && (isActive as any)()) {
       if (className) {
         return `${activeClassName} ${className}`
@@ -157,12 +111,50 @@ export class Link extends React.PureComponent<LinkProps> {
     }
   }
 
-  private getStyle = () => {
-    const { activeStyle, isActive, style } = this.props
+  const getStyle = () => {
+    const { activeStyle, isActive, style } = props
     if (isActive && (isActive as any)()) {
       return { ...style, ...activeStyle }
     } else {
       return style
     }
   }
+
+  const { activeClassName = "is-active", children, className, style, to, ...restProps } = props
+
+  return (
+    <LinkContext.Consumer>
+      {({ linkComponent: LinkComponent, navLinkComponent: NavLinkComponent }) => {
+        if (
+          NavLinkComponent &&
+          navLinkProps.some((propName) => (props as any)[propName] !== undefined)
+        ) {
+          return (
+            <NavLinkComponent
+              activeClassName={activeClassName}
+              className={className}
+              style={style}
+              to={to}
+              {...restProps}
+            >
+              {children}
+            </NavLinkComponent>
+          )
+        } else if (LinkComponent) {
+          return (
+            <LinkComponent className={className} to={to} style={style} {...restProps}>
+              {children}
+            </LinkComponent>
+          )
+        } else {
+          const href = typeof to === "string" ? to : createHref(to)
+          return (
+            <a className={getClassName()} href={href} style={getStyle()} {...restProps}>
+              {children}
+            </a>
+          )
+        }
+      }}
+    </LinkContext.Consumer>
+  )
 }

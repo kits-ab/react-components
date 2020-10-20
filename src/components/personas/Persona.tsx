@@ -1,10 +1,10 @@
-import * as React from "react"
+import React from "react"
 
 import { SubHeading } from "../../components/headings/sub/SubHeading"
 import { Vertical } from "../../components/layouts/vertical/Vertical"
 import * as types from "../../types"
 
-export interface PersonaProps extends types.BaseProps {
+export type PersonaProps = types.BaseProps & {
   /** The description of the persona. */
   children: React.ReactNode
   /** The source of the icon to show. */
@@ -23,28 +23,25 @@ export interface PersonaProps extends types.BaseProps {
  * Persona is used to show a persona within a personas listing. All formatting is done as part of
  * the `Personas` component so it doesn't make sense to use this component by itself.
  */
-export class Persona extends React.PureComponent<PersonaProps> {
-  render() {
-    const { children, iconSrc, iconSrcSet, name, ...restProps } = this.props
-    return (
-      <Vertical {...restProps} className={this.getClassNames()}>
-        <Vertical alignHorizontal={types.Alignment.Center} className="Persona-title">
-          <img alt="" src={iconSrc} srcSet={iconSrcSet} />
-          <SubHeading>{name}</SubHeading>
-        </Vertical>
-        <div className="Persona-content">{children}</div>
-      </Vertical>
-    )
-  }
-
-  private getClassNames = () => {
+export const Persona = ({ children, iconSrc, iconSrcSet, name, ...restProps }: PersonaProps) => {
+  const getClassNames = () => {
     const classNames = ["Persona"]
-    if (this.props.isActive) {
+    if (restProps.isActive) {
       classNames.push("is-active")
     }
-    if (this.props.className) {
-      classNames.push(this.props.className)
+    if (restProps.className) {
+      classNames.push(restProps.className)
     }
     return classNames.join(" ")
   }
+
+  return (
+    <Vertical {...restProps} className={getClassNames()}>
+      <Vertical alignHorizontal={types.Alignment.Center} className="Persona-title">
+        <img alt="" src={iconSrc} srcSet={iconSrcSet} />
+        <SubHeading>{name}</SubHeading>
+      </Vertical>
+      <div className="Persona-content">{children}</div>
+    </Vertical>
+  )
 }

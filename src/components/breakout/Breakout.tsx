@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import styled from "styled-components"
 
 import * as types from "../../types"
@@ -12,7 +12,7 @@ const StyledDiv = styled.div`
   width: 100vw;
 `
 
-export interface BreakoutProps extends types.BaseProps {
+export type BreakoutProps = types.BaseProps & {
   /** The content to break out. */
   children: React.ReactNode
 }
@@ -24,9 +24,6 @@ export interface BreakoutProps extends types.BaseProps {
  * always uses the full width of the window and it is positioned around the center of the wrapper it
  * is placed in so if the wrapper is not centered this component will be off-center too.
  */
-export class Breakout extends React.PureComponent<BreakoutProps> {
-  render() {
-    const { children, ...restProps } = this.props
-    return <StyledDiv {...restProps}>{children}</StyledDiv>
-  }
+export const Breakout = ({ children, ...restProps }: BreakoutProps) => {
+  return <StyledDiv {...restProps}>{children}</StyledDiv>
 }

@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import styled from "styled-components"
 
 import { colors } from "../../../styles/constants"
@@ -50,7 +50,7 @@ const StyledSeparator = styled.div`
   flex: 0 0 1px;
 `
 
-export interface HorizontalProps extends types.BaseProps {
+export type HorizontalProps = types.BaseProps & {
   /** The horizontal alignment of the child components. */
   alignHorizontal?: types.Alignment
   /** The vertical alignment of the child components. */
@@ -91,26 +91,28 @@ export interface HorizontalProps extends types.BaseProps {
  * distribute the full width evenly between the components or you can take control yourself by
  * setting the style property `flex` on the components (see the examples).
  */
-export class Horizontal extends React.PureComponent<HorizontalProps> {
-  render() {
-    const { children, separator, tagName = "div", ...restProps } = this.props
-    let childIndex = -1
-    return (
-      <StyledDiv {...restProps} as={tagName as any}>
-        {separator
-          ? React.Children.map(children, child => {
-              if (child !== null) {
-                childIndex++
-              }
-              return (
-                <>
-                  {childIndex > 0 && <StyledSeparator />}
-                  {child}
-                </>
-              )
-            })
-          : children}
-      </StyledDiv>
-    )
-  }
+export const Horizontal = ({
+  children,
+  separator,
+  tagName = "div",
+  ...restProps
+}: HorizontalProps) => {
+  let childIndex = -1
+  return (
+    <StyledDiv {...restProps} as={tagName as any}>
+      {separator
+        ? React.Children.map(children, (child) => {
+            if (child !== null) {
+              childIndex++
+            }
+            return (
+              <>
+                {childIndex > 0 && <StyledSeparator />}
+                {child}
+              </>
+            )
+          })
+        : children}
+    </StyledDiv>
+  )
 }

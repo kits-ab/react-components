@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import styled, { css } from "styled-components"
 
 import { colors, spacing } from "../../styles/constants"
@@ -143,7 +143,7 @@ const StyledText = styled(Text)`
   }
 `
 
-export interface OfferProps extends types.BaseProps {
+export type OfferProps = types.BaseProps & {
   /** The content of the offer. */
   children?: React.ReactNode | string
   /** The heading of the offer. */
@@ -162,21 +162,18 @@ export interface OfferProps extends types.BaseProps {
 /**
  * Offer is used to show information about an offer in a colorful box.
  */
-export class Offer extends React.PureComponent<OfferProps> {
-  render() {
-    const { children, heading, icon, type, zIndex, ...restProps } = this.props
-    return (
-      <div {...restProps}>
-        <StyledDiv type={type} zIndex={zIndex}>
-          <Vertical spacing={spacing.medium}>
-            <Horizontal alignVertical={types.Alignment.Center} spacing={spacing.medium}>
-              <StyledIcon type={type}>{icon}</StyledIcon>
-              <StyledHeading>{heading}</StyledHeading>
-            </Horizontal>
-            <StyledText>{children}</StyledText>
-          </Vertical>
-        </StyledDiv>
-      </div>
-    )
-  }
+export const Offer = ({ children, heading, icon, type, zIndex, ...restProps }: OfferProps) => {
+  return (
+    <div {...restProps}>
+      <StyledDiv type={type} zIndex={zIndex}>
+        <Vertical spacing={spacing.medium}>
+          <Horizontal alignVertical={types.Alignment.Center} spacing={spacing.medium}>
+            <StyledIcon type={type}>{icon}</StyledIcon>
+            <StyledHeading>{heading}</StyledHeading>
+          </Horizontal>
+          <StyledText>{children}</StyledText>
+        </Vertical>
+      </StyledDiv>
+    </div>
+  )
 }

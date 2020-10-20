@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import styled from "styled-components"
 
 import { colors, spacing, width } from "../../styles/constants"
@@ -8,7 +8,7 @@ import { Horizontal } from "../layouts/horizontal/Horizontal"
 import { Vertical } from "../layouts/vertical/Vertical"
 import { Text } from "../text/Text"
 
-export interface MediaProps extends types.BaseProps {
+export type MediaProps = types.BaseProps & {
   /** The content to show in the text block. */
   children: React.ReactNode | string
   /** The heading to show above the text block. */
@@ -60,33 +60,38 @@ const StyledImageWrapper = styled.div`
 /**
  * Media is used to show an image next to a text block.
  */
-export class Media extends React.PureComponent<MediaProps> {
-  render() {
-    const { children, heading, href, hrefTitle, src, srcSet, ...restProps } = this.props
-    return (
-      <Horizontal
-        alignVertical={types.Alignment.Start}
-        breakpoint={width.mobileMenu}
-        spacing={spacing.large}
-        {...restProps}
-      >
-        <StyledImageWrapper>
-          <img alt="" src={src} srcSet={srcSet} />
-        </StyledImageWrapper>
-        <Vertical spacing={spacing.small} style={{ flex: "1 0 0%" }}>
-          {heading && <SubHeading>{heading}</SubHeading>}
-          <Text>{children}</Text>
-          {href && (
-            <Text>
-              <p>
-                <a target="tab" href={href}>
-                  {hrefTitle || href}
-                </a>
-              </p>
-            </Text>
-          )}
-        </Vertical>
-      </Horizontal>
-    )
-  }
+export const Media = ({
+  children,
+  heading,
+  href,
+  hrefTitle,
+  src,
+  srcSet,
+  ...restProps
+}: MediaProps) => {
+  return (
+    <Horizontal
+      alignVertical={types.Alignment.Start}
+      breakpoint={width.mobileMenu}
+      spacing={spacing.large}
+      {...restProps}
+    >
+      <StyledImageWrapper>
+        <img alt="" src={src} srcSet={srcSet} />
+      </StyledImageWrapper>
+      <Vertical spacing={spacing.small} style={{ flex: "1 0 0%" }}>
+        {heading && <SubHeading>{heading}</SubHeading>}
+        <Text>{children}</Text>
+        {href && (
+          <Text>
+            <p>
+              <a target="tab" href={href}>
+                {hrefTitle || href}
+              </a>
+            </p>
+          </Text>
+        )}
+      </Vertical>
+    </Horizontal>
+  )
 }

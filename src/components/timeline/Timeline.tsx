@@ -7,7 +7,7 @@ import {
   startOfYear,
   subMonths
 } from "date-fns"
-import * as React from "react"
+import React from "react"
 import styled from "styled-components"
 
 import { LocationIcon } from "../../icons"
@@ -94,12 +94,12 @@ const StyledDiv = styled.div`
   }
 `
 
-interface TimelineEvent {
+type TimelineEvent = {
   href: string
   date: string
 }
 
-export interface TimelineProps extends types.BaseProps {
+export type TimelineProps = types.BaseProps & {
   /** The events to show in the timeline. */
   events: TimelineEvent[]
 }
@@ -107,44 +107,20 @@ export interface TimelineProps extends types.BaseProps {
 /**
  * Timeline is used to show a list of events in a timeline.
  */
-export class Timeline extends React.PureComponent<TimelineProps> {
-  render() {
-    const markers = this.getMarkers()
-    return (
-      <StyledDiv>
-        {markers.events.map((event, index) => (
-          <Link
-            activeClassName="is-active"
-            className="Timeline-link"
-            key={"link" + index}
-            style={{ left: `${event.position}%` }}
-            to={event.href}
-          >
-            <LocationIcon />
-          </Link>
-        ))}
-        {markers.years.map((year, index) => (
-          <div className="Timeline-year" key={"year" + index} style={{ left: `${year.position}%` }}>
-            <div>{year.date.getFullYear()}</div>
-          </div>
-        ))}
-      </StyledDiv>
-    )
-  }
-
-  private getMarkers = () => {
-    const sortedEvents = this.props.events
+export const Timeline = ({ events, ...restProps }: TimelineProps) => {
+  const getMarkers = () => {
+    const sortedEvents = events
       .sort((event1: TimelineEvent, event2: TimelineEvent) =>
         event1.date.localeCompare(event2.date)
       )
-      .map(event => ({ href: event.href, date: parseISO(event.date) }))
+      .map((event) => ({ href: event.href, date: parseISO(event.date) }))
 
     if (sortedEvents.length > 0) {
       const minDate = subMonths(sortedEvents[0].date, 2)
       const maxDate = addMonths(sortedEvents[sortedEvents.length - 1].date, 2)
       const interval = differenceInDays(minDate, maxDate)
 
-      const events = sortedEvents.map(event => ({
+      const events = sortedEvents.map((event) => ({
         ...event,
         position: (differenceInDays(minDate, event.date) / interval) * 100
       }))
@@ -163,4 +139,25 @@ export class Timeline extends React.PureComponent<TimelineProps> {
       }
     }
   }
+  const markers = getMarkers()
+  return (
+    <StyledDiv {...restProps}>
+      {markers.events.map((event, index) => (
+        <Link
+          activeClassName="is-active"
+          className="Timeline-link"
+          key={"link" + index}
+          style={{ left: `${event.position}%` }}
+          to={event.href}
+        >
+          <LocationIcon />
+        </Link>
+      ))}
+      {markers.years.map((year, index) => (
+        <div className="Timeline-year" key={"year" + index} style={{ left: `${year.position}%` }}>
+          <div>{year.date.getFullYear()}</div>
+        </div>
+      ))}
+    </StyledDiv>
+  )
 }

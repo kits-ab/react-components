@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import styled from "styled-components"
 
 import { colors, fonts, spacing } from "../../../styles/constants"
@@ -7,6 +7,7 @@ import * as types from "../../../types"
 const StyledH2 = styled.h2`
   color: ${colors.text2};
   color: var(--text2);
+  display: block;
   font-family: ${fonts.thin};
   font-size: 26px;
   font-style: normal;
@@ -35,7 +36,7 @@ const StyledH2 = styled.h2`
   }
 `
 
-export interface SectionHeadingProps extends types.BaseProps {
+export type SectionHeadingProps = types.BaseProps & {
   /** The content of the heading. */
   children: React.ReactNode
 }
@@ -44,13 +45,10 @@ export interface SectionHeadingProps extends types.BaseProps {
  * SectionHeading is used to show a heading for a section of a page. There can be multiple sections
  * but use them sparingly.
  */
-export class SectionHeading extends React.PureComponent<SectionHeadingProps> {
-  render() {
-    const { children, ...restProps } = this.props
-    return (
-      <StyledH2 {...restProps}>
-        <span>{children}</span>
-      </StyledH2>
-    )
-  }
+export const SectionHeading = ({ children, ...restProps }: SectionHeadingProps) => {
+  return (
+    <StyledH2 {...restProps}>
+      <span>{children}</span>
+    </StyledH2>
+  )
 }

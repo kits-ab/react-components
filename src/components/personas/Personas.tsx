@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import styled, { css } from "styled-components"
 
 import { Breakout } from "../../components/breakout/Breakout"
@@ -64,7 +64,7 @@ const StyledWrapper = styled.div`
         width: 0;
       }
 
-      ${props => getLeftPositions(props.nrOfPersonas)};
+      ${(props) => getLeftPositions(props.nrOfPersonas)};
     }
 
     .Persona-content {
@@ -155,7 +155,7 @@ const StyledWrapper = styled.div`
   }
 `
 
-export interface PersonasProps extends types.BaseProps {
+export type PersonasProps = types.BaseProps & {
   /** The content of the persona (should be a list of `<Persona>`). */
   children: React.ReactNode
 }
@@ -163,34 +163,11 @@ export interface PersonasProps extends types.BaseProps {
 /**
  * Personas is used to show a list of personas with a description of the persona.
  */
-export class Personas extends React.PureComponent<PersonasProps> {
-  render() {
-    const { children, ...restProps } = this.props
-    return (
-      <StyledWrapper
-        {...restProps}
-        nrOfPersonas={React.Children.count(children)}
-        selectedIndex={this.findSelectedIndex()}
-      >
-        <Breakout className="Personas-breakout">
-          <Wrapper>
-            <Horizontal
-              breakpoint={width.mobileMenu}
-              className="Personas-wrapper"
-              distribute={true}
-            >
-              {children}
-            </Horizontal>
-          </Wrapper>
-        </Breakout>
-      </StyledWrapper>
-    )
-  }
-
-  private findSelectedIndex = () => {
-    const children = React.Children.toArray(this.props.children)
-    for (let index = 0; index < children.length; index++) {
-      const c = children[index]
+export const Personas = ({ children, ...restProps }: PersonasProps) => {
+  const findSelectedIndex = () => {
+    const childrenArray = React.Children.toArray(children)
+    for (let index = 0; index < childrenArray.length; index++) {
+      const c = childrenArray[index]
       // tslint:disable-next-line
       if (React.isValidElement(c) && c.props["isActive"]) {
         return index
@@ -198,4 +175,20 @@ export class Personas extends React.PureComponent<PersonasProps> {
     }
     return 0
   }
+
+  return (
+    <StyledWrapper
+      {...restProps}
+      nrOfPersonas={React.Children.count(children)}
+      selectedIndex={findSelectedIndex()}
+    >
+      <Breakout className="Personas-breakout">
+        <Wrapper>
+          <Horizontal breakpoint={width.mobileMenu} className="Personas-wrapper" distribute={true}>
+            {children}
+          </Horizontal>
+        </Wrapper>
+      </Breakout>
+    </StyledWrapper>
+  )
 }
