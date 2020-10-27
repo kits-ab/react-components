@@ -1,6 +1,6 @@
 # KITS Components
 
-[![Build Status](https://github.com/kits-ab/react-components/workflows/build/badge.svg?branch=master)](https://travis-ci.org/kits-ab/react-components) [![NPM Version](https://badge.fury.io/js/%40kokitotsos%2Freact-components.svg)](https://badge.fury.io/js/%40kokitotsos%2Freact-components)
+[![Build Status](https://github.com/kits-ab/react-components/workflows/build/badge.svg?branch=master)](https://github.com/kits-ab/react-components/actions?query=workflow%3Abuild) [![NPM Version](https://badge.fury.io/js/%40kokitotsos%2Freact-components.svg)](https://badge.fury.io/js/%40kokitotsos%2Freact-components)
 
 This component library includes all of the components that are used to build <https://kits.se> and other React applications that we create and use at KITS.
 
@@ -43,6 +43,12 @@ When you've checked out the code and all dependencies have been fetched you prob
 - `npm lint` – Lints all code with [ESLint](https://eslint.org) and [Stylelint](https://stylelint.io)
 - `npm start` – Starts a local styleguide server with hot reloading enabled on <http://localhost:6006>
   to one or more host projects.
+
+## Creating a release
+
+All commits to master must go through a pull request and when all relavant pull requests have been merged you can create a release in GitHub and that will automatically trigger a publish to NPM.
+
+Before you do a release, make sure you've updated the version. The easiest way to do this is to use `npm version`. This will update `package.json`, create a Git tag and commit all changes. If everything looks as you expect, you can push the changes.
 
 ## License
 

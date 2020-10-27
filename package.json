@@ -1,6 +1,6 @@
 {
   "name": "@kokitotsos/react-components",
-  "version": "2.0.0-beta",
+  "version": "2.0.0",
   "license": "Apache-2.0",
   "main": "dist/react-components.js",
   "module": "dist/index.js",
