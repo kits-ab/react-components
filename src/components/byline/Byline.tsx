@@ -1,6 +1,6 @@
 import { format } from "date-fns"
 import { sv } from "date-fns/locale"
-import * as React from "react"
+import React from "react"
 import styled from "styled-components"
 
 import { colors, fonts, spacing } from "../../styles/constants"
@@ -40,7 +40,7 @@ const StyledHorizontal = styled(Horizontal)`
   }
 `
 
-export interface BylineProps extends types.BaseProps {
+export type BylineProps = types.BaseProps & {
   /** The authors or presenters of the article or presentation. */
   persons: types.Person[]
   /** The time when the article or presentation was published. */
@@ -50,25 +50,22 @@ export interface BylineProps extends types.BaseProps {
 /**
  * Byline is used to show the publish time and authors of an article or presentation.
  */
-export class Byline extends React.PureComponent<BylineProps> {
-  render() {
-    const { persons, publishTime, ...restProps } = this.props
-    return (
-      <StyledHorizontal separator={true} spacing={spacing.small} {...restProps}>
-        {publishTime && (
-          <time dateTime={publishTime.toISOString()}>
-            {format(publishTime, "d MMMM yyyy", { locale: sv })}
-          </time>
-        )}
-        <span>
-          {persons.map((person, index) => (
-            <React.Fragment key={`person-${person.id}`}>
-              {index !== 0 ? ", " : ""}
-              {person.href ? <Link to={person.href}>{person.name}</Link> : person.name}
-            </React.Fragment>
-          ))}
-        </span>
-      </StyledHorizontal>
-    )
-  }
+export const Byline = ({ persons, publishTime, ...restProps }: BylineProps) => {
+  return (
+    <StyledHorizontal separator={true} spacing={spacing.small} {...restProps}>
+      {publishTime && (
+        <time dateTime={publishTime.toISOString()}>
+          {format(publishTime, "d MMMM yyyy", { locale: sv })}
+        </time>
+      )}
+      <span>
+        {persons.map((person, index) => (
+          <React.Fragment key={`person-${person.id}`}>
+            {index !== 0 ? ", " : ""}
+            {person.href ? <Link to={person.href}>{person.name}</Link> : person.name}
+          </React.Fragment>
+        ))}
+      </span>
+    </StyledHorizontal>
+  )
 }

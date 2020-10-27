@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import styled from "styled-components"
 
 import { colors, width } from "../../styles/constants"
@@ -64,7 +64,7 @@ const StyledLogotypeWrapper = styled.div`
   }
 `
 
-export interface HeaderProps extends types.BaseProps {
+export type HeaderProps = types.BaseProps & {
   /**
    * The breakpoint at which the menu switches to collapsed.
    * @default 500
@@ -77,22 +77,19 @@ export interface HeaderProps extends types.BaseProps {
 /**
  * Header is used to show and header with a logotype and menu.
  */
-export class Header extends React.PureComponent<HeaderProps> {
-  render() {
-    const { links, breakpoint, ...restProps } = this.props
-    return (
-      <StyledHeader {...restProps}>
-        <Wrapper>
-          <StyledHorizontal alignVertical={types.Alignment.End}>
-            <StyledLogotypeWrapper>
-              <Link to="/">
-                <Logotype color={cssVar("--text1") || colors.text1} width={80} />
-              </Link>
-            </StyledLogotypeWrapper>
-            <Menu breakpoint={breakpoint} links={links} />
-          </StyledHorizontal>
-        </Wrapper>
-      </StyledHeader>
-    )
-  }
+export const Header = ({ links, breakpoint, ...restProps }: HeaderProps) => {
+  return (
+    <StyledHeader {...restProps}>
+      <Wrapper>
+        <StyledHorizontal alignVertical={types.Alignment.End}>
+          <StyledLogotypeWrapper>
+            <Link to="/">
+              <Logotype color={cssVar("--text1") || colors.text1} width={80} />
+            </Link>
+          </StyledLogotypeWrapper>
+          <Menu breakpoint={breakpoint} links={links} />
+        </StyledHorizontal>
+      </Wrapper>
+    </StyledHeader>
+  )
 }

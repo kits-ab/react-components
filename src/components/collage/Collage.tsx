@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import styled from "styled-components"
 
 import { colors } from "../../styles/constants"
@@ -53,41 +53,38 @@ const StyledImage = styled.div`
   }
 `
 
-export interface CollageProps extends types.BaseProps {
+export type CollageProps = types.BaseProps & {
   /** The images to show in the collage. */
-  images: Array<{ src: string; srcSet?: string }>
+  images: { src: string; srcSet?: string; alt?: string }[]
 }
 
 /**
  * Collage is used to show a set of images in a collage. The rotation, scale and position is
  * randomized within some limits.
  */
-export class Collage extends React.PureComponent<CollageProps> {
-  render() {
-    const { images, ...restProps } = this.props
-    return (
-      <StyledDiv {...restProps}>
-        <div className="collage-wrapper">
-          <div className="collage-images">
-            {images.map((image: { src: string; srcSet?: string }, index: number) => (
-              <StyledImage
-                key={"image" + index}
-                rotate={this.getRotation()}
-                scale={this.getScale(index)}
-                translateY={this.getTranslateY(index)}
-                zIndex={this.getZIndex(index)}
-              >
-                <img src={image.src} srcSet={image.srcSet} />
-              </StyledImage>
-            ))}
-          </div>
-        </div>
-      </StyledDiv>
-    )
-  }
+export const Collage = ({ images, ...restProps }: CollageProps) => {
+  const getRotation = () => Math.random() * 10 - 5
+  const getScale = (index: number) => (index % 2 === 0 ? 1 : 1 - Math.random() * 0.1)
+  const getTranslateY = (index: number) => (index % 2 === 0 ? 30 : 0)
+  const getZIndex = (index: number) => (index % 2 === 0 ? 3 : 2)
 
-  private getRotation = () => Math.random() * 10 - 5
-  private getScale = (index: number) => (index % 2 === 0 ? 1 : 1 - Math.random() * 0.1)
-  private getTranslateY = (index: number) => (index % 2 === 0 ? 30 : 0)
-  private getZIndex = (index: number) => (index % 2 === 0 ? 3 : 2)
+  return (
+    <StyledDiv {...restProps}>
+      <div className="collage-wrapper">
+        <div className="collage-images">
+          {images.map((image: { src: string; srcSet?: string; alt?: string }, index: number) => (
+            <StyledImage
+              key={"image" + index}
+              rotate={getRotation()}
+              scale={getScale(index)}
+              translateY={getTranslateY(index)}
+              zIndex={getZIndex(index)}
+            >
+              <img src={image.src} srcSet={image.srcSet} alt={image.alt} />
+            </StyledImage>
+          ))}
+        </div>
+      </div>
+    </StyledDiv>
+  )
 }

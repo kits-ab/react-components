@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import styled from "styled-components"
 
 import { spacing, width } from "../../styles/constants"
@@ -35,7 +35,7 @@ const StyledByline = styled(Byline)`
   }
 `
 
-export interface ArticleProps extends types.BaseProps {
+export type ArticleProps = types.BaseProps & {
   /** The authors of the article. */
   authors: types.Person[]
   /** The actual content of the article. */
@@ -65,41 +65,38 @@ export interface ArticleProps extends types.BaseProps {
  * Article is used to show an article, or an excerpt from an article, together with a header
  * containing information about the authors and publish time.
  */
-export class Article extends React.PureComponent<ArticleProps> {
-  render() {
-    const {
-      authors,
-      children,
-      heading,
-      href,
-      publishTime,
-      showAvatars = false,
-      showExcerpt = false,
-      ...restProps
-    } = this.props
-    return (
-      <article {...restProps}>
-        <header>
-          {/* TODO: Handle avatars for multiple authors */}
-          {showAvatars && authors.length > 0 && (
-            <StyledAvatar person={authors[0]} showFallback={true} />
-          )}
-          <StyledContentHeading>
-            {href ? <Link to={href}>{heading}</Link> : { heading }}
-          </StyledContentHeading>
-          <div>
-            <StyledByline persons={authors} publishTime={publishTime} />
-          </div>
-        </header>
-        <Text>{children}</Text>
-        {showExcerpt && href && (
-          <Text>
-            <p>
-              <Link to={href}>Läs mer →</Link>
-            </p>
-          </Text>
+export const Article = ({
+  authors,
+  children,
+  heading,
+  href,
+  publishTime,
+  showAvatars = false,
+  showExcerpt = false,
+  ...restProps
+}: ArticleProps) => {
+  return (
+    <article {...restProps}>
+      <header>
+        {/* TODO: Handle avatars for multiple authors */}
+        {showAvatars && authors.length > 0 && (
+          <StyledAvatar person={authors[0]} showFallback={true} />
         )}
-      </article>
-    )
-  }
+        <StyledContentHeading>
+          {href ? <Link to={href}>{heading}</Link> : { heading }}
+        </StyledContentHeading>
+        <div>
+          <StyledByline persons={authors} publishTime={publishTime} />
+        </div>
+      </header>
+      <Text>{children}</Text>
+      {showExcerpt && href && (
+        <Text>
+          <p>
+            <Link to={href}>Läs mer →</Link>
+          </p>
+        </Text>
+      )}
+    </article>
+  )
 }

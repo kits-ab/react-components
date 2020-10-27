@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import styled, { css } from "styled-components"
 
 import { NewWindowIcon } from "../../icons/NewWindowIcon"
@@ -40,6 +40,7 @@ const StyledA = styled.a`
   > svg {
     fill: white;
     margin-left: ${spacing.small}px;
+    vertical-align: baseline;
   }
 `
 
@@ -53,7 +54,7 @@ const StyledLink = styled(Link)`
   ${sharedStyle};
 `
 
-export interface ButtonProps extends types.BaseProps {
+export type ButtonProps = types.BaseProps & {
   /** The content of the button. */
   children: React.ReactNode
   /** The url to link to. */
@@ -70,27 +71,24 @@ export interface ButtonProps extends types.BaseProps {
 /**
  * Button is used to show a link or actual button that looks like a button.
  */
-export class Button extends React.PureComponent<ButtonProps> {
-  static isExternalLink = new RegExp(/^https?:\/\//)
-  static isMailLink = new RegExp(/^mailto:/)
+export const Button = ({ children, href, openInNewWindow, ...restProps }: ButtonProps) => {
+  let isExternalLink = new RegExp(/^https?:\/\//)
+  let isMailLink = new RegExp(/^mailto:/)
 
-  render() {
-    const { children, href, openInNewWindow, ...restProps } = this.props
-    return href && Button.isExternalLink.test(href) ? (
-      <StyledA href={href} {...restProps} target={openInNewWindow ? "_blank" : ""}>
-        {children}
-        {openInNewWindow && <NewWindowIcon height={14} width={14} />}
-      </StyledA>
-    ) : href && Button.isMailLink.test(href) ? (
-      <StyledA href={href} {...restProps}>
-        {children}
-      </StyledA>
-    ) : href ? (
-      <StyledLink to={href} {...restProps}>
-        {children}
-      </StyledLink>
-    ) : (
-      <StyledButton {...restProps}>{children}</StyledButton>
-    )
-  }
+  return href && isExternalLink.test(href) ? (
+    <StyledA href={href} {...restProps} target={openInNewWindow ? "_blank" : ""}>
+      {children}
+      {openInNewWindow && <NewWindowIcon height={14} width={14} />}
+    </StyledA>
+  ) : href && isMailLink.test(href) ? (
+    <StyledA href={href} {...restProps}>
+      {children}
+    </StyledA>
+  ) : href ? (
+    <StyledLink to={href} {...restProps}>
+      {children}
+    </StyledLink>
+  ) : (
+    <StyledButton {...restProps}>{children}</StyledButton>
+  )
 }

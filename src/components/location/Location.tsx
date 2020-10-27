@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import styled from "styled-components"
 
 import { colors, fonts } from "../../styles/constants"
@@ -16,7 +16,7 @@ const StyledDiv = styled.div`
   }
 `
 
-export interface LocationProps extends types.BaseProps {
+export type LocationProps = types.BaseProps & {
   /** The coordinates of the location to show. */
   coordinates: number[]
   /** The title of the location. */
@@ -25,7 +25,9 @@ export interface LocationProps extends types.BaseProps {
   subtitle?: string
 }
 
+// noinspection JSUnusedLocalSymbols
 let Map = (props: any) => null
+// noinspection JSUnusedLocalSymbols
 let Popup = (props: any) => null
 
 if (typeof window !== "undefined") {
@@ -75,32 +77,28 @@ const StyledPopup = styled(Popup)`
 /**
  * Location is used to show a location on a map.
  */
-export class Location extends React.PureComponent<LocationProps> {
-  render() {
-    const { coordinates, title, subtitle, ...restProps } = this.props
-    const reversedCoordinates = [...coordinates].reverse()
+export const Location = ({ coordinates, title, subtitle, ...restProps }: LocationProps) => {
+  const reversedCoordinates = [...coordinates].reverse()
 
-    return (
-      <StyledDiv {...restProps}>
-        <Map
-          center={[reversedCoordinates[0], reversedCoordinates[1] + 0.001]}
-          containerStyle={{ height: "240px", width: "100%" }}
-          style={`mapbox://styles/mapbox/${cssVar("--map") || colors.map}`}
-          zoom={[14]}
-        >
-          {title && (
-            <StyledPopup anchor="bottom" coordinates={reversedCoordinates} onClick={this.openMap}>
-              <b>{title}</b>
-              {subtitle && <i>{subtitle}</i>}
-            </StyledPopup>
-          )}
-        </Map>
-      </StyledDiv>
-    )
-  }
-
-  private openMap = () => {
-    const { coordinates } = this.props
+  const openMap = () => {
     window.location.href = `http://maps.apple.com/?q=${coordinates}`
   }
+
+  return (
+    <StyledDiv {...restProps}>
+      <Map
+        center={[reversedCoordinates[0], reversedCoordinates[1] + 0.001]}
+        containerStyle={{ height: "240px", width: "100%" }}
+        style={`mapbox://styles/mapbox/${cssVar("--map") || colors.map}`}
+        zoom={[14]}
+      >
+        {title && (
+          <StyledPopup anchor="bottom" coordinates={reversedCoordinates} onClick={openMap}>
+            <b>{title}</b>
+            {subtitle && <i>{subtitle}</i>}
+          </StyledPopup>
+        )}
+      </Map>
+    </StyledDiv>
+  )
 }

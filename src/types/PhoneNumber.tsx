@@ -1,10 +1,10 @@
 export class PhoneNumber {
-  private n: string
+  private readonly n: string
 
   constructor(n: string) {
     const cleanNumber = n.replace("+46", "").replace(/\D/g, "")
     if (cleanNumber.length !== 10) {
-      throw Error("Invalid phonenumber, should be 10 digits")
+      throw Error("Invalid phone number, should be 10 digits")
     }
     this.n = cleanNumber
   }

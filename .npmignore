@@ -1,0 +1,12 @@
+.*
+*.tgz
+
+package/
+resources/
+styleguide/
+
+tsconfig.json
+webpack.config.js
+
+*.stories.tsx
+*.test.tsx

@@ -1,8 +1,8 @@
 import { SocialType } from "./SocialType"
 
 export class Username {
-  private username: string
-  private type: SocialType
+  private readonly username: string
+  private readonly type: SocialType
 
   constructor(username: string, type: SocialType) {
     this.username = username

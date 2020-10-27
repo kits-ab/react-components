@@ -1,5 +1,5 @@
 export class PostalCode {
-  private n: string
+  private readonly n: string
 
   constructor(n: string) {
     this.n = n

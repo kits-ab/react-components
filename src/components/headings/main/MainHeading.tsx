@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import styled from "styled-components"
 
 import { colors, fonts, width } from "../../../styles/constants"
@@ -20,7 +20,7 @@ const StyledH1 = styled.h1`
   }
 `
 
-export interface MainHeadingProps extends types.BaseProps {
+export type MainHeadingProps = types.BaseProps & {
   /** The content of the heading. */
   children: React.ReactNode
 }
@@ -29,9 +29,6 @@ export interface MainHeadingProps extends types.BaseProps {
  * MainHeading is used to show the main heading of a page. There should be one and only one
  * MainHeading per page.
  */
-export class MainHeading extends React.PureComponent<MainHeadingProps> {
-  render() {
-    const { children, ...restProps } = this.props
-    return <StyledH1 {...restProps}>{children}</StyledH1>
-  }
+export const MainHeading = ({ children, ...restProps }: MainHeadingProps) => {
+  return <StyledH1 {...restProps}>{children}</StyledH1>
 }

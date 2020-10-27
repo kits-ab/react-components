@@ -1,0 +1,91 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { Horizontal, colors, types } from "../src"
+
+<Meta title="Design/Colors" />
+
+# Colors
+
+All colors that can be used.
+
+<style>{`
+  .container {
+    margin: 0 -10px;
+  }
+
+  .container > * {
+    box-sizing: border-box;
+    flex: 0 1 calc(100% / 4 - 20px);
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 900px) {
+    .container > * {
+      flex: 0 1 calc(100% / 3 - 20px);
+    }
+  }
+
+  @media (max-width: 700px) {
+    .container > * {
+      flex: 0 1 calc(50% - 20px);
+    }
+  }
+
+  @media (max-width: 500px) {
+    .container > * {
+      flex: 0 1 calc(100% - 20px);
+    }
+  }
+
+  .color {
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,.1);
+    box-shadow: rgba(0,0,0,0.10) 0 1px 3px 0;
+    overflow: hidden;
+    display: block;
+    height: 150px;
+    padding: 30px;
+    position: relative;
+  }
+
+  .color-info {
+    background-color: rgba(255, 255, 255, 0.93);
+    bottom: 0;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    left: 0;
+    line-height: 1.4;
+    position: absolute;
+    padding: 10px;
+    right: 0;
+  }
+
+  .color-name {
+    color: #333333;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-align: left;
+  }
+
+  .color-value {
+    color: #777777;
+    font-size: 14px;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-align: left;
+  }
+`}</style>
+
+<Horizontal wrapRows={true} className="container">
+  {Object.keys(colors).map(color => (
+    <div key={color} style={{ backgroundColor: colors[color] }} className="color">
+      <div className="color-info">
+        <p className="color-name">{`colors.${color}`}</p>
+        <p className="color-value">{colors[color]}</p>
+      </div>
+    </div>
+  ))}
+</Horizontal>

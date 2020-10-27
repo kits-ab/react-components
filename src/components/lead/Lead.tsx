@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import styled from "styled-components"
 
 import { colors, fonts } from "../../styles/constants"
@@ -16,7 +16,7 @@ const StyledP = styled.p`
   text-align: center;
 `
 
-export interface LeadProps extends types.BaseProps {
+export type LeadProps = types.BaseProps & {
   /** The content of the lead. */
   children: React.ReactNode
 }
@@ -25,9 +25,6 @@ export interface LeadProps extends types.BaseProps {
  * Lead is used to to show the lead of a page. The lead should be a teaser or a summary of the
  * content of the page.
  */
-export class Lead extends React.PureComponent<LeadProps> {
-  render() {
-    const { children, ...restProps } = this.props
-    return <StyledP {...restProps}>{children}</StyledP>
-  }
+export const Lead = ({ children, ...restProps }: LeadProps) => {
+  return <StyledP {...restProps}>{children}</StyledP>
 }

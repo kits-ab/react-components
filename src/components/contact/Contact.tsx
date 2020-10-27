@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import styled from "styled-components"
 
 import { colors, fonts, spacing } from "../../styles/constants"
@@ -42,7 +42,7 @@ const StyledP = styled.p`
   }
 `
 
-export interface ContactProps extends types.BaseProps {
+export type ContactProps = types.BaseProps & {
   /** The contact information to show. */
   info: types.Contact
   /** The type of contact information to show. This determines which fields to show. */
@@ -52,23 +52,9 @@ export interface ContactProps extends types.BaseProps {
 /**
  * Contact is used to show some kind of contact information.
  */
-export class Contact extends React.PureComponent<ContactProps> {
-  render() {
-    const { info, type, ...restProps } = this.props
-    return (
-      <StyledVertical spacing={spacing.small} {...restProps} tagName="address">
-        {type === types.ContactType.Company && this.renderCompanyContact()}
-        {type === types.ContactType.Person && this.renderPersonContact()}
-        {type === types.ContactType.Role && this.renderRoleContact()}
-        {type !== types.ContactType.Role && info.social && (
-          <Social className="contact-social" info={info.social} />
-        )}
-      </StyledVertical>
-    )
-  }
-
-  private renderCompanyContact = () => {
-    const { name, street, postalCode, city, phone, email } = this.props.info
+export const Contact = ({ info, type, ...restProps }: ContactProps) => {
+  const renderCompanyContact = () => {
+    const { name, street, postalCode, city, phone, email } = info
     return (
       <>
         {name && <SubHeading>{name}</SubHeading>}
@@ -100,8 +86,8 @@ export class Contact extends React.PureComponent<ContactProps> {
     )
   }
 
-  private renderPersonContact = () => {
-    const { phone, email } = this.props.info
+  const renderPersonContact = () => {
+    const { phone, email } = info
     return (
       <>
         {(phone || email) && (
@@ -122,8 +108,8 @@ export class Contact extends React.PureComponent<ContactProps> {
     )
   }
 
-  private renderRoleContact = () => {
-    const { role, name, phone, email } = this.props.info
+  const renderRoleContact = () => {
+    const { role, name, phone, email } = info
     return (
       <>
         {role && <StyledSubHeading>{role}</StyledSubHeading>}
@@ -145,4 +131,15 @@ export class Contact extends React.PureComponent<ContactProps> {
       </>
     )
   }
+
+  return (
+    <StyledVertical spacing={spacing.small} {...restProps} tagName="address">
+      {type === types.ContactType.Company && renderCompanyContact()}
+      {type === types.ContactType.Person && renderPersonContact()}
+      {type === types.ContactType.Role && renderRoleContact()}
+      {type !== types.ContactType.Role && info.social && (
+        <Social className="contact-social" info={info.social} />
+      )}
+    </StyledVertical>
+  )
 }

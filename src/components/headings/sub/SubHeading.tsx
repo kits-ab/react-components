@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import styled from "styled-components"
 
 import { colors, fonts } from "../../../styles/constants"
@@ -15,7 +15,7 @@ const StyledH4 = styled.h4`
   margin: 0;
 `
 
-export interface SubHeadingProps extends types.BaseProps {
+export type SubHeadingProps = types.BaseProps & {
   /** The content of the heading. */
   children: React.ReactNode
 }
@@ -23,9 +23,6 @@ export interface SubHeadingProps extends types.BaseProps {
 /**
  * SubHeading is used to show a sub heading.
  */
-export class SubHeading extends React.PureComponent<SubHeadingProps> {
-  render() {
-    const { children, ...restProps } = this.props
-    return <StyledH4 {...restProps}>{children}</StyledH4>
-  }
+export const SubHeading = ({ children, ...restProps }: SubHeadingProps) => {
+  return <StyledH4 {...restProps}>{children}</StyledH4>
 }

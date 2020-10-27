@@ -1,5 +1,4 @@
-import * as React from "react"
-import * as ReactDOM from "react-dom"
+import React, { useCallback, useEffect, useRef, useState } from "react"
 import styled from "styled-components"
 
 import { colors, fonts, spacing } from "../../styles/constants"
@@ -8,7 +7,12 @@ import { Horizontal } from "../layouts/horizontal/Horizontal"
 import { Link } from "../link/Link"
 import { MenuIcon } from "../menuicon/MenuIcon"
 
-type P = Partial<MenuProps & MenuState>
+type P = Partial<
+  MenuProps & {
+    isFloating: boolean
+    isOpen: boolean
+  }
+>
 
 const StyledNav = styled.nav`
   display: inline-block;
@@ -118,7 +122,7 @@ const StyledNav = styled.nav`
   }
 `
 
-export interface MenuProps extends types.BaseProps {
+export type MenuProps = types.BaseProps & {
   /**
    * The breakpoint at which the menu switches to collapsed.
    * @default 500
@@ -128,81 +132,83 @@ export interface MenuProps extends types.BaseProps {
   links: types.Link[]
 }
 
-interface MenuState {
-  isFloating: boolean
-  isOpen: boolean
-}
-
 /**
  * Menu shows a menu with all the provided links. The menu can be collapsed if the screen is smaller
  * than a breakpoint and will switch to floating mode on small screens.
  */
-export class Menu extends React.PureComponent<MenuProps, MenuState> {
-  state = { isFloating: false, isOpen: false }
+export const Menu = ({ breakpoint = 500, links, ...restProps }: MenuProps) => {
+  const [isFloating, setIsFloating] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const menuRef = useRef(null)
 
-  componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll)
-    document.removeEventListener("click", this.handleDocumentClick, false)
-    document.removeEventListener("touchend", this.handleDocumentClick, false)
-  }
-
-  componentDidUpdate() {
-    if (this.state.isOpen) {
-      document.addEventListener("click", this.handleDocumentClick, false)
-      document.addEventListener("touchend", this.handleDocumentClick, false)
-    } else {
-      document.removeEventListener("click", this.handleDocumentClick, false)
-      document.removeEventListener("touchend", this.handleDocumentClick, false)
-    }
-  }
-
-  render() {
-    const { breakpoint = 500, links, ...restProps } = this.props
-    return (
-      <StyledNav
-        breakpoint={breakpoint}
-        isFloating={this.state.isFloating}
-        isOpen={this.state.isOpen}
-        {...restProps}
-      >
-        <Horizontal breakpoint={breakpoint} className="Menu-expanded" spacing={spacing.small}>
-          {links.map((link, index) => (
-            <Link activeClassName="is-active" getProps={this.getProps} to={link.href} key={index}>
-              {link.text}
-            </Link>
-          ))}
-        </Horizontal>
-        <Horizontal className="Menu-collapsed" onClick={this.handleClick}>
-          <span>Meny</span>
-          <MenuIcon
-            floatingPosition={{ right: 20, top: 15 }}
-            isFloating={this.state.isFloating}
-            isOpen={this.state.isOpen}
-          />
-        </Horizontal>
-      </StyledNav>
-    )
-  }
-
-  private getProps = ({ isPartiallyCurrent }: { isPartiallyCurrent: boolean }) => {
+  const getProps = ({ isPartiallyCurrent }: { isPartiallyCurrent: boolean }) => {
     return isPartiallyCurrent ? { className: "is-active" } : null
   }
 
-  private handleClick = () => {
-    this.setState((previousState: MenuState) => ({ isOpen: !previousState.isOpen }))
+  const handleClick = () => {
+    setIsOpen((previousIsOpen) => !previousIsOpen)
   }
 
-  private handleDocumentClick = (e: any) => {
-    if (this.state.isOpen && !(ReactDOM.findDOMNode(this) as Element).contains(e.target)) {
-      this.setState({ isOpen: false })
+  const handleDocumentClick = useCallback(
+    (e: any) => {
+      if (isOpen && !((menuRef.current as unknown) as Element).contains(e.target)) {
+        setIsOpen(false)
+      }
+    },
+    [isOpen]
+  )
+
+  const handleScroll = () => {
+    setIsFloating(window.scrollY > 60)
+    setIsOpen(false)
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll)
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
     }
-  }
+  }, [])
 
-  private handleScroll = () => {
-    this.setState({ isFloating: window.scrollY > 60, isOpen: false })
-  }
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener("click", handleDocumentClick, false)
+      document.addEventListener("touchend", handleDocumentClick, false)
+    } else {
+      document.removeEventListener("click", handleDocumentClick, false)
+      document.removeEventListener("touchend", handleDocumentClick, false)
+    }
+
+    return () => {
+      document.removeEventListener("click", handleDocumentClick, false)
+      document.removeEventListener("touchend", handleDocumentClick, false)
+    }
+  }, [isOpen, handleDocumentClick])
+
+  return (
+    <StyledNav
+      breakpoint={breakpoint}
+      isFloating={isFloating}
+      isOpen={isOpen}
+      {...restProps}
+      ref={menuRef}
+    >
+      <Horizontal breakpoint={breakpoint} className="Menu-expanded" spacing={spacing.small}>
+        {links.map((link, index) => (
+          <Link activeClassName="is-active" getProps={getProps} to={link.href} key={index}>
+            {link.text}
+          </Link>
+        ))}
+      </Horizontal>
+      <Horizontal className="Menu-collapsed" onClick={handleClick}>
+        <span>Meny</span>
+        <MenuIcon
+          floatingPosition={{ right: 20, top: 15 }}
+          isFloating={isFloating}
+          isOpen={isOpen}
+        />
+      </Horizontal>
+    </StyledNav>
+  )
 }

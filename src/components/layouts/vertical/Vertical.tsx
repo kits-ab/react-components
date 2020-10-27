@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import styled from "styled-components"
 
 import { colors } from "../../../styles/constants"
@@ -28,7 +28,7 @@ const StyledSeparator = styled.div`
   flex: 0 0 1px;
 `
 
-export interface VerticalProps extends types.BaseProps {
+export type VerticalProps = types.BaseProps & {
   /** The horizontal alignment of the child components. */
   alignHorizontal?: types.Alignment
   /** The vertical alignment of the child components. */
@@ -62,26 +62,23 @@ export interface VerticalProps extends types.BaseProps {
  * full height evenly between the components or you can take control yourself by
  * setting the style property `flex` on the components (see the examples).
  */
-export class Vertical extends React.PureComponent<VerticalProps> {
-  render() {
-    const { children, separator, tagName = "div", ...restProps } = this.props
-    let childIndex = -1
-    return (
-      <StyledDiv {...restProps} as={tagName as any}>
-        {separator
-          ? React.Children.map(children, child => {
-              if (child !== null) {
-                childIndex++
-              }
-              return (
-                <>
-                  {childIndex > 0 && <StyledSeparator />}
-                  {child}
-                </>
-              )
-            })
-          : children}
-      </StyledDiv>
-    )
-  }
+export const Vertical = ({ children, separator, tagName = "div", ...restProps }: VerticalProps) => {
+  let childIndex = -1
+  return (
+    <StyledDiv {...restProps} as={tagName as any}>
+      {separator
+        ? React.Children.map(children, (child) => {
+            if (child !== null) {
+              childIndex++
+            }
+            return (
+              <>
+                {childIndex > 0 && <StyledSeparator />}
+                {child}
+              </>
+            )
+          })
+        : children}
+    </StyledDiv>
+  )
 }
