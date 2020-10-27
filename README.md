@@ -1,6 +1,6 @@
 # KITS Components
 
-[![NPM Version](https://badge.fury.io/js/%40kokitotsos%2Freact-components.svg)](https://badge.fury.io/js/%40kokitotsos%2Freact-components)
+[![Build Status](https://github.com/kits-ab/react-components/workflows/build/badge.svg?branch=master)](https://travis-ci.org/kits-ab/react-components) [![NPM Version](https://badge.fury.io/js/%40kokitotsos%2Freact-components.svg)](https://badge.fury.io/js/%40kokitotsos%2Freact-components)
 
 This component library includes all of the components that are used to build <https://kits.se> and other React applications that we create and use at KITS.
 
