@@ -1,7 +1,7 @@
 import React from "react"
 import styled, { css } from "styled-components"
 
-import { NewWindowIcon } from "../../icons/NewWindowIcon"
+import { NewWindowIcon } from "../../icons"
 import { colors, fonts, spacing, width } from "../../styles/constants"
 import * as types from "../../types"
 import { Link } from "../link/Link"

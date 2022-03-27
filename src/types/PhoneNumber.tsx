@@ -10,11 +10,11 @@ export class PhoneNumber {
   }
 
   toLink() {
-    return `tel:+46${this.n.substr(1)}`
+    return `tel:+46${this.n.substring(1)}`
   }
 
   toString() {
     const n = this.n
-    return `${n.substr(0, 4)} – ${n.substr(4, 2)} ${n.substr(6, 2)} ${n.substr(8, 2)}`
+    return `${n.substring(0, 4)} – ${n.substring(4, 6)} ${n.substring(6, 8)} ${n.substring(8, 10)}`
   }
 }

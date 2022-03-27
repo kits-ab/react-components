@@ -1,4 +1,4 @@
-import { Story } from "@storybook/react/types-6-0"
+import { Story } from "@storybook/react"
 import React from "react"
 
 import { Button, ButtonProps } from "./Button"
@@ -8,7 +8,7 @@ export default {
   component: Button
 }
 
-const Template: Story<ButtonProps> = (args) => <Button children="" {...args} />
+const Template: Story<ButtonProps> = (args) => <Button {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
