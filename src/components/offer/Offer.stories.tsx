@@ -1,4 +1,4 @@
-import { Story } from "@storybook/react/types-6-0"
+import { Story } from "@storybook/react"
 import React from "react"
 
 import { DevelopmentIcon, spacing, ProjectIcon, SecurityIcon, IntegrationIcon } from "../.."
@@ -17,8 +17,8 @@ export default {
   }
 }
 
-const Template: Story<OfferProps> = (args) => (
-  <Offer icon={<DevelopmentIcon />} style={{ maxWidth: 600, padding: spacing.large }} {...args}>
+const Template: Story<OfferProps> = ({ icon, ...restArgs }: OfferProps) => (
+  <Offer icon={<DevelopmentIcon />} style={{ maxWidth: 600, padding: spacing.large }} {...restArgs}>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
