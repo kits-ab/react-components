@@ -42,12 +42,17 @@ export const colorsDark = {
 }
 
 export const colors = {
-  primary: "#f37f4a",
-  primaryDarker: darken(0.1, "#f37f4a"),
+  // 8BA17D: Green
+  // E0D250: Yellow
+  // 7E5869: Purple
+  // 5E8686: Turos
 
-  accent1: "#c9c6a6",
-  accent2: "#c1ae48",
-  accent3: "#7ac4bb",
+  primary: "#8BA17D",
+  primaryDarker: darken(0.1, "#8BA17D"),
+
+  accent1: "#E0D250",
+  accent2: "#7E5869",
+  accent3: "#5E8686",
 
   background1: "#ffffff",
   background2: lighten(0.3, "#b0ad97"),
@@ -61,7 +66,7 @@ export const colors = {
   line: "#c6c4b4",
   lineShadow: transparentize(0.8, "#000000"),
 
-  link: darken(0.1, "#f37f4a"),
+  link: darken(0.1, "#8BA17D"),
 
   text1: "#333333",
   text2: "#777777",
@@ -69,13 +74,13 @@ export const colors = {
 
   map: "streets-v10",
 
-  syntaxAttribute: darken(0.2, "#7ac4bb"),
+  syntaxAttribute: "#5E8686",
   syntaxComment: "#999999",
-  syntaxImportant: darken(0.1, "#f37f4a"),
-  syntaxKeyword: darken(0.1, "#f37f4a"),
+  syntaxImportant: darken(0.1, "#E0D250"),
+  syntaxKeyword: darken(0.1, "#8BA17D"),
   syntaxPunctuation: "#999999",
-  syntaxString: darken(0.2, "#7ac4bb"),
-  syntaxTag: darken(0.2, "#569CD6"),
+  syntaxString: darken(0.1, "#5E8686"),
+  syntaxTag: "#7E5869",
   syntaxVariable: "#999999"
 }
 
