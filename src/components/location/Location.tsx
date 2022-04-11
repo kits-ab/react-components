@@ -47,11 +47,11 @@ const StyledPopup = styled(Popup)`
 
   .mapboxgl-popup-content {
     color: white;
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(0 0 0 / 75%);
   }
 
   .mapboxgl-popup-tip {
-    border-top-color: rgba(0, 0, 0, 0.75) !important;
+    border-top-color: rgba(0 0 0 / 75%) !important;
   }
 
   b {

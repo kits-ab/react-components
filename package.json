@@ -162,9 +162,12 @@
       "stylelint-config-styled-components"
     ],
     "rules": {
+      "custom-property-pattern": null,
       "declaration-colon-newline-after": null,
+      "keyframes-name-pattern": null,
       "no-descending-specificity": null,
       "media-feature-name-no-unknown": null,
+      "selector-class-pattern": null,
       "value-keyword-case": null,
       "value-list-max-empty-lines": null
     },
