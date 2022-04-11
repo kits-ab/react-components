@@ -95,10 +95,10 @@ const StyledDiv = styled.div`
     top: ${(props: P) => props.floatingPosition!.top}px;
 
     &:not(.is-open) {
-      background-color: rgba(0, 0, 0, 0.2);
+      background-color: rgba(0 0 0 / 20%);
 
       &:hover {
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0 0 0 / 50%);
       }
 
       > span {

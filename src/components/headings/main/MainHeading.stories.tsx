@@ -1,4 +1,4 @@
-import { Story } from "@storybook/react/types-6-0"
+import { Story } from "@storybook/react"
 import React from "react"
 
 import { MainHeading, MainHeadingProps } from "./MainHeading"
@@ -8,7 +8,7 @@ export default {
   component: MainHeading
 }
 
-const Template: Story<MainHeadingProps> = (args) => <MainHeading children="" {...args} />
+const Template: Story<MainHeadingProps> = (args) => <MainHeading {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

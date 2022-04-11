@@ -1,8 +1,8 @@
 import React from "react"
 
-import { SubHeading } from "../../components/headings/sub/SubHeading"
-import { Vertical } from "../../components/layouts/vertical/Vertical"
 import * as types from "../../types"
+import { SubHeading } from "../headings/sub/SubHeading"
+import { Vertical } from "../layouts/vertical/Vertical"
 
 export type PersonaProps = types.BaseProps & {
   /** The description of the persona. */

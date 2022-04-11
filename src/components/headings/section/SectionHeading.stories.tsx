@@ -1,4 +1,4 @@
-import { Story } from "@storybook/react/types-6-0"
+import { Story } from "@storybook/react"
 import React from "react"
 
 import { SectionHeading, SectionHeadingProps } from "./SectionHeading"
@@ -8,7 +8,7 @@ export default {
   component: SectionHeading
 }
 
-const Template: Story<SectionHeadingProps> = (args) => <SectionHeading children="" {...args} />
+const Template: Story<SectionHeadingProps> = (args) => <SectionHeading {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

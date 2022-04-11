@@ -63,7 +63,7 @@ const StyledDiv = styled.div`
     color: ${colors.text1};
     color: var(--text1);
     font-family: "Courier New", monospace;
-    padding: 3px 5px 3px 5px;
+    padding: 3px 5px;
   }
 
   h1 {
@@ -90,7 +90,7 @@ const StyledDiv = styled.div`
     font-style: normal;
     font-weight: 200;
     line-height: 1.2;
-    margin: 0 0 13px 0;
+    margin: 0 0 13px;
   }
 
   h3 {
@@ -160,13 +160,13 @@ const StyledDiv = styled.div`
 
       &:first-child:not(:last-child) {
         float: left;
-        width: 66.6666666666%;
+        width: 66.6666%;
       }
 
       &:not(:first-child) {
         border-left: 2px solid white;
         float: left;
-        width: 33.3333333333%;
+        width: 33.3333%;
       }
 
       &:last-child {
@@ -232,7 +232,7 @@ const StyledDiv = styled.div`
 
   ul {
     list-style: none;
-    margin: 0 0 10px 0;
+    margin: 0 0 10px;
     padding: 0;
 
     li {

@@ -117,7 +117,7 @@ const StyledDiv = styled.div`
 
 const StyledIcon = styled.div`
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255 255 255 / 90%);
   border-radius: 50%;
   display: inline-flex;
   justify-content: center;

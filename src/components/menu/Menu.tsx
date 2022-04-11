@@ -92,7 +92,7 @@ const StyledNav = styled.nav`
       display: ${(props: P) => (props.isOpen ? "flex" : "none")};
       height: auto;
       min-width: 200px;
-      padding: 30px 0 20px 0;
+      padding: 30px 0 20px;
       position: ${(props: P) => (props.isFloating ? "fixed" : "absolute")};
       right: ${(props: P) => (props.isFloating ? "20px" : "-10px")};
       top: ${(props: P) => (props.isFloating ? "10px" : 0)};
@@ -151,7 +151,7 @@ export const Menu = ({ breakpoint = 500, links, ...restProps }: MenuProps) => {
 
   const handleDocumentClick = useCallback(
     (e: any) => {
-      if (isOpen && !((menuRef.current as unknown) as Element).contains(e.target)) {
+      if (isOpen && !(menuRef.current as unknown as Element).contains(e.target)) {
         setIsOpen(false)
       }
     },

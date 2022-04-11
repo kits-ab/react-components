@@ -1,11 +1,11 @@
 import React from "react"
 import styled, { css } from "styled-components"
 
-import { Breakout } from "../../components/breakout/Breakout"
-import { Horizontal } from "../../components/layouts/horizontal/Horizontal"
-import { Wrapper } from "../../components/layouts/wrapper/Wrapper"
 import { colors, easings, spacing, width } from "../../styles/constants"
 import * as types from "../../types"
+import { Breakout } from "../breakout/Breakout"
+import { Horizontal } from "../layouts/horizontal/Horizontal"
+import { Wrapper } from "../layouts/wrapper/Wrapper"
 
 type P = PersonasProps & { nrOfPersonas: number; selectedIndex: number }
 

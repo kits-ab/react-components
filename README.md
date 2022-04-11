@@ -23,7 +23,7 @@ For debugging purposes you should install [React Developer Tools](https://github
 
 ### Preparations
 
-- Install Node 12 – <https://nodejs.org>
+- Install Node 16 – <https://nodejs.org>
 - Checkout the code and fetch all dependencies
   ```
   $ git clone git@github.com:kits-ab/react-components.git
@@ -52,7 +52,7 @@ Before you do a release, make sure you've updated the version. The easiest way t
 
 ## License
 
-Copyright 2020 KITS AB
+Copyright 2022 KITS AB
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this work except in compliance with the License. You may obtain a copy of the License in the LICENSE file, or at:
 
