@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { colors, fonts } from "../../styles/constants"
 import * as types from "../../types"
 import { cssVar } from "../../utils/cssUtils"
+import "mapbox-gl/dist/mapbox-gl.css"
 
 const StyledDiv = styled.div`
   background-color: ${colors.background2};
