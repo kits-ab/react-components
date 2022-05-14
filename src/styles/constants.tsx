@@ -4,12 +4,12 @@ import { darken, lighten, transparentize } from "polished"
 import { createGlobalStyle } from "styled-components"
 
 export const colorsDark = {
-  primary: darken(0.2, "#f37f4a"),
-  primaryDarker: darken(0.1, darken(0.2, "#f37f4a")),
+  primary: darken(0.2, "#8BA17D"),
+  primaryDarker: darken(0.1, darken(0.2, "#8BA17D")),
 
-  accent1: darken(0.2, "#c9c6a6"),
-  accent2: darken(0.2, "#c1ae48"),
-  accent3: darken(0.2, "#7ac4bb"),
+  accent1: darken(0.2, "#E0D250"),
+  accent2: darken(0.2, "#7E5869"),
+  accent3: darken(0.2, "#5E8686"),
 
   background1: lighten(0.03, "#1e1e1e"),
   background2: "#3a3a39",
@@ -23,7 +23,7 @@ export const colorsDark = {
   line: transparentize(0.75, "#ffffff"),
   lineShadow: transparentize(0.8, "#ffffff"),
 
-  link: darken(0.1, "#f37f4a"),
+  link: darken(0.1, "#8BA17D"),
 
   text1: "#e5e5e5",
   text2: "#bbbbbb",
@@ -166,8 +166,7 @@ export const easings = {
 export const fonts = {
   light:
     '"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", sans-serif',
-  thin:
-    '"HelveticaNeue-Thin", "Helvetica Neue Thin", "Helvetica Neue", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", sans-serif'
+  thin: '"HelveticaNeue-Thin", "Helvetica Neue Thin", "Helvetica Neue", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", sans-serif'
 }
 
 export const spacing = {
