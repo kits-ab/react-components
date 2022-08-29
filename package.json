@@ -18,7 +18,7 @@
     "build:styleguide": "build-storybook --docs -s styleguide/assets -o dist-styleguide",
     "clean": "rimraf dist dist-styleguide package *.tgz",
     "format": "prettier 'src/**/*.{js,json,jsx,md,ts,tsx}' --write",
-    "icons": "svgr -d src/icons resources/icons --template resources/SvgrTemplate.js --index-template resources/SvgrTemplateIndex.js --ext tsx --icon",
+    "icons": "svgr -d src/icons resources/icons --template resources/SvgrTemplate.js --index-template resources/SvgrTemplateIndex.js --ext tsx --typescript --icon",
     "lint": "npm run lint:css && npm run lint:js",
     "lint:css": "stylelint './src/**/*.tsx'",
     "lint:js": "eslint --ext '.ts,.tsx' src",

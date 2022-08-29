@@ -1,10 +1,9 @@
-module.exports = ({ template }, opts, { componentName, jsx }) => {
-  const typeScriptTpl = template.smart({ plugins: ["typescript"] })
-  const name = { type: "Identifier", name: componentName.name.replace("Svg", "") }
+module.exports = ({componentName, jsx}, {tpl}) => {
+  const name = { type: "Identifier", name: componentName.replace("Svg", "") }
 
-  return typeScriptTpl.ast`
+  return tpl`
     import React from "react"
-    
+
     import * as types from "../types"
 
     export const ${name} = (props: types.IconProps) => {
