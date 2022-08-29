@@ -17,6 +17,7 @@ import {
   LocationIcon,
   RunningIcon,
   SkiingIcon,
+  TrainIcon,
   WorkshopIcon
 } from "../../icons"
 import { colors, fonts, spacing, width } from "../../styles/constants"
@@ -261,6 +262,8 @@ export const Timeslot = ({
         return <RunningIcon />
       case types.TimeslotType.Skiing:
         return <SkiingIcon />
+      case types.TimeslotType.Train:
+        return <TrainIcon />
       case types.TimeslotType.Workshop:
         return <WorkshopIcon />
       default:

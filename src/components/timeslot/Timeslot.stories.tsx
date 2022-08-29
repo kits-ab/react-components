@@ -32,8 +32,15 @@ export const Default = (props: TimeslotProps) => (
       connectToPrevious={true}
     />
     <Timeslot
-      heading="CheckIn"
+      heading="Train"
       startTime={new Date("2018-01-01T09:30:00")}
+      endTime={new Date("2018-01-01T09:45:00")}
+      type={types.TimeslotType.Train}
+      connectToPrevious={true}
+    />
+    <Timeslot
+      heading="CheckIn"
+      startTime={new Date("2018-01-01T09:45:00")}
       endTime={new Date("2018-01-01T10:00:00")}
       type={types.TimeslotType.CheckIn}
       connectToPrevious={true}
