@@ -11,5 +11,6 @@ export enum TimeslotType {
   Presentation = "presentation",
   Running = "running",
   Skiing = "skiing",
+  Train = "train",
   Workshop = "workshop"
 }
