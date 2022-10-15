@@ -94,11 +94,34 @@ export const Default = (props: TimeslotProps) => (
       heading="Lorem ipsum dolor sit amet"
       href="#"
       startTime={new Date("2018-01-01T13:00:00")}
-      endTime={new Date("2018-01-01T13:30:00")}
+      endTime={new Date("2018-01-01T13:15:00")}
       type={types.TimeslotType.Presentation}
       connectToPrevious={true}
       presentation="#"
       youtubeId="0CcnAIuCfSU"
+    >
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </Timeslot>
+    <Timeslot
+      externalPresenter={{name: "External Presenter", href: "#", avatarSrc: "/avatar.jpg"}}
+      heading="External Lorem Ipsum"
+      type={types.TimeslotType.ExternalPresentation}
+      startTime={new Date("2018-01-01T13:15:00")}
+      endTime={new Date("2018-01-01T13:30:00")}
+      connectToPrevious={true}
     >
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut

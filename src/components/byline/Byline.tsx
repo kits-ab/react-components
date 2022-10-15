@@ -42,7 +42,7 @@ const StyledHorizontal = styled(Horizontal)`
 
 export type BylineProps = types.BaseProps & {
   /** The authors or presenters of the article or presentation. */
-  persons: types.Person[]
+  persons: types.Person[] | types.ExternalPresenter[]
   /** The time when the article or presentation was published. */
   publishTime?: Date
 }
@@ -60,7 +60,7 @@ export const Byline = ({ persons, publishTime, ...restProps }: BylineProps) => {
       )}
       <span>
         {persons.map((person, index) => (
-          <React.Fragment key={`person-${person.id}`}>
+          <React.Fragment key={`person-${person.name}-${index}`}>
             {index !== 0 ? ", " : ""}
             {person.href ? <Link to={person.href}>{person.name}</Link> : person.name}
           </React.Fragment>

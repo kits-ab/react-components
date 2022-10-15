@@ -33,14 +33,19 @@ import { Text } from "../text/Text"
 
 type P = Partial<TimeslotProps>
 
+const isPresentationType = (timeslotType: types.TimeslotType | undefined): boolean => {
+  return timeslotType === types.TimeslotType.Presentation ||
+    timeslotType === types.TimeslotType.ExternalPresentation
+}
+
 const StyledVertical = styled(Vertical)`
   background-color: ${(props) =>
-    props.type === types.TimeslotType.Presentation ? colors.background2 : colors.background5};
+    isPresentationType(props.type) ? colors.background2 : colors.background5};
   background-color: ${(props) =>
-    props.type === types.TimeslotType.Presentation ? "var(--background2)" : "var(--background5)"};
+    isPresentationType(props.type) ? "var(--background2)" : "var(--background5)"};
   border-radius: 5px;
   margin-top: ${(props) =>
-    props.type === types.TimeslotType.Presentation ? spacing.large : spacing.medium}px !important;
+    isPresentationType(props.type) ? spacing.large : spacing.medium}px !important;
   padding: ${spacing.medium}px ${spacing.huge}px;
   width: 100%;
 
@@ -65,7 +70,7 @@ const StyledVertical = styled(Vertical)`
       bottom: calc(100% + ${spacing.medium + 3}px);
       content: "";
       height: ${(props) =>
-        props.type === types.TimeslotType.Presentation ? spacing.large - 3 : spacing.medium - 3}px;
+        isPresentationType(props.type) ? spacing.large - 3 : spacing.medium - 3}px;
       position: absolute;
       right: 23px;
       width: 3px;
@@ -218,6 +223,8 @@ export type TimeslotProps = types.BaseProps & {
   type: types.TimeslotType
   /** Id of a YouTube video to show. */
   youtubeId?: string
+  /** Image of external presenter */
+  externalPresenter?: types.ExternalPresenter
 }
 
 /**
@@ -230,6 +237,7 @@ export const Timeslot = ({
   heading,
   href,
   presenters,
+  externalPresenter,
   location,
   presentation,
   youtubeId,
@@ -289,14 +297,19 @@ export const Timeslot = ({
   }
 
   const renderPresentationHeader = () => {
+    const tempPresenters: types.Person[] | types.ExternalPresenter[] | undefined =
+      presenters && presenters.length > 0 ? presenters :
+      externalPresenter !== undefined ? [externalPresenter] :
+      undefined
+
     return (
       <Horizontal breakpoint={width.mobileMenu} className="Timeslot-presenter">
         {/* TODO: Handle avatars for multiple presenters */}
-        {presenters && presenters.length > 0 && (
-          <StyledAvatar person={presenters[0]} showFallback={true} width={80} />
+        {tempPresenters && tempPresenters.length > 0 && (
+          <StyledAvatar person={tempPresenters[0]} showFallback={true} width={80} />
         )}
         <Vertical>
-          {presenters && <Byline persons={presenters} />}
+          {tempPresenters && <Byline persons={tempPresenters} />}
           <ContentHeading className="Timeslot-heading">{heading}</ContentHeading>
         </Vertical>
       </Horizontal>
@@ -310,7 +323,7 @@ export const Timeslot = ({
         spacing={spacing.medium}
         tagName="header"
       >
-        {type === types.TimeslotType.Presentation
+        {isPresentationType(type)
           ? renderPresentationHeader()
           : renderInfoHeader(type)}
         <Vertical className="Timeslot-times">
