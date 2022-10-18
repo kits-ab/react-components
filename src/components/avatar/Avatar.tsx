@@ -35,7 +35,7 @@ const StyledFigure = styled.figure`
 
 export type AvatarProps = types.BaseProps & {
   /** The person to show the avatar for. */
-  person: types.Person
+  person: types.Person | types.ExternalPresenter
   /**
    * Set to `true` to show a fallback image if no image has been specified for the person.
    * @default false
