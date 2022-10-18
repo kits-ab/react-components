@@ -299,7 +299,7 @@ export const Timeslot = ({
   const renderPresentationHeader = () => {
     const tempPresenters: types.Person[] | types.ExternalPresenter[] | undefined =
       presenters && presenters.length > 0 ? presenters :
-      externalPresenter !== undefined ? [externalPresenter] :
+      externalPresenter !== undefined && externalPresenter !== null ? [externalPresenter] :
       undefined
 
     return (
