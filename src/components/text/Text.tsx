@@ -141,6 +141,12 @@ const StyledDiv = styled.div`
     }
   }
 
+  video {
+    margin-bottom: ${spacing.medium}px;
+    margin-top: ${spacing.medium}px;
+    max-width: 100%;
+  }
+
   .image-grid {
     left: 50%;
     margin: ${spacing.medium}px -50vw ${spacing.large}px;
