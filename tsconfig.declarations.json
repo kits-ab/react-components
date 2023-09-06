@@ -3,5 +3,5 @@
   "compilerOptions": {
     "declaration": true
   },
-  "exclude": ["src/**/*.test.ts", "src/**/*.stories.tsx"]
+  "exclude": ["src/**/*.test.ts", "src/**/*.stories.tsx", "dist"]
 }
