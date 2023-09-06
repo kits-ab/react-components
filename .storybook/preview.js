@@ -38,3 +38,5 @@ export const decorators = [
     </>
   )
 ]
+
+export default parameters

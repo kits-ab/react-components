@@ -36,7 +36,10 @@ const StyledDiv = styled.div`
   height: 40px;
   position: relative;
   transform: rotate(0deg);
-  transition: background-color 0.2s ease-in-out, top 0.5s ease-in-out, transform 0.5s ease-in-out;
+  transition:
+    background-color 0.2s ease-in-out,
+    top 0.5s ease-in-out,
+    transform 0.5s ease-in-out;
   z-index: 1000;
   width: 40px;
 

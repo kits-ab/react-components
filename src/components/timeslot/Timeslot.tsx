@@ -34,8 +34,10 @@ import { Text } from "../text/Text"
 type P = Partial<TimeslotProps>
 
 const isPresentationType = (timeslotType: types.TimeslotType | undefined): boolean => {
-  return timeslotType === types.TimeslotType.Presentation ||
+  return (
+    timeslotType === types.TimeslotType.Presentation ||
     timeslotType === types.TimeslotType.ExternalPresentation
+  )
 }
 
 const StyledVertical = styled(Vertical)`
@@ -298,9 +300,11 @@ export const Timeslot = ({
 
   const renderPresentationHeader = () => {
     const tempPresenters: types.Person[] | types.ExternalPresenter[] | undefined =
-      presenters && presenters.length > 0 ? presenters :
-      externalPresenter !== undefined && externalPresenter !== null ? [externalPresenter] :
-      undefined
+      presenters && presenters.length > 0
+        ? presenters
+        : externalPresenter !== undefined && externalPresenter !== null
+        ? [externalPresenter]
+        : undefined
 
     return (
       <Horizontal breakpoint={width.mobileMenu} className="Timeslot-presenter">
@@ -323,9 +327,7 @@ export const Timeslot = ({
         spacing={spacing.medium}
         tagName="header"
       >
-        {isPresentationType(type)
-          ? renderPresentationHeader()
-          : renderInfoHeader(type)}
+        {isPresentationType(type) ? renderPresentationHeader() : renderInfoHeader(type)}
         <Vertical className="Timeslot-times">
           <div className="Timeslot-start">{format(startTime, "HH:mm", { locale: sv })}</div>
           {showEndTime && (

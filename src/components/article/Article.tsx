@@ -83,7 +83,7 @@ export const Article = ({
           <StyledAvatar person={authors[0]} showFallback={true} />
         )}
         <StyledContentHeading>
-          {href ? <Link to={href}>{heading}</Link> : heading }
+          {href ? <Link to={href}>{heading}</Link> : heading}
         </StyledContentHeading>
         <div>
           <StyledByline persons={authors} publishTime={publishTime} />
