@@ -29,7 +29,7 @@ const wobbleIn = keyframes`
 `
 
 type P = Partial<MenuIconProps>
-const StyledDiv = styled.div`
+const StyledDiv = styled.div<P>`
   border-radius: 50%;
   cursor: pointer;
   display: inline-block;

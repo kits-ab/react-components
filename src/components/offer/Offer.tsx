@@ -103,7 +103,7 @@ const getFillColor = (type: OfferType) => {
 
 type P = Partial<OfferProps>
 
-const StyledDiv = styled.div`
+const StyledDiv = styled.div<P>`
   ${(props: P) => getBackgroundColor(props.type!)};
   color: white;
   display: block;
@@ -115,7 +115,7 @@ const StyledDiv = styled.div`
   ${(props: P) => getClipPath(props.type!)};
 `
 
-const StyledIcon = styled.div`
+const StyledIcon = styled.div<P>`
   align-items: center;
   background-color: rgba(255 255 255 / 90%);
   border-radius: 50%;

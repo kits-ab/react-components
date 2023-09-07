@@ -6,13 +6,13 @@ import * as types from "../../types"
 
 type P = Partial<AvatarProps>
 
-const StyledImg = styled.img`
+const StyledImg = styled.img<P>`
   border-radius: 50%;
-  height: ${(props: P) => props.width}px;
-  width: ${(props: P) => props.width}px;
+  height: ${(props) => props.width}px;
+  width: ${(props) => props.width}px;
 `
 
-const StyledFigure = styled.figure`
+const StyledFigure = styled.figure<P>`
   background-color: ${colors.background2};
   background-color: var(--background2);
   border-radius: 50%;

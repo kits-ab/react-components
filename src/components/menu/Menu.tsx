@@ -14,7 +14,7 @@ type P = Partial<
   }
 >
 
-const StyledNav = styled.nav`
+const StyledNav = styled.nav<P>`
   display: inline-block;
   font-family: ${fonts.light};
   font-size: 16px;
@@ -30,14 +30,14 @@ const StyledNav = styled.nav`
     margin-right: -10px;
     user-select: none;
 
-    @media (max-width: ${(props: P) => props.breakpoint}px) {
+    @media (max-width: ${(props) => props.breakpoint}px) {
       display: flex;
     }
 
     > span {
       color: ${colors.text2};
       color: var(--text2);
-      display: ${(props: P) => (props.isFloating ? "none" : "inline-block")};
+      display: ${(props) => (props.isFloating ? "none" : "inline-block")};
     }
   }
 
@@ -81,7 +81,7 @@ const StyledNav = styled.nav`
       }
     }
 
-    @media (max-width: ${(props: P) => props.breakpoint}px) {
+    @media (max-width: ${(props) => props.breakpoint}px) {
       background-color: ${colors.background1};
       background-color: var(--background1);
       border: 1px solid ${colors.line};
@@ -89,13 +89,13 @@ const StyledNav = styled.nav`
       border-radius: 10px;
       box-shadow: 0 1px 3px 0 ${colors.lineShadow};
       box-shadow: 0 1px 3px 0 var(--lineShadow);
-      display: ${(props: P) => (props.isOpen ? "flex" : "none")};
+      display: ${(props) => (props.isOpen ? "flex" : "none")};
       height: auto;
       min-width: 200px;
       padding: 30px 0 20px;
-      position: ${(props: P) => (props.isFloating ? "fixed" : "absolute")};
-      right: ${(props: P) => (props.isFloating ? "20px" : "-10px")};
-      top: ${(props: P) => (props.isFloating ? "10px" : 0)};
+      position: ${(props) => (props.isFloating ? "fixed" : "absolute")};
+      right: ${(props) => (props.isFloating ? "20px" : "-10px")};
+      top: ${(props) => (props.isFloating ? "10px" : 0)};
       z-index: 110;
 
       > a {

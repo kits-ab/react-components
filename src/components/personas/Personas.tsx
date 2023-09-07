@@ -23,7 +23,7 @@ const getLeftPositions = (nrOfPersonas: number) => {
   return positions
 }
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled.div<P>`
   figure {
     margin: 0;
   }

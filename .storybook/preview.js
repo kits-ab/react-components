@@ -22,12 +22,13 @@ const sort = (a, b) => {
   return aKind.localeCompare(bKind)
 }
 
-export const parameters = {
+export default { parameters : {
   actions: { argTypesRegex: "^on[A-Z].*" },
   options: {
-    storySort: sort,
+    storySort: { order: ["About", "Design", "Layouts", "Headings", "Components", '*']},
     theme: theme
   }
+}
 }
 
 export const decorators = [
@@ -38,5 +39,3 @@ export const decorators = [
     </>
   )
 ]
-
-export default parameters

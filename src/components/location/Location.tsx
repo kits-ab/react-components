@@ -5,7 +5,7 @@ import { colors, fonts } from "../../styles/constants"
 import * as types from "../../types"
 import { cssVar } from "../../utils/cssUtils"
 import "mapbox-gl/dist/mapbox-gl.css"
-import Map, { Popup } from 'react-map-gl';
+import Map, { Popup } from "react-map-gl"
 
 const StyledDiv = styled.div`
   background-color: ${colors.background2};
@@ -26,7 +26,6 @@ export type LocationProps = types.BaseProps & {
   /** The sub title of the location. */
   subtitle?: string
 }
-
 
 const StyledPopup = styled(Popup)`
   cursor: pointer;
@@ -73,22 +72,35 @@ export const Location = ({ coordinates, title, subtitle, ...restProps }: Locatio
   return (
     <StyledDiv {...restProps}>
       <Map
-      mapboxAccessToken="pk.eyJ1Ijoia29raXRvdHNvcyIsImEiOiJjaXk0d3R5bjEwMDJsMnlscWhtOGlydDl3In0.Xfr-Sr_D4JJVK2kVNsm4vA"
-      initialViewState={{
-        longitude: reversedCoordinates[0],
-        latitude: reversedCoordinates[1],
-        zoom: 14
-      }}
-      style={{ height: "240px", width: "100%" }}
-      mapStyle={`mapbox://styles/mapbox/${cssVar("--map") || colors.map}`}
+        mapboxAccessToken="pk.eyJ1Ijoia29raXRvdHNvcyIsImEiOiJjaXk0d3R5bjEwMDJsMnlscWhtOGlydDl3In0.Xfr-Sr_D4JJVK2kVNsm4vA"
+        initialViewState={{
+          longitude: reversedCoordinates[0],
+          latitude: reversedCoordinates[1],
+          zoom: 14
+        }}
+        style={{ height: "240px", width: "100%" }}
+        mapStyle={`mapbox://styles/mapbox/${cssVar("--map") || colors.map}`}
+        attributionControl={false}
+        doubleClickZoom={false}
+        dragPan={false}
+        dragRotate={false}
+        keyboard={false}
+        scrollZoom={false}
+        touchPitch={false}
+        touchZoomRotate={false}
       >
-       {title && (<Popup longitude={reversedCoordinates[0]} latitude={reversedCoordinates[1]}
-        anchor="bottom"
-        closeButton={false}
-        >
-        <b>{title}</b>
-        {subtitle && <i>{subtitle}</i>}
-        </Popup>)}
+        {title && (
+          <StyledPopup
+            longitude={reversedCoordinates[0]}
+            latitude={reversedCoordinates[1]}
+            anchor="bottom"
+            closeButton={false}
+            closeOnClick={false}
+          >
+            <b>{title}</b>
+            {subtitle && <i>{subtitle}</i>}
+          </StyledPopup>
+        )}
       </Map>
     </StyledDiv>
   )

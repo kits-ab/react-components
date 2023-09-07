@@ -40,7 +40,7 @@ const isPresentationType = (timeslotType: types.TimeslotType | undefined): boole
   )
 }
 
-const StyledVertical = styled(Vertical)`
+const StyledVertical = styled(Vertical)<P>`
   background-color: ${(props) =>
     isPresentationType(props.type) ? colors.background2 : colors.background5};
   background-color: ${(props) =>

@@ -1,16 +1,18 @@
+
 module.exports = {
   stories: ["../src/**/*.stories.@(js|jsx|mdx|ts|tsx)", "../styleguide/**/*.stories.mdx"],
 
   addons: [
     "@storybook/addon-links",
-    "@storybook/addon-essentials"  ],
+    "@storybook/addon-essentials",
+      ],
 
   features: {
     postcss: false,
   },
 
   typescript: {
-    reactDocgen: 'react-docgen-typescript-plugin'
+    reactDocgen: 'react-docgen-typescript',
   },
 
   framework: {

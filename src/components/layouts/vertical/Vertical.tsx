@@ -6,17 +6,17 @@ import * as types from "../../../types"
 
 type P = Partial<VerticalProps>
 
-const StyledDiv = styled.div`
-  align-items: ${(props: P) => props.alignHorizontal || ""};
+const StyledDiv = styled.div<P>`
+  align-items: ${(props) => props.alignHorizontal || ""};
   display: flex;
   flex-direction: column;
-  justify-content: ${(props: P) => props.alignVertical || ""};
+  justify-content: ${(props) => props.alignVertical || ""};
 
   & > * {
-    flex: ${(props: P) => (props.distribute ? "1 1 auto" : "")};
+    flex: ${(props) => (props.distribute ? "1 1 auto" : "")};
 
     &:not(:first-child) {
-      margin-top: ${(props: P) => (props.spacing ? `${props.spacing}px` : "0")};
+      margin-top: ${(props) => (props.spacing ? `${props.spacing}px` : "0")};
     }
   }
 `
