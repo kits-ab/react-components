@@ -1,7 +1,7 @@
 import React from "react"
 
-import * as types from "../../types"
 import { Footer, FooterProps } from "./Footer"
+import * as types from "../../types"
 
 export default {
   title: "Components/Footer",

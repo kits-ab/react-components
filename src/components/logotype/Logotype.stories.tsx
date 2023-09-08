@@ -1,8 +1,8 @@
 import { Story } from "@storybook/react"
 import React from "react"
 
-import { colors } from "../.."
 import { Logotype, LogotypeProps } from "./Logotype"
+import { colors } from "../.."
 
 export default {
   title: "Components/Logotype",

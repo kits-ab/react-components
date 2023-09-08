@@ -1,8 +1,8 @@
 import { Story } from "@storybook/react"
 import React from "react"
 
-import { DevelopmentIcon, spacing, ProjectIcon, SecurityIcon, IntegrationIcon } from "../.."
 import { Offer, OfferProps, OfferType } from "./Offer"
+import { DevelopmentIcon, spacing, ProjectIcon, SecurityIcon, IntegrationIcon } from "../.."
 
 export default {
   title: "Components/Offer",

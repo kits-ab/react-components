@@ -1,5 +1,5 @@
 import React from "react"
-import styled, { css } from "styled-components"
+import { styled, css } from "styled-components"
 
 import { NewWindowIcon } from "../../icons"
 import { colors, fonts, spacing, width } from "../../styles/constants"

@@ -1,9 +1,9 @@
 import { Story } from "@storybook/react"
 import React, { useState } from "react"
 
-import { Text } from "../.."
 import { Persona } from "./Persona"
 import { Personas, PersonasProps } from "./Personas"
+import { Text } from "../.."
 
 export default {
   title: "Components/Personas",

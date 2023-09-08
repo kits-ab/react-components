@@ -1,11 +1,12 @@
 import React from "react"
-import styled from "styled-components"
+import { Map, Popup } from "react-map-gl"
+import { styled } from "styled-components"
 
 import { colors, fonts } from "../../styles/constants"
 import * as types from "../../types"
 import { cssVar } from "../../utils/cssUtils"
+
 import "mapbox-gl/dist/mapbox-gl.css"
-import Map, { Popup } from "react-map-gl"
 
 const StyledDiv = styled.div`
   background-color: ${colors.background2};
@@ -64,10 +65,6 @@ const StyledPopup = styled(Popup)`
  */
 export const Location = ({ coordinates, title, subtitle, ...restProps }: LocationProps) => {
   const reversedCoordinates = [...coordinates].reverse()
-
-  const openMap = () => {
-    window.location.href = `http://maps.apple.com/?q=${coordinates}`
-  }
 
   return (
     <StyledDiv {...restProps}>

@@ -2,7 +2,7 @@ import { format } from "date-fns"
 import { sv } from "date-fns/locale"
 import { lighten } from "polished"
 import React from "react"
-import styled from "styled-components"
+import { styled } from "styled-components"
 
 import {
   AirplaneIcon,

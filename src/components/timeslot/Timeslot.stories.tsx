@@ -1,7 +1,7 @@
 import React from "react"
 
-import { types, Vertical } from "../.."
 import { Timeslot, TimeslotProps } from "./Timeslot"
+import { types, Vertical } from "../.."
 
 export default {
   title: "Components/Timeslot",

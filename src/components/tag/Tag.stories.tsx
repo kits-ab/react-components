@@ -1,7 +1,7 @@
 import React from "react"
 
-import { Horizontal } from "../.."
 import { Tag, TagProps } from "./Tag"
+import { Horizontal } from "../.."
 
 export default {
   title: "Components/Tag",

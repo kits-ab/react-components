@@ -1,5 +1,5 @@
 import React from "react"
-import styled from "styled-components"
+import { styled } from "styled-components"
 
 import { spacing, width } from "../../../styles/constants"
 import { Vertical, VerticalProps } from "../vertical/Vertical"

@@ -1,7 +1,7 @@
 import React from "react"
 
-import { colors, Text } from "../.."
 import { Link, LinkProps, LinkContext } from "./Link"
+import { colors, Text } from "../.."
 
 export default {
   title: "Components/Link",

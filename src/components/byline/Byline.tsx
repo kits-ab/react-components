@@ -1,7 +1,7 @@
 import { format } from "date-fns"
 import { sv } from "date-fns/locale"
 import React from "react"
-import styled from "styled-components"
+import { styled } from "styled-components"
 
 import { colors, fonts, spacing } from "../../styles/constants"
 import * as types from "../../types"
