@@ -1,4 +1,4 @@
-import { Story } from "@storybook/react"
+import { StoryFn } from "@storybook/react"
 import React from "react"
 
 import { Avatar, AvatarProps } from "./Avatar"
@@ -8,7 +8,7 @@ export default {
   component: Avatar
 }
 
-const Template: Story<AvatarProps> = (args) => <Avatar {...args} />
+const Template: StoryFn<AvatarProps> = (args) => <Avatar {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

@@ -40,7 +40,9 @@ const isPresentationType = (timeslotType: types.TimeslotType | undefined): boole
   )
 }
 
-const StyledVertical = styled(Vertical)<P>`
+const StyledVertical = styled(Vertical).withConfig({
+  shouldForwardProp: (prop) => !["connectToPrevious"].includes(prop)
+})<P>`
   background-color: ${(props) =>
     isPresentationType(props.type) ? colors.background2 : colors.background5};
   background-color: ${(props) =>

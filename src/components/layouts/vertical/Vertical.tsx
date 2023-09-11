@@ -6,7 +6,9 @@ import * as types from "../../../types"
 
 type P = Partial<VerticalProps>
 
-const StyledDiv = styled.div<P>`
+const StyledDiv = styled("div").withConfig({
+  shouldForwardProp: (prop) => !["alignHorizontal", "alignVertical", "distribute"].includes(prop)
+})<P>`
   align-items: ${(props) => props.alignHorizontal || ""};
   display: flex;
   flex-direction: column;
@@ -62,7 +64,13 @@ export type VerticalProps = types.BaseProps & {
  * full height evenly between the components or you can take control yourself by
  * setting the style property `flex` on the components (see the examples).
  */
-export const Vertical = ({ children, separator, tagName = "div", ...restProps }: VerticalProps) => {
+export const Vertical = ({
+  children,
+  separator,
+  tagName = "div",
+  distribute,
+  ...restProps
+}: VerticalProps) => {
   let childIndex = -1
   return (
     <StyledDiv {...restProps} as={tagName as any}>

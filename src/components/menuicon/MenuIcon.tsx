@@ -29,7 +29,9 @@ const wobbleIn = keyframes`
 `
 
 type P = Partial<MenuIconProps>
-const StyledDiv = styled.div<P>`
+const StyledDiv = styled("div").withConfig({
+  shouldForwardProp: (prop) => !["floatingPosition"].includes(prop)
+})<P>`
   border-radius: 50%;
   cursor: pointer;
   display: inline-block;

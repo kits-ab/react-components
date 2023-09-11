@@ -35,7 +35,9 @@ const StyledDiv = styled.div`
   }
 `
 
-const StyledImage = styled.div<ImageProps>`
+const StyledImage = styled("div").withConfig({
+  shouldForwardProp: (prop) => !["translateY", "zIndex"].includes(prop)
+})<ImageProps>`
   border: 5px solid ${colors.border};
   border: 5px solid var(--border);
   box-shadow: 0 1px 3px 0 ${colors.lineShadow};

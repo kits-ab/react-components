@@ -23,7 +23,9 @@ const getLeftPositions = (nrOfPersonas: number) => {
   return positions
 }
 
-const StyledWrapper = styled.div<P>`
+const StyledWrapper = styled("div").withConfig({
+  shouldForwardProp: (prop) => !["nrOfPersonas", "selectedIndex"].includes(prop)
+})<P>`
   figure {
     margin: 0;
   }

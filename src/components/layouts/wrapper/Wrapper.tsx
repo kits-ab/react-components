@@ -4,7 +4,9 @@ import { styled } from "styled-components"
 import { spacing, width } from "../../../styles/constants"
 import { Vertical, VerticalProps } from "../vertical/Vertical"
 
-const StyledVertical = styled(Vertical)<WrapperProps>`
+const StyledVertical = styled(Vertical).withConfig({
+  shouldForwardProp: (prop) => !["maxWidth"].includes(prop)
+})<WrapperProps>`
   margin-left: auto;
   margin-right: auto;
   max-width: ${({ maxWidth }) => maxWidth}px;

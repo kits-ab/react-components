@@ -1,4 +1,4 @@
-import { Story } from "@storybook/react"
+import { StoryFn } from "@storybook/react"
 import React from "react"
 
 import { SubHeading, SubHeadingProps } from "./SubHeading"
@@ -8,7 +8,7 @@ export default {
   component: SubHeading
 }
 
-const Template: Story<SubHeadingProps> = (args) => <SubHeading {...args} />
+const Template: StoryFn<SubHeadingProps> = (args) => <SubHeading {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

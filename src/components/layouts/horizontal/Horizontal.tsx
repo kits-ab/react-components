@@ -6,7 +6,10 @@ import * as types from "../../../types"
 
 type P = Partial<HorizontalProps>
 
-const StyledDiv = styled.div<P>`
+const StyledDiv = styled("div").withConfig({
+  shouldForwardProp: (prop) =>
+    !["alignVertical", "wrapRows", "alignHorizontal", "distribute", "breakpoint"].includes(prop)
+})<P>`
   align-items: ${(props) => props.alignVertical || ""};
   display: flex;
   flex-flow: ${(props) => (props.wrapRows ? "wrap" : "")};

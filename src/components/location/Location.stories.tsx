@@ -1,4 +1,4 @@
-import { Story } from "@storybook/react"
+import { StoryFn } from "@storybook/react"
 import React from "react"
 
 import { Location, LocationProps } from "./Location"
@@ -8,7 +8,7 @@ export default {
   component: Location
 }
 
-const Template: Story<LocationProps> = (args) => <Location {...args} />
+const Template: StoryFn<LocationProps> = (args) => <Location {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

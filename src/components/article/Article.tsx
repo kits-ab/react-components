@@ -1,5 +1,5 @@
 import React from "react"
-import { styled } from "styled-components"
+import { StyleSheetManager, styled } from "styled-components"
 
 import { spacing, width } from "../../styles/constants"
 import * as types from "../../types"

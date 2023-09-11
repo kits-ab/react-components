@@ -1,4 +1,4 @@
-import { Story } from "@storybook/react"
+import { StoryFn } from "@storybook/react"
 import React, { useState } from "react"
 
 import { MenuIcon, MenuIconProps } from "./MenuIcon"
@@ -8,7 +8,7 @@ export default {
   component: MenuIcon
 }
 
-const Template: Story<MenuIconProps> = (args) => {
+const Template: StoryFn<MenuIconProps> = (args) => {
   const [isOpen, setIsOpen] = useState(args.isOpen)
   return (
     <div style={{ height: 60 }}>

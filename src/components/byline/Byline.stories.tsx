@@ -1,4 +1,4 @@
-import { Story } from "@storybook/react"
+import { StoryFn } from "@storybook/react"
 import React from "react"
 
 import { Byline, BylineProps } from "./Byline"
@@ -8,7 +8,7 @@ export default {
   component: Byline
 }
 
-const Template: Story<BylineProps> = (args) => <Byline {...args} />
+const Template: StoryFn<BylineProps> = (args) => <Byline {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

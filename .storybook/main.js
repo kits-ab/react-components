@@ -8,7 +8,6 @@ module.exports = {
       ],
 
   features: {
-    postcss: false,
   },
 
   typescript: {

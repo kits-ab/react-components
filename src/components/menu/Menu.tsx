@@ -14,7 +14,9 @@ type P = Partial<
   }
 >
 
-const StyledNav = styled.nav<P>`
+const StyledNav = styled("nav").withConfig({
+  shouldForwardProp: (prop) => !["breakpoint", "isFloating", "isOpen"].includes(prop)
+})<P>`
   display: inline-block;
   font-family: ${fonts.light};
   font-size: 16px;
