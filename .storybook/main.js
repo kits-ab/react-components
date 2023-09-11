@@ -7,6 +7,8 @@ module.exports = {
     "@storybook/addon-essentials",
       ],
 
+  staticDirs: ['../styleguide/assets'],
+
   features: {
   },
 

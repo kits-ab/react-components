@@ -15,7 +15,7 @@
     "build:lib": "npm run build:main && npm run build:module && npm run build:declarations",
     "build:main": "webpack",
     "build:module": "babel src --no-babelrc --config-file './.babelrc.module' --out-dir dist --extensions '.ts,.tsx' --source-maps inline --ignore 'src/**/*.test.ts','src/**/*.stories.tsx'",
-    "build:styleguide": "storybook build --docs -s styleguide/ -o dist-styleguide",
+    "build:styleguide": "storybook build --docs -o dist-styleguide",
     "clean": "rimraf dist dist-styleguide package *.tgz",
     "format": "prettier 'src/**/*.{js,json,jsx,md,ts,tsx}' --write",
     "icons": "svgr -d src/icons resources/icons --template resources/SvgrTemplate.js --index-template resources/SvgrTemplateIndex.js --ext tsx --typescript --icon",
@@ -25,7 +25,7 @@
     "package": "npm run clean && npm run build && npm pack",
     "precommit": "lint-staged",
     "prepush": "npm run test",
-    "start": "storybook dev --docs -p 6006 -s ../styleguide/assets",
+    "start": "storybook dev --docs -p 6006 ",
     "test": "npm run lint && tsc --noEmit"
   },
   "devDependencies": {
