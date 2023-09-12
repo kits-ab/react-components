@@ -103,7 +103,9 @@ const getFillColor = (type: OfferType) => {
 
 type P = Partial<OfferProps>
 
-const StyledDiv = styled.div<P>`
+const StyledDiv = styled("div").withConfig({
+  shouldForwardProp: (prop) => !["zIndex"].includes(prop)
+})<P>`
   ${(props: P) => getBackgroundColor(props.type!)};
   color: white;
   display: block;

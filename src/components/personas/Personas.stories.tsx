@@ -7,7 +7,7 @@ import { Text } from "../.."
 
 export default {
   title: "Components/Personas",
-  component: Personas,
+  component: Personas
 }
 
 const Template: StoryFn<PersonasProps> = (args) => {

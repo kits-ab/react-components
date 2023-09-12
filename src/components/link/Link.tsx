@@ -120,7 +120,15 @@ export const Link = (props: LinkProps) => {
     }
   }
 
-  const { activeClassName = "is-active", children, className, style, to, getProps,...restProps } = props
+  const {
+    activeClassName = "is-active",
+    children,
+    className,
+    style,
+    to,
+    getProps,
+    ...restProps
+  } = props
 
   return (
     <LinkContext.Consumer>
@@ -143,7 +151,13 @@ export const Link = (props: LinkProps) => {
           )
         } else if (LinkComponent) {
           return (
-            <LinkComponent className={className} to={to} style={style} getProps={getProps} {...restProps}>
+            <LinkComponent
+              className={className}
+              to={to}
+              style={style}
+              getProps={getProps}
+              {...restProps}
+            >
               {children}
             </LinkComponent>
           )
