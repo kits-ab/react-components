@@ -17,7 +17,7 @@ module.exports = {
     "polished",
     "react",
     "react-dom",
-    "react-mapbox-gl",
+    "react-map-gl",
     "react-transition-group",
     "styled-components"
   ],

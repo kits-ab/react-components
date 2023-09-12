@@ -1,5 +1,5 @@
 import React from "react"
-import styled, { css } from "styled-components"
+import { styled, css } from "styled-components"
 
 import { colors, easings, spacing, width } from "../../styles/constants"
 import * as types from "../../types"
@@ -23,7 +23,9 @@ const getLeftPositions = (nrOfPersonas: number) => {
   return positions
 }
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled("div").withConfig({
+  shouldForwardProp: (prop) => !["nrOfPersonas", "selectedIndex"].includes(prop)
+})<P>`
   figure {
     margin: 0;
   }

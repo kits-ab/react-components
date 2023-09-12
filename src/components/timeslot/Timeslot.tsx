@@ -2,7 +2,7 @@ import { format } from "date-fns"
 import { sv } from "date-fns/locale"
 import { lighten } from "polished"
 import React from "react"
-import styled from "styled-components"
+import { styled } from "styled-components"
 
 import {
   AirplaneIcon,
@@ -34,11 +34,15 @@ import { Text } from "../text/Text"
 type P = Partial<TimeslotProps>
 
 const isPresentationType = (timeslotType: types.TimeslotType | undefined): boolean => {
-  return timeslotType === types.TimeslotType.Presentation ||
+  return (
+    timeslotType === types.TimeslotType.Presentation ||
     timeslotType === types.TimeslotType.ExternalPresentation
+  )
 }
 
-const StyledVertical = styled(Vertical)`
+const StyledVertical = styled(Vertical).withConfig({
+  shouldForwardProp: (prop) => !["connectToPrevious"].includes(prop)
+})<P>`
   background-color: ${(props) =>
     isPresentationType(props.type) ? colors.background2 : colors.background5};
   background-color: ${(props) =>
@@ -298,9 +302,11 @@ export const Timeslot = ({
 
   const renderPresentationHeader = () => {
     const tempPresenters: types.Person[] | types.ExternalPresenter[] | undefined =
-      presenters && presenters.length > 0 ? presenters :
-      externalPresenter !== undefined && externalPresenter !== null ? [externalPresenter] :
-      undefined
+      presenters && presenters.length > 0
+        ? presenters
+        : externalPresenter !== undefined && externalPresenter !== null
+        ? [externalPresenter]
+        : undefined
 
     return (
       <Horizontal breakpoint={width.mobileMenu} className="Timeslot-presenter">
@@ -323,9 +329,7 @@ export const Timeslot = ({
         spacing={spacing.medium}
         tagName="header"
       >
-        {isPresentationType(type)
-          ? renderPresentationHeader()
-          : renderInfoHeader(type)}
+        {isPresentationType(type) ? renderPresentationHeader() : renderInfoHeader(type)}
         <Vertical className="Timeslot-times">
           <div className="Timeslot-start">{format(startTime, "HH:mm", { locale: sv })}</div>
           {showEndTime && (

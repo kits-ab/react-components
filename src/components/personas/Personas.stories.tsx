@@ -1,17 +1,16 @@
-import { Story } from "@storybook/react"
+import { StoryFn } from "@storybook/react"
 import React, { useState } from "react"
 
-import { Text } from "../.."
 import { Persona } from "./Persona"
 import { Personas, PersonasProps } from "./Personas"
+import { Text } from "../.."
 
 export default {
   title: "Components/Personas",
-  component: Personas,
-  subcomponents: { Persona }
+  component: Personas
 }
 
-const Template: Story<PersonasProps> = (args) => {
+const Template: StoryFn<PersonasProps> = (args) => {
   const [active, setActive] = useState(1)
   return (
     <Personas {...args}>

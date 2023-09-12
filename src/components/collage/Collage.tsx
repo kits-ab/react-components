@@ -1,5 +1,5 @@
 import React from "react"
-import styled from "styled-components"
+import { styled } from "styled-components"
 
 import { colors } from "../../styles/constants"
 import * as types from "../../types"
@@ -35,7 +35,9 @@ const StyledDiv = styled.div`
   }
 `
 
-const StyledImage = styled.div`
+const StyledImage = styled("div").withConfig({
+  shouldForwardProp: (prop) => !["translateY", "zIndex"].includes(prop)
+})<ImageProps>`
   border: 5px solid ${colors.border};
   border: 5px solid var(--border);
   box-shadow: 0 1px 3px 0 ${colors.lineShadow};
@@ -43,9 +45,9 @@ const StyledImage = styled.div`
   display: inline-block;
   margin: -10px -50px;
   position: relative;
-  transform: ${({ rotate, scale, translateY }: ImageProps) =>
+  transform: ${({ rotate, scale, translateY }) =>
     `rotate(${rotate}deg) scale(${scale}) translateY(${translateY}px)`};
-  z-index: ${({ zIndex }: ImageProps) => zIndex};
+  z-index: ${({ zIndex }) => zIndex};
 
   img {
     display: block;

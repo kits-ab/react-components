@@ -1,7 +1,7 @@
 import React from "react"
 
-import * as types from "../../types"
 import { Contact, ContactProps } from "./Contact"
+import * as types from "../../types"
 
 export default {
   title: "Components/Contact",

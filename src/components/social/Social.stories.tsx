@@ -1,7 +1,7 @@
 import React from "react"
 
-import * as types from "../../types"
 import { Social, SocialProps } from "./Social"
+import * as types from "../../types"
 
 export default {
   title: "Components/Social",

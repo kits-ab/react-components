@@ -1,13 +1,15 @@
 import React from "react"
-import styled from "styled-components"
+import { styled } from "styled-components"
 
 import { spacing, width } from "../../../styles/constants"
 import { Vertical, VerticalProps } from "../vertical/Vertical"
 
-const StyledVertical = styled(Vertical)`
+const StyledVertical = styled(Vertical).withConfig({
+  shouldForwardProp: (prop) => !["maxWidth"].includes(prop)
+})<WrapperProps>`
   margin-left: auto;
   margin-right: auto;
-  max-width: ${({ maxWidth }: WrapperProps) => maxWidth}px;
+  max-width: ${({ maxWidth }) => maxWidth}px;
   padding-left: ${spacing.large}px;
   padding-left: calc(${spacing.large}px + env(safe-area-inset-left));
   padding-right: ${spacing.large}px;

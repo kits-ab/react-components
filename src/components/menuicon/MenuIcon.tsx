@@ -1,5 +1,5 @@
 import React from "react"
-import styled, { keyframes } from "styled-components"
+import { styled, keyframes } from "styled-components"
 
 import { colors } from "../../styles/constants"
 import * as types from "../../types"
@@ -29,14 +29,19 @@ const wobbleIn = keyframes`
 `
 
 type P = Partial<MenuIconProps>
-const StyledDiv = styled.div`
+const StyledDiv = styled("div").withConfig({
+  shouldForwardProp: (prop) => !["floatingPosition"].includes(prop)
+})<P>`
   border-radius: 50%;
   cursor: pointer;
   display: inline-block;
   height: 40px;
   position: relative;
   transform: rotate(0deg);
-  transition: background-color 0.2s ease-in-out, top 0.5s ease-in-out, transform 0.5s ease-in-out;
+  transition:
+    background-color 0.2s ease-in-out,
+    top 0.5s ease-in-out,
+    transform 0.5s ease-in-out;
   z-index: 1000;
   width: 40px;
 

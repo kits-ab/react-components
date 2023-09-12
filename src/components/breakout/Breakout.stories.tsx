@@ -1,7 +1,7 @@
 import React from "react"
 
-import { BreakoutProps, colors, spacing, Wrapper } from "../.."
 import { Breakout } from "./Breakout"
+import { BreakoutProps, colors, spacing, Wrapper } from "../.."
 
 export default {
   title: "Components/Breakout",

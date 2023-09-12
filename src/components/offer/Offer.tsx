@@ -1,5 +1,5 @@
 import React from "react"
-import styled, { css } from "styled-components"
+import { styled, css } from "styled-components"
 
 import { colors, spacing } from "../../styles/constants"
 import * as types from "../../types"
@@ -103,7 +103,9 @@ const getFillColor = (type: OfferType) => {
 
 type P = Partial<OfferProps>
 
-const StyledDiv = styled.div`
+const StyledDiv = styled("div").withConfig({
+  shouldForwardProp: (prop) => !["zIndex"].includes(prop)
+})<P>`
   ${(props: P) => getBackgroundColor(props.type!)};
   color: white;
   display: block;
@@ -115,7 +117,7 @@ const StyledDiv = styled.div`
   ${(props: P) => getClipPath(props.type!)};
 `
 
-const StyledIcon = styled.div`
+const StyledIcon = styled.div<P>`
   align-items: center;
   background-color: rgba(255 255 255 / 90%);
   border-radius: 50%;

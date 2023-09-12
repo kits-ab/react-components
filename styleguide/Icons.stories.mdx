@@ -1,4 +1,4 @@
-import { ArgsTable, Meta } from "@storybook/addon-docs/blocks";
+import { ArgTypes, Meta } from "@storybook/blocks";
 import { Horizontal, types } from "../src"
 import * as icons from "../src/icons"
 
@@ -8,7 +8,8 @@ import * as icons from "../src/icons"
 
 All icons that can be used.
 
-<style>{`
+<style>
+  {`
   .container {
     margin: 0 -10px;
   }
@@ -56,11 +57,12 @@ All icons that can be used.
     padding: 20px;
     vertical-align: middle;
   }
-`}</style>
+  `}
+</style>
 
 <Horizontal wrapRows={true} className="container">
-  {Object.keys(icons).map(icon => (
-    <div className="icon">
+  {Object.keys(icons).map((icon, index) => (
+    <div className="icon" key={index}>
       <Horizontal alignVertical={types.Alignment.Center}>
         <div className="icon-icon">
           {icons[icon]({ fill: "#8BA17D", height: 32, width: 32 })}
@@ -71,4 +73,4 @@ All icons that can be used.
   ))}
 </Horizontal>
 
-<ArgsTable of={icons.AirplaneIcon} />
+<ArgTypes of={icons.AirplaneIcon} />

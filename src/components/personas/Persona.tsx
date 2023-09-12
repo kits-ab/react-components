@@ -23,10 +23,17 @@ export type PersonaProps = types.BaseProps & {
  * Persona is used to show a persona within a personas listing. All formatting is done as part of
  * the `Personas` component so it doesn't make sense to use this component by itself.
  */
-export const Persona = ({ children, iconSrc, iconSrcSet, name, ...restProps }: PersonaProps) => {
+export const Persona = ({
+  children,
+  iconSrc,
+  iconSrcSet,
+  name,
+  isActive,
+  ...restProps
+}: PersonaProps) => {
   const getClassNames = () => {
     const classNames = ["Persona"]
-    if (restProps.isActive) {
+    if (isActive) {
       classNames.push("is-active")
     }
     if (restProps.className) {

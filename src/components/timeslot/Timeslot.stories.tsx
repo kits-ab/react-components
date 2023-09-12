@@ -1,7 +1,7 @@
 import React from "react"
 
-import { types, Vertical } from "../.."
 import { Timeslot, TimeslotProps } from "./Timeslot"
+import { types, Vertical } from "../.."
 
 export default {
   title: "Components/Timeslot",
@@ -116,7 +116,7 @@ export const Default = (props: TimeslotProps) => (
       </p>
     </Timeslot>
     <Timeslot
-      externalPresenter={{name: "External Presenter", href: "#", avatarSrc: "/avatar.jpg"}}
+      externalPresenter={{ name: "External Presenter", href: "#", avatarSrc: "/avatar.jpg" }}
       heading="External Lorem Ipsum"
       type={types.TimeslotType.ExternalPresentation}
       startTime={new Date("2018-01-01T13:15:00")}

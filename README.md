@@ -23,7 +23,7 @@ For debugging purposes you should install [React Developer Tools](https://github
 
 ### Preparations
 
-- Install Node 16 – <https://nodejs.org>
+- Install Node 18 – <https://nodejs.org>
 - Checkout the code and fetch all dependencies
   ```
   $ git clone git@github.com:kits-ab/react-components.git

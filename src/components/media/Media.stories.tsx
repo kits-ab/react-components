@@ -1,4 +1,4 @@
-import { Story } from "@storybook/react"
+import { StoryFn } from "@storybook/react"
 import React from "react"
 
 import { Media, MediaProps } from "./Media"
@@ -8,7 +8,7 @@ export default {
   component: Media
 }
 
-const Template: Story<MediaProps> = (args) => (
+const Template: StoryFn<MediaProps> = (args) => (
   <Media {...args}>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut

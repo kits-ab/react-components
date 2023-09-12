@@ -1,5 +1,5 @@
 import React from "react"
-import styled from "styled-components"
+import { styled } from "styled-components"
 
 import { spacing, width } from "../../styles/constants"
 import * as types from "../../types"
@@ -83,7 +83,7 @@ export const Article = ({
           <StyledAvatar person={authors[0]} showFallback={true} />
         )}
         <StyledContentHeading>
-          {href ? <Link to={href}>{heading}</Link> : { heading }}
+          {href ? <Link to={href}>{heading}</Link> : heading}
         </StyledContentHeading>
         <div>
           <StyledByline persons={authors} publishTime={publishTime} />

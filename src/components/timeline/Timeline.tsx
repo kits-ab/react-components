@@ -8,7 +8,7 @@ import {
   subMonths
 } from "date-fns"
 import React from "react"
-import styled from "styled-components"
+import { styled } from "styled-components"
 
 import { LocationIcon } from "../../icons"
 import { colors, fonts } from "../../styles/constants"

@@ -1,44 +1,47 @@
 import React from "react"
-import styled from "styled-components"
+import { styled } from "styled-components"
 
 import { colors } from "../../../styles/constants"
 import * as types from "../../../types"
 
 type P = Partial<HorizontalProps>
 
-const StyledDiv = styled.div`
-  align-items: ${(props: P) => props.alignVertical || ""};
+const StyledDiv = styled("div").withConfig({
+  shouldForwardProp: (prop) =>
+    !["alignVertical", "wrapRows", "alignHorizontal", "distribute", "breakpoint"].includes(prop)
+})<P>`
+  align-items: ${(props) => props.alignVertical || ""};
   display: flex;
-  flex-flow: ${(props: P) => (props.wrapRows ? "wrap" : "")};
+  flex-flow: ${(props) => (props.wrapRows ? "wrap" : "")};
   flex-direction: row;
-  justify-content: ${(props: P) => props.alignHorizontal || ""};
+  justify-content: ${(props) => props.alignHorizontal || ""};
 
   & > * {
-    flex: ${(props: P) => (props.distribute ? "1 1 0%" : "")};
+    flex: ${(props) => (props.distribute ? "1 1 0%" : "")};
 
     &:not(:first-child) {
-      margin-left: ${(props: P) => (props.spacing ? `${props.spacing / 2}px` : "")};
+      margin-left: ${(props) => (props.spacing ? `${props.spacing / 2}px` : "")};
     }
 
     &:not(:last-child) {
-      margin-right: ${(props: P) => (props.spacing ? `${props.spacing / 2}px` : "")};
+      margin-right: ${(props) => (props.spacing ? `${props.spacing / 2}px` : "")};
     }
   }
 
-  @media (max-width: ${(props: P) => props.breakpoint || 0}px) {
-    align-items: ${(props: P) => props.alignHorizontal || ""};
-    flex: ${(props: P) => (props.distribute ? "1 1 auto" : "")};
+  @media (max-width: ${(props) => props.breakpoint || 0}px) {
+    align-items: ${(props) => props.alignHorizontal || ""};
+    flex: ${(props) => (props.distribute ? "1 1 auto" : "")};
     flex-direction: column;
-    justify-content: ${(props: P) => props.alignVertical || ""};
+    justify-content: ${(props) => props.alignVertical || ""};
 
     & > *:not(:first-child) {
       margin-left: 0;
-      margin-top: ${(props: P) => (props.spacing ? `${props.spacing / 2}px` : "")};
+      margin-top: ${(props) => (props.spacing ? `${props.spacing / 2}px` : "")};
     }
 
     & > *:not(:last-child) {
       margin-right: 0;
-      margin-bottom: ${(props: P) => (props.spacing ? `${props.spacing / 2}px` : "")};
+      margin-bottom: ${(props) => (props.spacing ? `${props.spacing / 2}px` : "")};
     }
   }
 `

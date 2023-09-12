@@ -1,7 +1,7 @@
 import React from "react"
 
-import { colors, spacing } from "../../.."
 import { Wrapper, WrapperProps } from "./Wrapper"
+import { colors, spacing } from "../../.."
 
 export default {
   title: "Layouts/Wrapper",

@@ -1,4 +1,4 @@
-import { Story } from "@storybook/react"
+import { StoryFn } from "@storybook/react"
 import React from "react"
 
 import { Article, ArticleProps } from "./Article"
@@ -8,7 +8,7 @@ export default {
   component: Article
 }
 
-const Template: Story<ArticleProps> = (args) => (
+const Template: StoryFn<ArticleProps> = (args) => (
   <Article {...args}>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut

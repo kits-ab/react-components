@@ -1,7 +1,7 @@
 import React from "react"
 
-import { colors, spacing, types } from "../../.."
 import { Vertical, VerticalProps } from "./Vertical"
+import { colors, spacing, types } from "../../.."
 
 export default {
   title: "Layouts/Vertical",

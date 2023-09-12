@@ -1,8 +1,8 @@
-import { Story } from "@storybook/react"
+import { StoryFn } from "@storybook/react"
 import React from "react"
 
-import { colors } from "../.."
 import { Logotype, LogotypeProps } from "./Logotype"
+import { colors } from "../.."
 
 export default {
   title: "Components/Logotype",
@@ -12,7 +12,7 @@ export default {
   }
 }
 
-const Template: Story<LogotypeProps> = (args) => <Logotype {...args} />
+const Template: StoryFn<LogotypeProps> = (args) => <Logotype {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

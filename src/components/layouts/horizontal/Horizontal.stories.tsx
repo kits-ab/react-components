@@ -1,7 +1,7 @@
 import React from "react"
 
-import { colors, spacing, types, width } from "../../.."
 import { Horizontal, HorizontalProps } from "./Horizontal"
+import { colors, spacing, types, width } from "../../.."
 
 export default {
   title: "Layouts/Horizontal",

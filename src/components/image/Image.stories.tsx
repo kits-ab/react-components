@@ -1,4 +1,4 @@
-import { Story } from "@storybook/react"
+import { StoryFn } from "@storybook/react"
 import React from "react"
 
 import { Image, ImageProps } from "./Image"
@@ -8,7 +8,7 @@ export default {
   component: Image
 }
 
-const Template: Story<ImageProps> = (args) => <Image {...args} />
+const Template: StoryFn<ImageProps> = (args) => <Image {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

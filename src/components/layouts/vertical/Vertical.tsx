@@ -1,22 +1,24 @@
 import React from "react"
-import styled from "styled-components"
+import { styled } from "styled-components"
 
 import { colors } from "../../../styles/constants"
 import * as types from "../../../types"
 
 type P = Partial<VerticalProps>
 
-const StyledDiv = styled.div`
-  align-items: ${(props: P) => props.alignHorizontal || ""};
+const StyledDiv = styled("div").withConfig({
+  shouldForwardProp: (prop) => !["alignHorizontal", "alignVertical", "distribute"].includes(prop)
+})<P>`
+  align-items: ${(props) => props.alignHorizontal || ""};
   display: flex;
   flex-direction: column;
-  justify-content: ${(props: P) => props.alignVertical || ""};
+  justify-content: ${(props) => props.alignVertical || ""};
 
   & > * {
-    flex: ${(props: P) => (props.distribute ? "1 1 auto" : "")};
+    flex: ${(props) => (props.distribute ? "1 1 auto" : "")};
 
     &:not(:first-child) {
-      margin-top: ${(props: P) => (props.spacing ? `${props.spacing}px` : "0")};
+      margin-top: ${(props) => (props.spacing ? `${props.spacing}px` : "0")};
     }
   }
 `
@@ -62,7 +64,13 @@ export type VerticalProps = types.BaseProps & {
  * full height evenly between the components or you can take control yourself by
  * setting the style property `flex` on the components (see the examples).
  */
-export const Vertical = ({ children, separator, tagName = "div", ...restProps }: VerticalProps) => {
+export const Vertical = ({
+  children,
+  separator,
+  tagName = "div",
+  distribute,
+  ...restProps
+}: VerticalProps) => {
   let childIndex = -1
   return (
     <StyledDiv {...restProps} as={tagName as any}>
