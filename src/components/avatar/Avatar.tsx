@@ -8,8 +8,8 @@ type P = Partial<AvatarProps>
 
 const StyledImg = styled.img<P>`
   border-radius: 50%;
-  height: ${(props) => props.width}px;
-  width: ${(props) => props.width}px;
+  height: ${(props: P) => props.width}px;
+  width: ${(props: P) => props.width}px;
 `
 
 const StyledFigure = styled.figure<P>`
