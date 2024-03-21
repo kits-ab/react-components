@@ -289,7 +289,7 @@ export const Timeslot = ({
 
   const renderInfoHeader = (type?: types.TimeslotType) => {
     return (
-      <Horizontal className="Timeslot-info" spacing={spacing.medium}>
+      <Horizontal breakpoint={width.mobileMenu} className="Timeslot-info" spacing={spacing.medium}>
         <div>{getIcon(type)}</div>
         <ContentHeading className="Timeslot-heading">
           {href ? (
