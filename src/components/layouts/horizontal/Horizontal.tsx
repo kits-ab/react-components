@@ -44,6 +44,23 @@ const StyledDiv = styled("div").withConfig({
       margin-bottom: ${(props) => (props.spacing ? `${props.spacing / 2}px` : "")};
     }
   }
+
+  @container (max-width: ${(props) => props.breakpoint || 0}px) {
+    align-items: ${(props) => props.alignHorizontal || ""};
+    flex: ${(props) => (props.distribute ? "1 1 auto" : "")};
+    flex-direction: column;
+    justify-content: ${(props) => props.alignVertical || ""};
+
+    & > *:not(:first-child) {
+      margin-left: 0;
+      margin-top: ${(props) => (props.spacing ? `${props.spacing / 2}px` : "")};
+    }
+
+    & > *:not(:last-child) {
+      margin-right: 0;
+      margin-bottom: ${(props) => (props.spacing ? `${props.spacing / 2}px` : "")};
+    }
+  }
 `
 
 const StyledSeparator = styled.div`

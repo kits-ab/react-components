@@ -125,6 +125,10 @@ const StyledVertical = styled(Vertical).withConfig({
     }
   }
 
+  .Timeslot-header {
+    container-type: inline-size;
+  }
+
   .Timeslot-presenter {
     flex: 1 1 0%;
 
