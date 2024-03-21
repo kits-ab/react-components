@@ -39,7 +39,7 @@ export const colorsDark = {
   syntaxString: "#7ac4bb",
   syntaxTag: "#569CD6",
   syntaxVariable: "#666666"
-}
+} as const
 
 export const colors = {
   primary: "#8BA17D",
@@ -77,7 +77,7 @@ export const colors = {
   syntaxString: darken(0.1, "#5E8686"),
   syntaxTag: "#7E5869",
   syntaxVariable: "#999999"
-}
+} as const
 
 // tslint:disable
 export const GlobalStyles = createGlobalStyle`
@@ -161,13 +161,13 @@ export const GlobalStyles = createGlobalStyle`
 
 export const easings = {
   easeOut: "cubic-bezier(0, 0, 0.7, 1)"
-}
+} as const
 
 export const fonts = {
   light:
     '"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", sans-serif',
   thin: '"HelveticaNeue-Thin", "Helvetica Neue Thin", "Helvetica Neue", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", sans-serif'
-}
+} as const
 
 export const spacing = {
   mini: 5,
@@ -175,7 +175,7 @@ export const spacing = {
   medium: 20,
   large: 30,
   huge: 50
-}
+} as const
 
 export const width = {
   mobile: 400,
@@ -183,4 +183,4 @@ export const width = {
   tablet: 700,
   desktop: 840,
   max: 1200
-}
+} as const
