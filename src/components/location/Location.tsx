@@ -1,5 +1,5 @@
 import React from "react"
-import { Map, Popup } from "react-map-gl"
+import { Map, Popup } from "react-map-gl/mapbox"
 import { styled } from "styled-components"
 
 import { colors, fonts } from "../../styles/constants"

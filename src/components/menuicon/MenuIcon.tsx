@@ -151,8 +151,8 @@ export const MenuIcon = ({
       ? "is-floating is-open"
       : "is-open"
     : isFloating
-    ? "is-floating"
-    : ""
+      ? "is-floating"
+      : ""
   return (
     <StyledDiv
       className={className}
