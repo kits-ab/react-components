@@ -1,6 +1,6 @@
 {
   "name": "@kokitotsos/react-components",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "license": "Apache-2.0",
   "main": "dist/react-components.js",
   "module": "dist/index.js",
@@ -145,7 +145,7 @@
       "storybook": "$storybook"
     },
     "@storybook/addon-docs": {
-        "storybook": "$storybook"
+      "storybook": "$storybook"
     }
   }
 }
