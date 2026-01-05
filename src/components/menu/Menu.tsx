@@ -14,6 +14,17 @@ type P = Partial<
   }
 >
 
+export type SubMenuItem = {
+  text: string
+  links: types.Link[]
+}
+
+export type MenuItem = types.Link | SubMenuItem
+
+const isSubMenu = (item: MenuItem): item is SubMenuItem => {
+  return (item as SubMenuItem).links !== undefined
+}
+
 const StyledNav = styled("nav").withConfig({
   shouldForwardProp: (prop) => !["breakpoint", "isFloating", "isOpen"].includes(prop)
 })<P>`
@@ -46,6 +57,7 @@ const StyledNav = styled("nav").withConfig({
   .Menu-expanded {
     display: flex;
 
+    > div,
     > a {
       color: ${colors.text2};
       color: var(--text2);
@@ -83,6 +95,55 @@ const StyledNav = styled("nav").withConfig({
       }
     }
 
+    /* Submenu styling */
+    .submenu-container {
+      position: relative;
+
+      &:hover .submenu-dropdown {
+        display: block;
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+    }
+
+    .submenu-dropdown {
+      background-color: ${colors.background1};
+      background-color: var(--background1);
+      border: 1px solid ${colors.line};
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      box-shadow: 0 4px 6px ${colors.lineShadow};
+      box-shadow: 0 4px 6px var(--lineShadow);
+      display: none;
+      left: 0;
+      min-width: 200px;
+      opacity: 0;
+      padding: ${spacing.small}px 0;
+      pointer-events: none;
+      position: absolute;
+      top: 100%;
+      transform: translateY(-10px);
+      transition: all 0.2s ease-in-out;
+      z-index: 120;
+
+      a {
+        color: ${colors.text2};
+        color: var(--text2);
+        display: block;
+        padding: ${spacing.small}px ${spacing.medium}px;
+        text-decoration: none;
+        transition: color 0.2s;
+
+        &:hover {
+          background-color: ${colors.background2};
+          background-color: var(--background2);
+          color: ${colors.text1};
+          color: var(--text1);
+        }
+      }
+    }
+
     @media (max-width: ${(props) => props.breakpoint}px) {
       background-color: ${colors.background1};
       background-color: var(--background1);
@@ -100,6 +161,7 @@ const StyledNav = styled("nav").withConfig({
       top: ${(props) => (props.isFloating ? "10px" : 0)};
       z-index: 110;
 
+      > div,
       > a {
         display: block;
         padding: 5px 20px;
@@ -120,6 +182,43 @@ const StyledNav = styled("nav").withConfig({
           }
         }
       }
+
+      /* Mobile submenu */
+      .submenu-container {
+        display: block;
+        padding: 0;
+
+        &:hover .submenu-dropdown {
+         display: block;
+        }
+      }
+
+      .submenu-title {
+         padding: 5px 20px;
+         display: block;
+         font-weight: 400;
+      }
+
+      .submenu-dropdown {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        display: block; /* Always show in mobile if parent present, or maybe just indent */
+        opacity: 1;
+        padding: 0 0 0 ${spacing.medium}px;
+        pointer-events: auto;
+        position: relative;
+        top: 0;
+        transform: none;
+
+        a {
+            padding: 5px 20px;
+            
+            &:hover {
+                background: transparent;
+            }
+        }
+      }
     }
   }
 `
@@ -130,8 +229,8 @@ export type MenuProps = types.BaseProps & {
    * @default 500
    */
   breakpoint?: number
-  /** The links to show in the menu. */
-  links: types.Link[]
+  /** The links or items to show in the menu. */
+  links: MenuItem[]
 }
 
 /**
@@ -197,11 +296,39 @@ export const Menu = ({ breakpoint = 500, links, ...restProps }: MenuProps) => {
       ref={menuRef}
     >
       <Horizontal breakpoint={breakpoint} className="Menu-expanded" spacing={spacing.small}>
-        {links.map((link, index) => (
-          <Link activeClassName="is-active" getProps={getProps} to={link.href} key={index}>
-            {link.text}
-          </Link>
-        ))}
+        {links.map((item, index) => {
+          if (isSubMenu(item)) {
+            return (
+              <div className="submenu-container" key={index}>
+                <span className="submenu-title" style={{ cursor: "default" }}>
+                  {item.text}
+                </span>
+                <div className="submenu-dropdown">
+                  {item.links.map((subLink, subIndex) => (
+                    <Link
+                      activeClassName="is-active"
+                      getProps={getProps}
+                      to={subLink.href}
+                      key={subIndex}
+                    >
+                      {subLink.text}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )
+          }
+          return (
+            <Link
+              activeClassName="is-active"
+              getProps={getProps}
+              to={item.href}
+              key={index}
+            >
+              {item.text}
+            </Link>
+          )
+        })}
       </Horizontal>
       <Horizontal className="Menu-collapsed" onClick={handleClick}>
         <span>Meny</span>

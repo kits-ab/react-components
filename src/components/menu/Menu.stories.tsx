@@ -8,14 +8,49 @@ export default {
 }
 
 export const Default = (props: MenuProps) => (
-  <Menu
-    {...props}
-    breakpoint={500}
-    links={[
-      { text: "Om KITS", href: "/om" },
-      { text: "Erbjudanden", href: "/erbjudanden" },
-      { text: "Bli en av oss", href: "/jobb" },
-      { text: "Blogg", href: "/blogg" }
-    ]}
-  />
+  <div style={{ paddingBottom: "100px" }}>
+    <Menu
+      {...props}
+      links={[
+        {
+          href: "/link-1",
+          text: "Link 1"
+        },
+        {
+          href: "/link-2",
+          text: "Link 2"
+        },
+        {
+          href: "/link-3",
+          text: "Link 3"
+        }
+      ]}
+    />
+  </div>
+)
+
+export const WithSubmenu = (props: MenuProps) => (
+  <div style={{ paddingBottom: "200px" }}>
+    <Menu
+      {...props}
+      links={[
+        {
+          href: "/link-1",
+          text: "Home"
+        },
+        {
+          text: "Services",
+          links: [
+            { href: "/services/1", text: "Service 1" },
+            { href: "/services/2", text: "Service 2" },
+            { href: "/services/3", text: "Service 3" }
+          ]
+        },
+        {
+          href: "/contact",
+          text: "Contact"
+        }
+      ]}
+    />
+  </div>
 )

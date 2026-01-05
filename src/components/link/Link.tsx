@@ -2,9 +2,10 @@ import React from "react"
 
 import * as types from "../../types"
 
-export type LinkProps = types.BaseProps & {
-  /**
-   * The class to give the link when it's active.
+export type LinkProps = types.BaseProps &
+  React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+    /**
+     * The class to give the link when it's active.
    * @default is-active
    */
   activeClassName?: string
