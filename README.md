@@ -23,10 +23,24 @@ For debugging purposes you should install [React Developer Tools](https://github
 
 ### Preparations
 
-- Install Node 18 – <https://nodejs.org>
 - Checkout the code and fetch all dependencies
   ```
   $ git clone git@github.com:kits-ab/react-components.git
+  ```
+- Install Node according to .nvmrc or .tool-versions file (22.21.1 at the time of writing this)
+
+  ```
+  $ nvm install
+  $ nvm use
+  ```
+  or
+
+  ```
+  $ asdf install
+  ```
+
+- Install dependencies
+  ```
   $ npm install
   ```
 
