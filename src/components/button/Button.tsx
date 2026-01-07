@@ -72,8 +72,8 @@ export type ButtonProps = types.BaseProps & {
  * Button is used to show a link or actual button that looks like a button.
  */
 export const Button = ({ children, href, openInNewWindow, ...restProps }: ButtonProps) => {
-  let isExternalLink = new RegExp(/^https?:\/\//)
-  let isMailLink = new RegExp(/^mailto:/)
+  const isExternalLink = new RegExp(/^https?:\/\//)
+  const isMailLink = new RegExp(/^mailto:/)
 
   return href && isExternalLink.test(href) ? (
     <StyledA href={href} {...restProps} target={openInNewWindow ? "_blank" : ""}>

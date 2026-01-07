@@ -5,6 +5,7 @@ import { colors, fonts, spacing } from "../../styles/constants"
 import * as types from "../../types"
 import { SubHeading } from "../headings/sub/SubHeading"
 import { Vertical } from "../layouts/vertical/Vertical"
+import { Link } from "../link/Link"
 import { Social } from "../social/Social"
 
 const StyledVertical = styled(Vertical)`
@@ -42,17 +43,42 @@ const StyledP = styled.p`
   }
 `
 
+const StyledContactLink = styled.p`
+  margin: 0;
+
+  > a {
+    color: ${colors.link};
+    color: var(--link);
+    font-family: ${fonts.light};
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1.4;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`
+
 export type ContactProps = types.BaseProps & {
   /** The contact information to show. */
   info: types.Contact
   /** The type of contact information to show. This determines which fields to show. */
   type: types.ContactType
+  /** Optional link to show before social icons. */
+  footerLink?: {
+    text: string
+    url: string
+    target?: string
+  }
 }
 
 /**
  * Contact is used to show some kind of contact information.
  */
-export const Contact = ({ info, type, ...restProps }: ContactProps) => {
+export const Contact = ({ info, type, footerLink, ...restProps }: ContactProps) => {
   const renderCompanyContact = () => {
     const { name, street, postalCode, city, phone, email } = info
     return (
@@ -137,6 +163,17 @@ export const Contact = ({ info, type, ...restProps }: ContactProps) => {
       {type === types.ContactType.Company && renderCompanyContact()}
       {type === types.ContactType.Person && renderPersonContact()}
       {type === types.ContactType.Role && renderRoleContact()}
+      {footerLink && (
+        <StyledContactLink>
+          <Link
+            to={footerLink.url}
+            target={footerLink.target || "_blank"}
+            rel="noopener noreferrer"
+          >
+            {footerLink.text}
+          </Link>
+        </StyledContactLink>
+      )}
       {type !== types.ContactType.Role && info.social && (
         <Social className="contact-social" info={info.social} />
       )}

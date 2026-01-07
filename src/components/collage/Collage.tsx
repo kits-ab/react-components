@@ -65,22 +65,29 @@ export type CollageProps = types.BaseProps & {
  * randomized within some limits.
  */
 export const Collage = ({ images, ...restProps }: CollageProps) => {
-  const getRotation = () => Math.random() * 10 - 5
-  const getScale = (index: number) => (index % 2 === 0 ? 1 : 1 - Math.random() * 0.1)
-  const getTranslateY = (index: number) => (index % 2 === 0 ? 30 : 0)
-  const getZIndex = (index: number) => (index % 2 === 0 ? 3 : 2)
+  const memoizedImages = React.useMemo(() => {
+    return images.map((image, index) => ({
+      ...image,
+      // eslint-disable-next-line react-hooks/purity
+      rotation: Math.random() * 10 - 5,
+      // eslint-disable-next-line react-hooks/purity
+      scale: index % 2 === 0 ? 1 : 1 - Math.random() * 0.1,
+      translateY: index % 2 === 0 ? 30 : 0,
+      zIndex: index % 2 === 0 ? 3 : 2
+    }))
+  }, [images])
 
   return (
     <StyledDiv {...restProps}>
       <div className="collage-wrapper">
         <div className="collage-images">
-          {images.map((image: { src: string; srcSet?: string; alt?: string }, index: number) => (
+          {memoizedImages.map((image, index) => (
             <StyledImage
               key={"image" + index}
-              rotate={getRotation()}
-              scale={getScale(index)}
-              translateY={getTranslateY(index)}
-              zIndex={getZIndex(index)}
+              rotate={image.rotation}
+              scale={image.scale}
+              translateY={image.translateY}
+              zIndex={image.zIndex}
             >
               <img src={image.src} srcSet={image.srcSet} alt={image.alt} />
             </StyledImage>

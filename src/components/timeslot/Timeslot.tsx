@@ -309,8 +309,8 @@ export const Timeslot = ({
       presenters && presenters.length > 0
         ? presenters
         : externalPresenter !== undefined && externalPresenter !== null
-        ? [externalPresenter]
-        : undefined
+          ? [externalPresenter]
+          : undefined
 
     return (
       <Horizontal breakpoint={width.mobileMenu} className="Timeslot-presenter">
